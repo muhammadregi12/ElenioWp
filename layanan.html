@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Weddings - Wedding Organizer Profesional</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap"
+    rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#af9757',
+            primaryDark: '#8a7a4a',
+            primaryLight: '#d4c08a',
+          },
+          animation: {
+            'fade-in': 'fadeIn 1s ease-in-out',
+            'slide-up': 'slideUp 0.8s ease-out',
+            'slide-right': 'slideRight 0.8s ease-out',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': {
+                opacity: '0'
+              },
+              '100%': {
+                opacity: '1'
+              },
+            },
+            slideUp: {
+              '0%': {
+                transform: 'translateY(20px)',
+                opacity: '0'
+              },
+              '100%': {
+                transform: 'translateY(0)',
+                opacity: '1'
+              },
+            },
+            slideRight: {
+              '0%': {
+                transform: 'translateX(-20px)',
+                opacity: '0'
+              },
+              '100%': {
+                transform: 'translateX(0)',
+                opacity: '1'
+              },
+            },
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- header -->
+  <style>
+    .header-bg {
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      transition: all 0.3s ease;
+    }
+
+    .header-bg.scrolled {
+      background: rgba(0, 0, 0, 0.95);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+
+    /* Animation for mobile menu */
+    #mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+    }
+
+    #mobile-menu.menu-open {
+      max-height: 500px;
+      transition: max-height 0.5s ease-in-out;
+    }
+
+    /* Hover effects */
+    .hover-scale:hover {
+      transform: scale(1.05);
+    }
+
+    /* Ensure smooth transitions */
+    .transition-all {
+      transition-property: all;
+    }
+
+    .duration-300 {
+      transition-duration: 300ms;
+    }
+
+    .mobile-dropdown {
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+    }
+
+    .mobile-dropdown.open {
+      max-height: 500px;
+      /* cukup besar untuk isi dropdown */
+      opacity: 1;
+    }
+  </style>
+
+  <!-- footer -->
+  <style>
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .animate-float {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .hover-scale {
+      transition: transform 0.3s ease;
+    }
+
+    .hover-scale:hover {
+      transform: scale(1.05);
+    }
+
+    .gradient-text {
+      background: linear-gradient(45deg, #f3ec78, #af4261);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .image-carousel {
+      display: flex;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .carousel-inner {
+      display: flex;
+      animation: carousel-scroll 20s linear infinite;
+    }
+
+    @keyframes carousel-scroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+  </style>
+
+  <style>
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fadeIn {
+      animation: fadeIn 1s ease-out forwards;
+    }
+
+    .delay-100 {
+      animation-delay: 0.1s;
+    }
+
+    .delay-200 {
+      animation-delay: 0.2s;
+    }
+  </style>
+
+</head>
+
+<body class="font-sans bg-white text-gray-800">
+
+  <!-- Header -->
+  <header class="header-bg fixed w-full z-50 h-[93px] transition-all duration-300" id="header">
+    <div class="container mx-auto px-6 flex justify-between items-center h-full">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <a href="#" class="text-2xl font-bold text-white py-2">
+          <img width="127" height="40" src="images/logo/logo.png" class="hover-scale transition-transform duration-300"
+            alt="ELENIO Logo" decoding="async">
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex space-x-6 lg:space-x-8">
+        <a href="index.html"
+          class="text-white hover:text-primary transition-colors duration-300 font-medium relative group">
+          Beranda
+          <span
+            class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+        </a>
+
+        <!-- Halaman (Dropdown) -->
+        <div class="relative group">
+          <a href="#" class="text-white hover:text-primary transition-colors duration-300 font-medium relative group">
+            Halaman
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <!-- Dropdown Menu -->
+          <div
+            class="absolute left-0 mt-3 w-48 bg-black bg-opacity-95 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+            <a href="#" class="block px-4 py-2 text-white hover:bg-primary hover:text-white">Tentang Kami</a>
+            <a href="vendor.html" class="block px-4 py-2 text-white hover:bg-primary hover:text-white">Vendor</a>
+            <a href="#" class="block px-4 py-2 text-white hover:bg-primary hover:text-white">Team</a>
+          </div>
+        </div>
+
+        <!-- Layanan (Dropdown) -->
+        <div class="relative group">
+          <a href="#" class="text-white hover:text-primary transition-colors duration-300 font-medium relative group">
+            Layanan
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <!-- Dropdown Menu -->
+          <div
+            class="absolute left-0 mt-3 w-48 bg-black bg-opacity-95 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+            <a href="layanan.html" class="block px-4 py-2 text-white hover:bg-primary hover:text-white">Pricelist</a>
+            <a href="custom.html" class="block px-4 py-2 text-white hover:bg-primary hover:text-white">Paket Custom</a>
+            <a href="wo.html" class="block px-4 py-2 text-white hover:bg-primary hover:text-white">Wedding Organizer</a>
+
+          </div>
+        </div>
+
+
+        <a href="portfolio.html"
+          class="text-white hover:text-primary transition-colors duration-300 font-medium relative group">
+          Portfolio
+          <span
+            class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="artikel.html"
+          class="text-white hover:text-primary transition-colors duration-300 font-medium relative group">
+          Artikel
+          <span
+            class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="kontak.html"
+          class="text-white hover:text-primary transition-colors duration-300 font-medium relative group">
+          Kontak
+          <span
+            class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+        </a>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden text-white focus:outline-none transition-transform duration-300 hover:scale-110"
+        id="mobile-menu-button" aria-label="Toggle menu">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="md:hidden hidden bg-black bg-opacity-95 w-full transition-all duration-300 transform origin-top"
+      id="mobile-menu">
+      <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+        <a href="index.html"
+          class="text-white hover:text-primary transition-colors duration-300 py-3 px-2 border-b border-gray-700 flex items-center">
+          <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+            </path>
+          </svg>
+          Beranda
+        </a>
+
+        <!-- Halaman (Mobile Dropdown) -->
+        <div class="border-b border-gray-700">
+          <button
+            class="w-full flex items-center justify-between text-white py-3 px-2 hover:text-primary transition-colors duration-300 mobile-dropdown-btn">
+            <span class="flex items-center">
+              <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                </path>
+              </svg>
+              Halaman
+            </span>
+            <svg class="w-4 h-4 transform transition-transform duration-300" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9l6 6 6-6"></path>
+            </svg>
+          </button>
+          <div class="mobile-dropdown hidden pl-10">
+            <a href="#" class="block py-2 text-white hover:text-primary">Tentang Kami</a>
+            <a href="#" class="block py-2 text-white hover:text-primary">Tim Kami</a>
+            <a href="#" class="block py-2 text-white hover:text-primary">FAQ</a>
+
+          </div>
+        </div>
+
+        <!-- Layanan (Mobile Dropdown) -->
+        <div class="border-b border-gray-700">
+          <button
+            class="w-full flex items-center justify-between text-white py-3 px-2 hover:text-primary transition-colors duration-300 mobile-dropdown-btn">
+            <span class="flex items-center">
+              <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z">
+                </path>
+              </svg>
+              Layanan
+            </span>
+            <svg class="w-4 h-4 transform transition-transform duration-300" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9l6 6 6-6"></path>
+            </svg>
+          </button>
+          <div class="mobile-dropdown hidden pl-10">
+            <a href="layanan.html" class="block py-2 text-white hover:text-primary">Pricelist</a>
+            <a href="custom.html" class="block py-2 text-white hover:text-primary">Paket Custom</a>
+            <a href="wo.html" class="block py-2 text-white hover:text-primary">Wedding Organizer</a>
+          </div>
+        </div>
+
+
+        <a href="portfolio.html"
+          class="text-white hover:text-primary transition-colors duration-300 py-3 px-2 border-b border-gray-700 flex items-center">
+          <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+            </path>
+          </svg>
+          Portfolio
+        </a>
+        <a href="artikel.html"
+          class="text-white hover:text-primary transition-colors duration-300 py-3 px-2 border-b border-gray-700 flex items-center">
+          <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z">
+            </path>
+          </svg>
+          Artikel
+        </a>
+        <a href="kontak.html"
+          class="text-white hover:text-primary transition-colors duration-300 py-3 px-2 flex items-center">
+          <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+            </path>
+          </svg>
+          Kontak
+        </a>
+      </div>
+    </div>
+  </header>
+
+
+  <section class="bg-[#f7f3ef] py-16 overflow-hidden">
+    <div class="container mx-auto px-6 lg:px-20 grid lg:grid-cols-3 gap-8 items-center">
+
+
+
+
+      <!-- Left Images -->
+      <div class="lg:col-span-2 flex gap-6">
+        <!-- Image 1 -->
+        <div class="w-1/2 relative group">
+          <div
+            class="absolute inset-0 bg-[#af9757] opacity-0 group-hover:opacity-20 rounded-2xl transition-opacity duration-500 z-10">
+          </div>
+          <img
+            src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            alt="Elegant wedding couple"
+            class="rounded-2xl object-cover w-full h-[400px] group-hover:scale-105 transition-transform duration-700 ease-out"
+            loading="lazy">
+        </div>
+        <!-- Image 2 -->
+        <div class="w-1/2 mt-12 relative group">
+          <div
+            class="absolute inset-0 bg-[#af9757] opacity-0 group-hover:opacity-20 rounded-2xl transition-opacity duration-500 z-10">
+          </div>
+          <img
+            src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+            alt="Wedding rings closeup"
+            class="rounded-2xl object-cover w-full h-[300px] group-hover:scale-105 transition-transform duration-700 ease-out"
+            loading="lazy">
+        </div>
+      </div>
+
+      <!-- Right Content -->
+      <div class="space-y-6">
+        <div class="flex items-center gap-4">
+          <span class="text-[#7a6c4f] font-semibold text-lg">02.</span>
+          <div class="flex-1 border-t border-[#b6aa92]"></div>
+          <span class="text-[#7a6c4f] font-semibold">Layanan & Paket</span>
+        </div>
+        <h2 class="text-4xl font-serif text-[#3b2f1d] animate-fadeIn">
+          Elenio Wedding Planner
+        </h2>
+        <p class="text-[#4b4b4b] leading-relaxed animate-fadeIn delay-100">
+          Kami menyediakan berbagai pilihan paket pernikahan yang dirancang untuk memenuhi kebutuhan dan impian setiap
+          pasangan. Mulai dari konsep intim yang sederhana hingga pesta megah yang penuh kemewahan.
+        </p>
+        <button
+          class="px-6 py-3 bg-[#af9757] hover:bg-[#8f7d47] text-white rounded-full flex items-center gap-2 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl">
+          Wedding Organizer
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" class="w-5 h-5 group-hover:translate-x-1 transition-transform">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- Main Content -->
+  <div class="bg-gradient-to-b from-gray-50 to-white container mx-auto px-4 py-12">
+    <div class="flex flex-col lg:flex-row gap-8">
+      <!-- Vendor List -->
+      <div class="w-full lg:w-3/4 xl:w-4/5 space-y-6">
+        <!-- Search and Filter Section -->
+        <div class="bg-white p-4 rounded-xl shadow-md">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div class="relative flex-1">
+              <input type="text" placeholder="Search products..."
+                class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#af9757] focus:border-[#af9757] transition-all">
+              <i class="bi bi-search absolute left-3 top-3 text-gray-400"></i>
+            </div>
+            <div class="flex items-center space-x-2">
+              <span class="text-gray-600 hidden sm:inline">Sort by:</span>
+              <select
+                class="border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-[#af9757] focus:border-[#af9757] transition-all">
+                <option>Popular</option>
+                <option>Newest</option>
+                <option>Price: Low to High</option>
+                <option>Price: High to Low</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+
+          <!-- Card Item 4 -->
+          <div
+            class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 relative">
+            <!-- Badges -->
+            <div class="absolute top-3 left-3 z-10">
+              <span class="bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center">
+                <i class="bi bi-award-fill mr-1"></i> Best Seller
+              </span>
+            </div>
+
+            <!-- Image with hover effect -->
+            <div class="relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=400&auto=format&fit=crop&q=80"
+                alt="Smartwatch"
+                class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110">
+              <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-500">
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-5 space-y-3">
+              <div class="flex justify-between items-start">
+                <h3 class="text-lg font-bold text-gray-800 hover:text-[#af9757] transition">Gold Package 1</h3>
+                <button class="text-red-500 transition">
+                  <i class="bi bi-heart-fill text-xl"></i>
+                </button>
+              </div>
+
+              <div class="flex items-center space-x-2">
+                <span class="text-xl font-bold text-gray-900">Rp 31.200.000</span>
+                <span class="line-through text-gray-500 text-sm">Rp 50.500.000</span>
+                <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded flex items-center">
+                  <i class="bi bi-arrow-down-short mr-1"></i> 20%
+                </span>
+              </div>
+
+              <div class="flex items-center">
+                <div class="flex text-yellow-400 text-sm">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star"></i>
+                </div>
+                <span class="ml-2 text-gray-500 text-sm">(32,156)</span>
+              </div>
+
+              <p class="text-gray-600 text-sm">Paket Murah dan terpercaya.</p>
+
+              <!-- Buttons -->
+              <div class="flex items-center space-x-3 pt-3">
+                <a href="detaillayanan.html"
+                  class="flex-1 bg-[#af9757] hover:bg-[#947f49] text-white font-semibold py-2 px-4 rounded-lg transition flex items-center justify-center">
+                  <i class="bi bi-cart-plus mr-2"></i> Detail Paket
+                </a>
+                <a href="detaillayanan.html"
+                  class="bg-gray-100 hover:bg-[#af9757] hover:text-white p-3 rounded-lg transition">
+                  <i class="bi bi-eye"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card Item 1 -->
+          <div
+            class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 relative">
+            <!-- Badges -->
+            <div class="absolute top-3 left-3 z-10 space-y-2">
+              <span class="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center">
+                <i class="bi bi-lightning-fill mr-1"></i> Sale!
+              </span>
+              <span class="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center">
+                <i class="bi bi-star-fill mr-1"></i> Popular
+              </span>
+            </div>
+
+            <!-- Image with hover effect -->
+            <div class="relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&auto=format&fit=crop&q=80"
+                alt="Headphone"
+                class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110">
+              <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-500">
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-5 space-y-3">
+              <div class="flex justify-between items-start">
+                <h3 class="text-lg font-bold text-gray-800 hover:text-[#af9757] transition">Nikah Dirumah</h3>
+                <button class="text-gray-400 hover:text-red-500 transition">
+                  <i class="bi bi-heart text-xl"></i>
+                </button>
+              </div>
+
+              <div class="flex items-center space-x-2">
+                <span class="text-xl font-bold text-gray-900">Rp 400.000</span>
+                <span class="line-through text-gray-500 text-sm">Rp 500.000</span>
+                <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded flex items-center">
+                  <i class="bi bi-arrow-down-short mr-1"></i> 20%
+                </span>
+              </div>
+
+              <div class="flex items-center">
+                <div class="flex text-yellow-400 text-sm">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-half"></i>
+                </div>
+                <span class="ml-2 text-gray-500 text-sm">(20,543)</span>
+              </div>
+
+              <p class="text-gray-600 text-sm">Nikah dirumah tanpa khawatir bersama elenio wedding planner</p>
+
+              <!-- Buttons -->
+              <div class="flex items-center space-x-3 pt-3">
+                <a href="detaillayanan.html"
+                  class="flex-1 bg-[#af9757] hover:bg-[#947f49] text-white font-semibold py-2 px-4 rounded-lg transition flex items-center justify-center">
+                  <i class="bi bi-cart-plus mr-2"></i> Detail Paket
+                </a>
+                <a href="detaillayanan.html"
+                  class="bg-gray-100 hover:bg-[#af9757] hover:text-white p-3 rounded-lg transition">
+                  <i class="bi bi-eye"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card Item 3 -->
+          <div
+            class="group bg-white rounded-xl shadow-lg overflow-hidden transform hover:-translate-y-2 hover:shadow-2xl transition-all duration-500 relative">
+            <!-- Badges -->
+            <div class="absolute top-3 left-3 z-10 space-y-2">
+              <span class="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full flex items-center">
+                <i class="bi bi-lightning-fill mr-1"></i> Sale!
+              </span>
+            </div>
+
+            <!-- Image with hover effect -->
+            <div class="relative overflow-hidden">
+              <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=400&auto=format&fit=crop&q=80"
+                alt="Camera" class="w-full h-56 object-cover transition-transform duration-700 group-hover:scale-110">
+              <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-500">
+              </div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-5 space-y-3">
+              <div class="flex justify-between items-start">
+                <h3 class="text-lg font-bold text-gray-800 hover:text-[#af9757] transition">The Intimate Wedding</h3>
+                <button class="text-gray-400 hover:text-red-500 transition">
+                  <i class="bi bi-heart text-xl"></i>
+                </button>
+              </div>
+
+              <div class="flex items-center space-x-2">
+                <span class="text-xl font-bold text-gray-900">Rp 8.500.000</span>
+                <span class="line-through text-gray-500 text-sm">Rp 10.000.000</span>
+                <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded flex items-center">
+                  <i class="bi bi-arrow-down-short mr-1"></i> 15%
+                </span>
+              </div>
+
+              <div class="flex items-center">
+                <div class="flex text-yellow-400 text-sm">
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i>
+                </div>
+                <span class="ml-2 text-gray-500 text-sm">(8,742)</span>
+              </div>
+
+              <p class="text-gray-600 text-sm">Paket Intimate Pernikahan Sederhana namun layanan mewah.</p>
+
+              <!-- Buttons -->
+              <div class="flex items-center space-x-3 pt-3">
+                <a href="detaillayanan.html"
+                  class="flex-1 bg-[#af9757] hover:bg-[#947f49] text-white font-semibold py-2 px-4 rounded-lg transition flex items-center justify-center">
+                  <i class="bi bi-cart-plus mr-2"></i> Detail Paket
+                </a>
+                <a href="detaillayanan.html"
+                  class="bg-gray-100 hover:bg-[#af9757] hover:text-white p-3 rounded-lg transition">
+                  <i class="bi bi-eye"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex justify-center mt-10">
+          <nav class="inline-flex rounded-md shadow">
+            <a href="#" class="px-3 py-2 rounded-l-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50">
+              <i class="bi bi-chevron-left"></i>
+            </a>
+            <a href="#"
+              class="px-4 py-2 border-t border-b border-gray-300 bg-white text-[#af9757] font-medium hover:bg-gray-50">1</a>
+            <a href="#" class="px-4 py-2 border border-gray-300 bg-white text-gray-500 hover:bg-gray-50">2</a>
+            <a href="#" class="px-4 py-2 border border-gray-300 bg-white text-gray-500 hover:bg-gray-50">3</a>
+            <a href="#" class="px-4 py-2 border border-gray-300 bg-white text-gray-500 hover:bg-gray-50">4</a>
+            <a href="#" class="px-4 py-2 rounded-r-md border border-gray-300 bg-white text-gray-500 hover:bg-gray-50">
+              <i class="bi bi-chevron-right"></i>
+            </a>
+          </nav>
+        </div>
+      </div>
+
+      <!-- Include Bootstrap Icons -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+
+      <!-- Add some custom animation styles -->
+      <style>
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .product-card {
+          animation: fadeIn 0.5s ease-out forwards;
+        }
+
+        .product-card:nth-child(1) {
+          animation-delay: 0.1s;
+        }
+
+        .product-card:nth-child(2) {
+          animation-delay: 0.2s;
+        }
+
+        .product-card:nth-child(3) {
+          animation-delay: 0.3s;
+        }
+
+        .product-card:nth-child(4) {
+          animation-delay: 0.4s;
+        }
+
+        .product-card:nth-child(5) {
+          animation-delay: 0.5s;
+        }
+
+        .product-card:nth-child(6) {
+          animation-delay: 0.6s;
+        }
+
+        .heart-btn:hover i {
+          animation: pulse 0.5s;
+        }
+
+        @keyframes pulse {
+          0% {
+            transform: scale(1);
+          }
+
+          50% {
+            transform: scale(1.3);
+          }
+
+          100% {
+            transform: scale(1);
+          }
+        }
+      </style>
+
+
+      <!-- Sidebar - Categories -->
+
+      <div class="w-full lg:w-1/4 xl:w-1/5">
+        <div class="bg-white p-6 rounded-xl shadow-lg sticky top-8 transition-all duration-300 hover:shadow-xl">
+          <h2 class="text-xl font-semibold text-primary mb-4 border-b pb-2 border-gray-100">Browse Categories
+          </h2>
+          <ul class="space-y-2">
+            <li>
+              <a href="#"
+                class="block py-3 px-4 bg-primary text-white rounded-lg flex items-center transform transition-all duration-300 hover:scale-[1.02]">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                  <path
+                    d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
+                </svg>
+                All Vendors
+              </a>
+            </li>
+            <li>
+              <a href="#"
+                class="block py-3 px-4 hover:bg-gray-50 rounded-lg flex items-center transform transition-all duration-300 hover:translate-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-primary" viewBox="0 0 20 20"
+                  fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z"
+                    clip-rule="evenodd" />
+                </svg>
+                Photography
+              </a>
+            </li>
+            <li>
+              <a href="#"
+                class="block py-3 px-4 hover:bg-gray-50 rounded-lg flex items-center transform transition-all duration-300 hover:translate-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-primary" viewBox="0 0 20 20"
+                  fill="currentColor">
+                  <path
+                    d="M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v8a2 2 0 01-2 2h-2a2 2 0 01-2-2V6z" />
+                </svg>
+                Videography
+              </a>
+            </li>
+            <li>
+              <a href="#"
+                class="block py-3 px-4 hover:bg-gray-50 rounded-lg flex items-center transform transition-all duration-300 hover:translate-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-primary" viewBox="0 0 20 20"
+                  fill="currentColor">
+                  <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+                  <path fill-rule="evenodd"
+                    d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z"
+                    clip-rule="evenodd" />
+                </svg>
+                Catering
+              </a>
+            </li>
+            <li>
+              <a href="#"
+                class="block py-3 px-4 hover:bg-gray-50 rounded-lg flex items-center transform transition-all duration-300 hover:translate-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-primary" viewBox="0 0 20 20"
+                  fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M4 4a2 2 0 012-2h8a2 2 0 012 2v12a1 1 0 110 2h-3a1 1 0 01-1-1v-2a1 1 0 00-1-1H9a1 1 0 00-1 1v2a1 1 0 01-1 1H4a1 1 0 110-2V4z"
+                    clip-rule="evenodd" />
+                </svg>
+                Venues
+              </a>
+            </li>
+            <li>
+              <a href="#"
+                class="block py-3 px-4 hover:bg-gray-50 rounded-lg flex items-center transform transition-all duration-300 hover:translate-x-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-primary" viewBox="0 0 20 20"
+                  fill="currentColor">
+                  <path fill-rule="evenodd"
+                    d="M12 1.586l-4 4v12.828l4-4V1.586zM3.707 3.293A1 1 0 002 4v10a1 1 0 00.293.707L6 18.414V5.586L3.707 3.293zM17.707 5.293L14 1.586v12.828l2.293 2.293A1 1 0 0018 16V6a1 1 0 00-.293-.707z"
+                    clip-rule="evenodd" />
+                </svg>
+                Florist
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Footer -->
+  <footer itemtype="https://schema.org/WPFooter" itemscope="itemscope" id="colophon" role="contentinfo"
+    class="relative overflow-hidden bg-gray-900 text-gray-200 font-sans">
+    <!-- Animated background elements -->
+    <div class="absolute inset-0 overflow-hidden opacity-10">
+      <div class="absolute top-20 left-10 w-8 h-8 rounded-full bg-pink-500 animate-float" style="animation-delay: 0s;">
+      </div>
+      <div class="absolute top-1/3 right-20 w-12 h-12 rounded-full bg-purple-500 animate-float"
+        style="animation-delay: 0.5s;"></div>
+      <div class="absolute bottom-20 left-1/4 w-10 h-10 rounded-full bg-blue-500 animate-float"
+        style="animation-delay: 1s;"></div>
+      <div class="absolute top-1/4 right-1/3 w-6 h-6 rounded-full bg-yellow-500 animate-float"
+        style="animation-delay: 1.5s;"></div>
+    </div>
+
+    <div class="container mx-auto px-6 py-12 relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+        <!-- Serenity Logo/Title with Image -->
+        <div class="lg:col-span-2">
+          <div class="mb-6">
+            <img width="150" height="150" src="images/logo/logo.png" class="hover-scale" alt="Serenity Logo"
+              decoding="async">
+          </div>
+          <p class="text-lg mb-6">Mari Rencanakan Pernikahan Impian Anda dengan Elenio Wedding!</p>
+          <p class="text-gray-400">Tunggu apalagi wujudkan impian pernikahanmu bersama kami dan nantikan promo di setiap
+            bulannya</p>
+        </div>
+
+        <!-- Navigation Section -->
+        <div>
+          <h2 class="text-xl font-semibold mb-6">Navigation</h2>
+          <ul class="space-y-3">
+            <li class="hover-scale"><a href="index.html" class="hover:text-white transition-colors">Beranda</a></li>
+            <li class="hover-scale"><a href="vendor.html" class="hover:text-white transition-colors">Vendor</a></li>
+            <li class="hover-scale"><a href="layanan.html" class="hover:text-white transition-colors">Pricelist</a></li>
+            <li class="hover-scale"><a href="portfolio.html" class="hover:text-white transition-colors">Portfolio</a>
+            </li>
+            <li class="hover-scale"><a href="artikel.html" class="hover:text-white transition-colors">Artikel</a></li>
+          </ul>
+        </div>
+
+        <!-- Social Media Section -->
+        <div>
+          <h2 class="text-xl font-semibold mb-6">Connect With Us</h2>
+          <div class="space-y-4">
+            <!-- Instagram -->
+            <div class="flex items-center hover-scale group">
+              <div
+                class="w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                <i class="fab fa-instagram text-white text-lg"></i>
+              </div>
+              <span class="group-hover:text-purple-400 transition-colors">Instagram</span>
+            </div>
+
+            <!-- TikTok -->
+            <div class="flex items-center hover-scale group">
+              <div
+                class="w-10 h-10 rounded-full bg-gradient-to-r from-cyan-400 to-fuchsia-600 flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                <i class="fab fa-tiktok text-white text-lg"></i>
+              </div>
+              <span class="group-hover:text-fuchsia-400 transition-colors">TikTok</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div>
+          <h2 class="text-xl font-semibold mb-6">Contact</h2>
+          <div class="space-y-4">
+            <div class="hover-scale">
+              <a href="mailto:SerenityWedding@com" class="flex items-center hover:text-green-400 transition-colors">
+                <i class="fas fa-envelope mr-2 text-green-500"></i>elenioweddingp@gmail.com
+              </a>
+            </div>
+            <div class="hover-scale">
+              <a href="tel:+1234567890" class="flex items-center hover:text-blue-400 transition-colors">
+                <i class="fas fa-phone-alt mr-2 text-blue-500"></i> +62 813 9427 7035
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Locations Section -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+        <div class="hover-scale p-6 rounded-lg bg-gray-800 bg-opacity-50 transition-all hover:bg-opacity-70 group">
+          <div class="flex items-start gap-4">
+            <div class="text-amber-300 mt-1">
+              <i class="fas fa-map-marker-alt text-xl"></i>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-amber-300 mb-2 flex items-center gap-2">
+                <i class="fas fa-city"></i>
+                Bandung - Kopo
+              </h3>
+              <p class="text-gray-400 flex items-start gap-2">
+                <i class="fas fa-home mt-1"></i>
+                <span>
+                  Kp Sakeloa RT 09 No 138<br>
+                  Desa Margahayu Selatan, Kabupaten Bandung
+                </span>
+              </p>
+              <div class="mt-3 text-sm text-gray-300 flex items-center gap-2">
+                <i class="fas fa-phone-alt"></i>
+                <span>+62 813 9427 7035</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image Carousel -->
+        <div class="overflow-hidden rounded-lg">
+          <div class="image-carousel">
+            <div class="carousel-inner">
+              <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/22.jpg" alt="Wedding 1"
+                class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+              <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/23.jpg" alt="Wedding 2"
+                class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+              <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/24.jpg" alt="Wedding 3"
+                class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+              <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/25.jpg" alt="Wedding 4"
+                class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+              <!-- Duplicate images for seamless looping -->
+              <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/22.jpg" alt="Wedding 1"
+                class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+              <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/23.jpg" alt="Wedding 2"
+                class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+              <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/24.jpg" alt="Wedding 3"
+                class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+              <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/25.jpg" alt="Wedding 4"
+                class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+      <!-- Copyright and Links -->
+      <div class="mt-16 pt-6 border-t border-gray-800">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <p class="text-gray-500 mb-4 md:mb-0">Copyright © 2025 EleniowWP. All right reserved.</p>
+          <div class="flex space-x-6">
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">Support</a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+
+
+  <script>
+    // Mobile Menu Toggle with animation
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      mobileMenu.classList.toggle('menu-open');
+
+      // Toggle aria-expanded attribute
+      const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+      mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+
+      // Change icon when menu is open
+      const menuIcon = mobileMenuButton.querySelector('svg');
+      if (!isExpanded) {
+        menuIcon.innerHTML =
+          '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
+      } else {
+        menuIcon.innerHTML =
+          '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+      }
+    });
+
+    // Close mobile menu when clicking on a link
+    const mobileLinks = document.querySelectorAll('#mobile-menu a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('menu-open');
+        mobileMenuButton.setAttribute('aria-expanded', 'false');
+        mobileMenuButton.querySelector('svg').innerHTML =
+          '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+      });
+    });
+
+    // Mobile dropdown toggle
+    document.querySelectorAll('.mobile-dropdown-btn').forEach((btn) => {
+      btn.addEventListener('click', function () {
+        const dropdown = this.nextElementSibling;
+        const icon = this.querySelector('svg:last-child');
+
+        dropdown.classList.toggle('open');
+        dropdown.classList.toggle('hidden');
+
+        // Rotasi ikon
+        icon.classList.toggle('rotate-180');
+      });
+    });
+
+
+    // Header Scroll Effect with throttle for performance
+    const header = document.getElementById('header');
+    let lastScroll = 0;
+
+    function throttle(func, limit) {
+      let lastFunc;
+      let lastRan;
+      return function () {
+        const context = this;
+        const args = arguments;
+        if (!lastRan) {
+          func.apply(context, args);
+          lastRan = Date.now();
+        } else {
+          clearTimeout(lastFunc);
+          lastFunc = setTimeout(function () {
+            if ((Date.now() - lastRan) >= limit) {
+              func.apply(context, args);
+              lastRan = Date.now();
+            }
+          }, limit - (Date.now() - lastRan));
+        }
+      }
+    }
+
+    const handleScroll = throttle(() => {
+      const currentScroll = window.scrollY;
+      if (currentScroll <= 0) {
+        header.classList.remove('scrolled');
+        return;
+      }
+
+      if (currentScroll > lastScroll && currentScroll > 100) {
+        // Scroll down
+        header.classList.add('scrolled');
+      } else if (currentScroll < lastScroll) {
+        // Scroll up
+        header.classList.add('scrolled');
+      }
+
+      lastScroll = currentScroll;
+    }, 100);
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Initialize header state
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    }
+  </script>
+
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: false,
+      offset: 120,
+      easing: 'ease-out-quart'
+    });
+
+    // Counter animation
+    document.addEventListener('DOMContentLoaded', () => {
+      const counters = document.querySelectorAll('.counter');
+      const speed = 200;
+
+      const animateCounters = () => {
+        counters.forEach(counter => {
+          const target = +counter.getAttribute('data-target');
+          const count = +counter.innerText;
+          const increment = target / speed;
+
+          if (count < target) {
+            counter.innerText = Math.ceil(count + increment);
+            setTimeout(animateCounters, 1);
+          } else {
+            counter.innerText = target;
+          }
+        });
+      };
+
+      // Trigger when element is in view
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            animateCounters();
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.5
+      });
+
+      counters.forEach(counter => {
+        observer.observe(counter);
+      });
+    });
+  </script>
+
+  <!-- script  category-->
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true
+    });
+  </script>
+
+
+</body>
+
+</html>

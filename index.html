@@ -1,0 +1,2397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Weddings - Wedding Organizer Profesional</title>
+  <script src="tailwind/tailwind.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/fontawesome.css">
+
+  <link href="css/fontmonstrat.css" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#af9757',
+            primaryDark: '#8a7a4a',
+            primaryLight: '#d4c08a',
+          },
+          animation: {
+            'fade-in': 'fadeIn 1s ease-in-out',
+            'slide-up': 'slideUp 0.8s ease-out',
+            'slide-right': 'slideRight 0.8s ease-out',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': {
+                opacity: '0'
+              },
+              '100%': {
+                opacity: '1'
+              },
+            },
+            slideUp: {
+              '0%': {
+                transform: 'translateY(20px)',
+                opacity: '0'
+              },
+              '100%': {
+                transform: 'translateY(0)',
+                opacity: '1'
+              },
+            },
+            slideRight: {
+              '0%': {
+                transform: 'translateX(-20px)',
+                opacity: '0'
+              },
+              '100%': {
+                transform: 'translateX(0)',
+                opacity: '1'
+              },
+            },
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- header -->
+  <style>
+    .header-bg {
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      transition: all 0.3s ease;
+    }
+
+    .header-bg.scrolled {
+      background: rgba(0, 0, 0, 0.95);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+    }
+
+    /* Animation for mobile menu */
+    #mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+    }
+
+    #mobile-menu.menu-open {
+      max-height: 500px;
+      transition: max-height 0.5s ease-in-out;
+    }
+
+    /* Hover effects */
+    .hover-scale:hover {
+      transform: scale(1.05);
+    }
+
+    /* Ensure smooth transitions */
+    .transition-all {
+      transition-property: all;
+    }
+
+    .duration-300 {
+      transition-duration: 300ms;
+    }
+
+    .mobile-dropdown {
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+      overflow: hidden;
+      max-height: 0;
+      opacity: 0;
+    }
+
+    .mobile-dropdown.open {
+      max-height: 500px;
+      /* cukup besar untuk isi dropdown */
+      opacity: 1;
+    }
+  </style>
+
+  <!-- slider -->
+  <style>
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    @keyframes textClip {
+      from {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+        opacity: 0;
+      }
+
+      to {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(30px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .animate-text-reveal {
+      animation: textClip 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 1s ease-out forwards;
+    }
+
+    .animate-slide-up {
+      animation: slideUp 0.8s ease-out forwards;
+    }
+
+    .gold-gradient {
+      background: linear-gradient(135deg, #af9757 0%, #d4b977 50%, #af9757 100%);
+    }
+
+    .slide-content {
+      opacity: 0;
+    }
+
+    .slide.active .slide-content {
+      opacity: 1;
+    }
+
+    .btn-sparkle {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-sparkle::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(to bottom right,
+          rgba(255, 255, 255, 0) 45%,
+          rgba(255, 255, 255, 0.8) 50%,
+          rgba(255, 255, 255, 0) 55%);
+      transform: rotate(30deg);
+      transition: all 0.6s ease;
+      opacity: 0;
+    }
+
+    .btn-sparkle:hover::before {
+      opacity: 1;
+      left: 100%;
+      top: 100%;
+    }
+
+    .parallax-bg {
+      will-change: transform;
+      transition: transform 0.4s ease-out;
+    }
+
+    .text-shadow {
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .gold-underline {
+      position: relative;
+      display: inline-block;
+    }
+
+    .gold-underline::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #af9757;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .slide.active .gold-underline::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  </style>
+
+  <!-- testimonial -->
+  <style>
+    /* Custom styles for the testimonial section */
+    .testimonial-section {
+      background: linear-gradient(135deg, #f8fafb 0%, #f0f4f7 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial-section::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+      opacity: 0.03;
+      z-index: 0;
+    }
+
+    .testimonial-carousel {
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      perspective: 1000px;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .testimonial-carousel:active {
+      cursor: grabbing;
+    }
+
+    .testimonial-carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .testimonial-track {
+      display: flex;
+      min-width: 100%;
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .testimonial-slide {
+      flex: 0 0 100%;
+      padding: 0 1rem;
+      transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      transform-style: preserve-3d;
+      opacity: 0.6;
+      scale: 0.9;
+      cursor: pointer;
+    }
+
+    .testimonial-slide.active {
+      opacity: 1;
+      scale: 1;
+    }
+
+    @media (min-width: 768px) {
+      .testimonial-slide {
+        flex: 0 0 33.33%;
+      }
+    }
+
+    .testimonial-card {
+      background: white;
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      height: 100%;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid rgba(175, 151, 87, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, #af9757, #d4b96a);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .testimonial-slide.active .testimonial-card::before {
+      transform: scaleX(1);
+    }
+
+    .testimonial-quote {
+      font-size: 3rem;
+      line-height: 1;
+      color: #af9757;
+      opacity: 0.3;
+      position: absolute;
+      top: 1rem;
+      right: 2rem;
+      transition: all 0.5s ease;
+    }
+
+    .testimonial-slide.active .testimonial-quote {
+      opacity: 0.7;
+      transform: scale(1.1);
+    }
+
+    /* Navigation buttons */
+    .testimonial-nav-btn {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: white;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 10;
+      position: absolute;
+      top: -70px;
+    }
+
+    .testimonial-nav-btn:hover {
+      background: #af9757;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(175, 151, 87, 0.3);
+    }
+
+    .testimonial-nav-btn:hover svg {
+      stroke: white;
+    }
+
+    .testimonial-nav-btn:active {
+      transform: translateY(0);
+    }
+
+    .testimonial-nav-prev {
+      right: 70px;
+    }
+
+    .testimonial-nav-next {
+      right: 0;
+    }
+
+    /* Floating animation for images */
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .testimonial-image {
+      animation: float 6s ease-in-out infinite;
+      border: 2px solid #af9757;
+      box-shadow: 0 5px 15px rgba(175, 151, 87, 0.3);
+    }
+
+    /* Section title animation */
+    .section-title {
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 2px;
+      background: #af9757;
+      transition: all 0.4s ease;
+    }
+
+    .section-title:hover::after {
+      width: 100px;
+      background: linear-gradient(90deg, #af9757, #d4b96a);
+    }
+
+    /* Entry animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fadeInUp {
+      animation: fadeInUp 0.8s ease-out forwards;
+    }
+
+    .delay-100 {
+      animation-delay: 0.1s;
+    }
+
+    .delay-200 {
+      animation-delay: 0.2s;
+    }
+  </style>
+
+  <!-- custom service -->
+  <style>
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-20px);
+      }
+
+      100% {
+        transform: translateY(0px);
+      }
+    }
+
+    .animate-fadeIn {
+      animation: fadeIn 1s ease forwards;
+      opacity: 0;
+    }
+
+    .animate-float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .delay-100 {
+      animation-delay: 0.1s;
+    }
+
+    .delay-200 {
+      animation-delay: 0.2s;
+    }
+
+    .delay-300 {
+      animation-delay: 0.3s;
+    }
+
+    .delay-400 {
+      animation-delay: 0.4s;
+    }
+
+    /* Smooth hover transitions */
+    .transition-all {
+      transition-property: all;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 300ms;
+    }
+  </style>
+
+  <!-- cta paket custom -->
+  <style>
+    @keyframes floatIn {
+      0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes floatSlow {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0deg);
+      }
+
+      50% {
+        transform: translateY(-10px) rotate(5deg);
+      }
+    }
+
+    @keyframes textFade {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-floatIn {
+      animation: floatIn 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .animate-fadeIn {
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    .animate-floatSlow {
+      animation: floatSlow 8s ease-in-out infinite;
+    }
+
+    .animate-textFade {
+      animation: textFade 1s ease forwards;
+    }
+
+    .animate-textFade.delay-100 {
+      animation-delay: 0.1s;
+    }
+
+    .animate-textFade.delay-200 {
+      animation-delay: 0.2s;
+    }
+  </style>
+
+  <!-- footer -->
+  <style>
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    .animate-float {
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .hover-scale {
+      transition: transform 0.3s ease;
+    }
+
+    .hover-scale:hover {
+      transform: scale(1.05);
+    }
+
+    .gradient-text {
+      background: linear-gradient(45deg, #f3ec78, #af4261);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .image-carousel {
+      display: flex;
+      overflow: hidden;
+      width: 100%;
+    }
+
+    .carousel-inner {
+      display: flex;
+      animation: carousel-scroll 20s linear infinite;
+    }
+
+    @keyframes carousel-scroll {
+      0% {
+        transform: translateX(0);
+      }
+
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+  </style>
+
+</head>
+
+<body class="font-sans bg-white text-gray-800">
+
+  <!-- Header -->
+  <header class="header-bg fixed w-full z-50 h-[93px] transition-all duration-300" id="header">
+    <div class="container mx-auto px-6 flex justify-between items-center h-full">
+      <!-- Logo -->
+      <div class="flex items-center">
+        <a href="#" class="text-2xl font-bold text-white py-2">
+          <img width="127" height="40" src="images/logo/logo.png" class="hover-scale transition-transform duration-300"
+            alt="ELENIO Logo" decoding="async">
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex space-x-6 lg:space-x-8">
+        <a href="index.html"
+          class="text-white hover:text-primary transition-colors duration-300 font-medium relative group">
+          Beranda
+          <span
+            class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+        </a>
+
+        <!-- Halaman (Dropdown) -->
+        <div class="relative group">
+          <a href="#" class="text-white hover:text-primary transition-colors duration-300 font-medium relative group">
+            Halaman
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <!-- Dropdown Menu -->
+          <div
+            class="absolute left-0 mt-3 w-48 bg-black bg-opacity-95 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+            <a href="#" class="block px-4 py-2 text-white hover:bg-primary hover:text-white">Tentang Kami</a>
+            <a href="vendor.html" class="block px-4 py-2 text-white hover:bg-primary hover:text-white">Vendor</a>
+            <a href="#" class="block px-4 py-2 text-white hover:bg-primary hover:text-white">Team</a>
+          </div>
+        </div>
+
+        <!-- Layanan (Dropdown) -->
+        <div class="relative group">
+          <a href="#" class="text-white hover:text-primary transition-colors duration-300 font-medium relative group">
+            Layanan
+            <span
+              class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <!-- Dropdown Menu -->
+          <div
+            class="absolute left-0 mt-3 w-48 bg-black bg-opacity-95 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+            <a href="layanan.html" class="block px-4 py-2 text-white hover:bg-primary hover:text-white">Pricelist</a>
+            <a href="custom.html" class="block px-4 py-2 text-white hover:bg-primary hover:text-white">Paket Custom</a>
+            <a href="wo.html" class="block px-4 py-2 text-white hover:bg-primary hover:text-white">Wedding Organizer</a>
+
+          </div>
+        </div>
+
+
+        <a href="portfolio.html"
+          class="text-white hover:text-primary transition-colors duration-300 font-medium relative group">
+          Portfolio
+          <span
+            class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="artikel.html"
+          class="text-white hover:text-primary transition-colors duration-300 font-medium relative group">
+          Artikel
+          <span
+            class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+        </a>
+        <a href="kontak.html"
+          class="text-white hover:text-primary transition-colors duration-300 font-medium relative group">
+          Kontak
+          <span
+            class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+        </a>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden text-white focus:outline-none transition-transform duration-300 hover:scale-110"
+        id="mobile-menu-button" aria-label="Toggle menu">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="md:hidden hidden bg-black bg-opacity-95 w-full transition-all duration-300 transform origin-top"
+      id="mobile-menu">
+      <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+        <a href="index.html"
+          class="text-white hover:text-primary transition-colors duration-300 py-3 px-2 border-b border-gray-700 flex items-center">
+          <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+            </path>
+          </svg>
+          Beranda
+        </a>
+
+        <!-- Halaman (Mobile Dropdown) -->
+        <div class="border-b border-gray-700">
+          <button
+            class="w-full flex items-center justify-between text-white py-3 px-2 hover:text-primary transition-colors duration-300 mobile-dropdown-btn">
+            <span class="flex items-center">
+              <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                </path>
+              </svg>
+              Halaman
+            </span>
+            <svg class="w-4 h-4 transform transition-transform duration-300" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9l6 6 6-6"></path>
+            </svg>
+          </button>
+          <div class="mobile-dropdown hidden pl-10">
+            <a href="#" class="block py-2 text-white hover:text-primary">Tentang Kami</a>
+            <a href="#" class="block py-2 text-white hover:text-primary">Tim Kami</a>
+            <a href="#" class="block py-2 text-white hover:text-primary">FAQ</a>
+            
+          </div>
+        </div>
+
+        <!-- Layanan (Mobile Dropdown) -->
+        <div class="border-b border-gray-700">
+          <button
+            class="w-full flex items-center justify-between text-white py-3 px-2 hover:text-primary transition-colors duration-300 mobile-dropdown-btn">
+            <span class="flex items-center">
+              <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z">
+                </path>
+              </svg>
+              Layanan
+            </span>
+            <svg class="w-4 h-4 transform transition-transform duration-300" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9l6 6 6-6"></path>
+            </svg>
+          </button>
+          <div class="mobile-dropdown hidden pl-10">
+            <a href="layanan.html" class="block py-2 text-white hover:text-primary">Pricelist</a>
+            <a href="custom.html" class="block py-2 text-white hover:text-primary">Paket Custom</a>
+            <a href="wo.html" class="block py-2 text-white hover:text-primary">Wedding Organizer</a>
+          </div>
+        </div>
+
+
+        <a href="portfolio.html"
+          class="text-white hover:text-primary transition-colors duration-300 py-3 px-2 border-b border-gray-700 flex items-center">
+          <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+            </path>
+          </svg>
+          Portfolio
+        </a>
+        <a href="artikel.html"
+          class="text-white hover:text-primary transition-colors duration-300 py-3 px-2 border-b border-gray-700 flex items-center">
+          <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z">
+            </path>
+          </svg>
+          Artikel
+        </a>
+        <a href="kontak.html" class="text-white hover:text-primary transition-colors duration-300 py-3 px-2 flex items-center">
+          <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+            </path>
+          </svg>
+          Kontak
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Slider -->
+  <section class="slider-container relative h-screen overflow-hidden font-montserrat bg-black">
+    <div class="slider h-full relative" id="slider">
+
+      <!-- Slide 3 -->
+      <div class="slide absolute inset-0 transition-all duration-1000 ease-[cubic-bezier(0.77,0,0.18,1)] opacity-0">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70"></div>
+        <img
+          src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+          alt="Wedding Venue" class="w-full h-full object-cover parallax-bg">
+        <div class="absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
+          <div class="slide-content max-w-4xl space-y-8">
+            <div class="overflow-hidden">
+              <h2 class="text-[#af9757] font-medium tracking-widest animate-slide-up [animation-delay:0.2s]">ELENIO WEDDING PLANNER</h2>
+            </div>
+            <h1 class="text-5xl md:text-7xl xl:text-8xl font-playfair font-bold text-white leading-tight">
+              <span
+                class="inline-block gold-underline animate-text-reveal [animation-delay:0.4s]">Perencanaan</span><br>
+              <span
+                class="inline-block text-[#af9757] gold-underline animate-text-reveal [animation-delay:0.6s]">Pernikahan Anda</span>
+            </h1>
+            <div class="overflow-hidden">
+              <p class="text-xl text-white/80 animate-slide-up [animation-delay:0.8s]">
+                Mewujudkan Pernikahan Impian Anda dengan Sentuhan Elegan
+              </p>
+            </div>
+            <div class="overflow-hidden pt-4 animate-slide-up [animation-delay:1s]">
+              <a href="vendor.html"
+                class="gold-gradient hover:brightness-110 text-white px-10 py-4 rounded-full font-medium transition-all duration-500 inline-block btn-sparkle">
+                <span class="relative z-10 flex items-center justify-center gap-2">
+                  Mulai Perencanaan
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                      d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 1 -->
+      <div class="slide absolute inset-0 transition-all duration-1000 ease-[cubic-bezier(0.77,0,0.18,1)] opacity-0">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70"></div>
+        <img
+          src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+          alt="Wedding Couple" class="w-full h-full object-cover parallax-bg">
+        <div class="absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
+          <div class="slide-content max-w-4xl space-y-8">
+            <div class="overflow-hidden">
+              <h2 class="text-[#af9757] font-medium tracking-widest animate-slide-up [animation-delay:0.2s]">Kreasikan Pernikahan Impian</h2>
+            </div>
+            <h1 class="text-5xl md:text-7xl xl:text-8xl font-playfair font-bold text-white leading-tight">
+              <span class="inline-block gold-underline animate-text-reveal [animation-delay:0.4s]">Buat Pernikahan</span><br>
+              <span
+                class="inline-block text-[#af9757] gold-underline animate-text-reveal [animation-delay:0.6s]">Yang
+                Indah</span>
+            </h1>
+            <div class="overflow-hidden">
+              <p class="text-xl text-white/80 animate-slide-up [animation-delay:0.8s]">
+                Kami menciptakan perayaan luar biasa yang mencerminkan kisah cinta unik Anda dengan sentuhan emas khas kami.
+              </p>
+            </div>
+            <div class="overflow-hidden pt-4 animate-slide-up [animation-delay:1s]">
+              <a href="#"
+                class="gold-gradient hover:brightness-110 text-white px-10 py-4 rounded-full font-medium transition-all duration-500 inline-block btn-sparkle">
+                <span class="relative z-10 flex items-center justify-center gap-2">
+                  Explore Services
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                      d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="slide absolute inset-0 transition-all duration-1000 ease-[cubic-bezier(0.77,0,0.18,1)] opacity-0">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/50 to-black/70"></div>
+        <img
+          src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1587&q=80"
+          alt="Wedding Decoration" class="w-full h-full object-cover parallax-bg">
+        <div class="absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
+          <div class="slide-content max-w-4xl space-y-8">
+            <div class="overflow-hidden">
+              <h2 class="text-[#af9757] font-medium tracking-widest animate-slide-up [animation-delay:0.2s]">DESAIN PERNIKAHAN KHUSUS</h2>
+            </div>
+            <h1 class="text-5xl md:text-7xl xl:text-8xl font-playfair font-bold text-white leading-tight">
+              <span class="inline-block gold-underline animate-text-reveal [animation-delay:0.4s]">Atur Vendor</span><br>
+              <span
+                class="inline-block text-[#af9757] gold-underline animate-text-reveal [animation-delay:0.6s]">Sesuai Kebutuhan</span>
+            </h1>
+            <div class="overflow-hidden">
+              <p class="text-xl text-white/80 animate-slide-up [animation-delay:0.8s]">
+                Kami merancang paket sesuai kebutuhan, gaya, dan anggaran Anda, karena setiap pernikahan itu unik.
+              </p>
+            </div>
+            <div class="overflow-hidden pt-4 animate-slide-up [animation-delay:1s]">
+              <a href="#"
+                class="gold-gradient hover:brightness-110 text-white px-10 py-4 rounded-full font-medium transition-all duration-500 inline-block btn-sparkle">
+                <span class="relative z-10 flex items-center justify-center gap-2">
+                  View Portfolio
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                      d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </span>
+              </a>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+
+      
+    </div>
+
+    <!-- Slider Navigation -->
+    <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 flex items-center gap-6 z-10">
+      <button class="slider-prev text-white/70 hover:text-[#af9757] transition-all duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+
+      <div class="flex gap-2">
+        <button
+          class="slider-indicator w-3 h-3 rounded-full bg-white/30 hover:bg-[#af9757] transition-all duration-300 relative group"
+          data-index="0">
+          <span
+            class="absolute inset-0 rounded-full bg-[#af9757] scale-0 group-hover:scale-100 transition-transform duration-300"></span>
+        </button>
+        <button
+          class="slider-indicator w-3 h-3 rounded-full bg-white/30 hover:bg-[#af9757] transition-all duration-300 relative group"
+          data-index="1">
+          <span
+            class="absolute inset-0 rounded-full bg-[#af9757] scale-0 group-hover:scale-100 transition-transform duration-300"></span>
+        </button>
+        <button
+          class="slider-indicator w-3 h-3 rounded-full bg-white/30 hover:bg-[#af9757] transition-all duration-300 relative group"
+          data-index="2">
+          <span
+            class="absolute inset-0 rounded-full bg-[#af9757] scale-0 group-hover:scale-100 transition-transform duration-300"></span>
+        </button>
+      </div>
+
+      <button class="slider-next text-white/70 hover:text-[#af9757] transition-all duration-300">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div
+      class="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-10 slide-content animate-float [animation-delay:1.4s]">
+      <div class="text-white/50 text-sm flex flex-col items-center">
+        <span class="mb-1">Scroll</span>
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="flex flex-col md:flex-row items-center">
+        <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10 animate-slide-right">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Tentang Elenio Weddings</h2>
+          <div class="w-20 h-1 bg-primary mb-6"></div>
+          <p class="text-gray-600 mb-6">Didirikan pada tahun 2023, Elenio Wedding Planner telah menciptakan pengalaman pernikahan yang tak terlupakan selamanya. Tim profesional kami yang penuh semangat berdedikasi untuk menjadikan hari istimewa Anda benar-benar ajaib.</p>
+          <p class="text-gray-600 mb-8">Kami percaya bahwa setiap kisah cinta itu unik, dan pernikahan Anda harus mencerminkan kepribadian, gaya, dan impian Anda. Dari pertemuan intim hingga perayaan megah,kami menghadirkan kreativitas, keahlian, dan perhatian terhadap detail di setiap acara.</p>
+          <a href="weddingorganizer.html" class="text-primary font-semibold hover:text-primaryDark transition flex items-center">
+            Selengkapnya
+            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+              </path>
+            </svg>
+          </a>
+        </div>
+        <div class="md:w-1/2 relative animate-slide-up">
+          <div class="grid grid-cols-2 gap-4">
+            <div class="relative h-64 overflow-hidden rounded-lg hover-scale">
+              <img
+                src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                alt="Our Team" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+            </div>
+            <div class="relative h-64 overflow-hidden rounded-lg hover-scale">
+              <img
+                src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                alt="Our Venue" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+            </div>
+            <div class="relative h-64 overflow-hidden rounded-lg hover-scale">
+              <img
+                src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                alt="Wedding Setup" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+            </div>
+            <div class="relative h-64 overflow-hidden rounded-lg hover-scale">
+              <img
+                src="https://images.unsplash.com/photo-1517825738774-7de9363ef735?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80"
+                alt="Wedding Planning" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 animate-slide-up">Layanan Pernikahan Kami</h2>
+        <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+        <p class="text-gray-600 max-w-2xl mx-auto animate-slide-up delay-100">Layanan perencanaan pernikahan komprehensif yang disesuaikan dengan kebutuhan Anda. Kami menangani semuanya, mulai dari konsep hingga eksekusi.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Service 1 -->
+        <div
+          class="bg-gray-50 p-8 rounded-lg hover:shadow-lg transition-all duration-300 hover-scale animate-slide-up delay-200">
+          <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+              </path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Perencanaan Pernikahan Lengkap</h3>
+          <p class="text-gray-600">Dari pemilihan lokasi hingga koordinasi vendor, kami mengelola setiap aspek pernikahan Anda untuk pengalaman bebas stres.</p>
+        </div>
+
+        <!-- Service 2 -->
+        <div
+          class="bg-gray-50 p-8 rounded-lg hover:shadow-lg transition-all duration-300 hover-scale animate-slide-up delay-300">
+          <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01">
+              </path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Desain & Dekorasi Pernikahan</h3>
+          <p class="text-gray-600">Desain pernikahan khusus yang mencerminkan gaya Anda, mulai dari rangkaian bunga hingga pencahayaan dan dekorasi meja.</p>
+        </div>
+
+        <!-- Service 3 -->
+        <div
+          class="bg-gray-50 p-8 rounded-lg hover:shadow-lg transition-all duration-300 hover-scale animate-slide-up delay-400">
+          <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
+              </path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Koordinasi di Hari Pernikahan</h3>
+          <p class="text-gray-600">Koordinasi profesional di hari pernikahan Anda untuk memastikan semuanya berjalan lancar sesuai rencana.</p>
+        </div>
+
+        <!-- Service 4 -->
+        <div
+          class="bg-gray-50 p-8 rounded-lg hover:shadow-lg transition-all duration-300 hover-scale animate-slide-up delay-200">
+          <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z">
+              </path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Manajemen Anggaran</h3>
+          <p class="text-gray-600">Panduan ahli untuk mengalokasikan anggaran Anda secara efektif tanpa mengorbankan pernikahan impian Anda.</p>
+        </div>
+
+        <!-- Service 5 -->
+        <div
+          class="bg-gray-50 p-8 rounded-lg hover:shadow-lg transition-all duration-300 hover-scale animate-slide-up delay-300">
+          <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z">
+              </path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Rekomendasi Vendor</h3>
+          <p class="text-gray-600">Akses ke jaringan vendor tepercaya kami, termasuk fotografer, katering, dan musik.</p>
+        </div>
+
+        <!-- Service 6 -->
+        <div
+          class="bg-gray-50 p-8 rounded-lg hover:shadow-lg transition-all duration-300 hover-scale animate-slide-up delay-400">
+          <div class="w-16 h-16 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-6">
+            <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
+              </path>
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-4">Undangan Khusus</h3>
+          <p class="text-gray-600">Undangan pernikahan berdesain indah yang akan menciptakan suasana istimewa di hari istimewa Anda.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Enhanced CTA Section -->
+  <section class="relative py-20 overflow-hidden">
+    <!-- Background Image with Overlay -->
+    <div class="absolute inset-0 z-0">
+      <img
+        src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80"
+        alt="Elegant wedding setup" class="w-full h-full object-cover object-center" loading="lazy">
+      <div class="absolute inset-0 bg-black/40 backdrop-blur-[1px]"></div>
+    </div>
+
+    <!-- Content Container -->
+    <div class="relative z-10 container mx-auto px-4 md:px-6 text-center">
+      <div
+        class="bg-white/90 backdrop-blur-md rounded-2xl shadow-2xl max-w-2xl mx-auto px-6 md:px-10 py-12 transform transition-all duration-1000 animate-floatIn relative">
+
+        <!-- Decorative Corners -->
+        <div
+          class="absolute -top-3 -left-3 w-10 h-10 border-t-4 border-l-4 border-[#af9757] rounded-tl-2xl opacity-70 animate-fadeIn">
+        </div>
+        <div
+          class="absolute -bottom-3 -right-3 w-10 h-10 border-b-4 border-r-4 border-[#af9757] rounded-br-2xl opacity-70 animate-fadeIn">
+        </div>
+
+        <!-- Floating Flower -->
+        <div class="absolute -top-6 -right-6 w-14 h-14 animate-floatSlow">
+          <svg viewBox="0 0 100 100" class="text-[#af9757]/50">
+            <path d="M50,20 C55,10 65,10 70,20 C75,30 65,40 50,50 C35,40 25,30 30,20 C35,10 45,10 50,20 Z"
+              fill="currentColor" />
+          </svg>
+        </div>
+
+        <!-- Title -->
+        <h2 class="text-3xl md:text-4xl font-bold text-[#af9757] mb-6 animate-textFade">
+          <span class="inline-block">Perencanaan yang Matang</span>
+          <span class="block text-xl md:text-2xl font-normal mt-2">untuk Hari Pernikahan Sempurna Anda</span>
+        </h2>
+
+        <!-- Description -->
+        <p class="text-gray-700 mb-8 text-lg leading-relaxed max-w-xl mx-auto animate-textFade delay-100">
+          Biarkan kami mengurus detailnya sementara Anda menikmati setiap momen ajaib. Perencana ahli kami akan menciptakan pengalaman yang mulus dan dirancang khusus untuk Anda.
+        </p>
+
+        <!-- Buttons -->
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4 animate-textFade delay-200">
+          <a href="#"
+            class="relative overflow-hidden bg-gradient-to-r from-[#af9757] to-[#c8b378] text-white px-6 py-3 rounded-full hover:shadow-lg transition-all duration-300 transform hover:scale-105 group text-sm md:text-base">
+            <span class="relative z-10 font-medium tracking-wide">Simpan Price List Pernikahan</span>
+            <span
+              class="absolute inset-0 bg-gradient-to-r from-[#c8b378] to-[#af9757] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+          </a>
+
+          <a href="#"
+            class="relative w-12 h-12 flex items-center justify-center bg-white/30 backdrop-blur-sm border-2 border-[#af9757] rounded-full hover:bg-[#af9757] hover:text-white transition-all duration-300 group">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 group-hover:scale-110 transition-transform"
+              fill="currentColor" viewBox="0 0 24 24">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Special Services -->
+  <section class="py-20 bg-gray-100">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 animate-slide-up">Paket Pernikahan Spesial
+        </h2>
+        <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+        <p class="text-gray-600 max-w-2xl mx-auto animate-slide-up delay-100">Paket eksklusif yang dirancang untuk berbagai gaya dan anggaran pernikahan.</p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Package 1 -->
+        <div
+          class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover-scale animate-slide-up delay-200">
+          <div class="relative h-64 overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+              alt="Luxury Package" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+            <div class="absolute inset-0 bg-black bg-opacity-30 flex items-end">
+              <div class="p-6 w-full">
+                <span class="bg-primary text-white px-4 py-1 rounded-full text-sm font-medium">Most
+                  Popular</span>
+              </div>
+            </div>
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Gold Package 1</h3>
+            <p class="text-gray-600 mb-6">Paket premium kami menawarkan perencanaan pernikahan lengkap, vendor premium, dan tempat eksklusif.</p>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-center">
+                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Perencanaan pernikahan lengkap</span>
+              </li>
+              <li class="flex items-center">
+                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Pilihan lokasi premium</span>
+              </li>
+              <li class="flex items-center">
+                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Desain & dekorasi khusus</span>
+              </li>
+              <li class="flex items-center">
+                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Koordinator pernikahan khusus</span>
+              </li>
+            </ul>
+            <div class="flex justify-between items-center">
+              <span class="text-2xl font-bold text-primary">Rp 28.000.000</span>
+              <a href="#" class="text-primary font-semibold hover:text-primaryDark transition">Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Package 2 -->
+        <div
+          class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover-scale animate-slide-up delay-300">
+          <div class="relative h-64 overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80"
+              alt="Elegant Package" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">Nikah Dirumah</h3>
+            <p class="text-gray-600 mb-6">Paket canggih untuk pasangan yang mencari keanggunan abadi dengan sentuhan modern</p>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-center">
+                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Perencanaan pernikahan parsial</span>
+              </li>
+              <li class="flex items-center">
+                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Pengatur jalan pernikahan</span>
+              </li>
+              <li class="flex items-center">
+                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Konsep desain khusus</span>
+              </li>
+              <li class="flex items-center">
+                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Koordinasi di hari H</span>
+              </li>
+            </ul>
+            <div class="flex justify-between items-center">
+              <span class="text-2xl font-bold text-primary">Rp 30.000.000</span>
+              <a href="#" class="text-primary font-semibold hover:text-primaryDark transition">Details</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Package 3 -->
+        <div
+          class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover-scale animate-slide-up delay-400">
+          <div class="relative h-64 overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+              alt="Intimate Package" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+          </div>
+          <div class="p-8">
+            <h3 class="text-2xl font-bold text-gray-800 mb-4">The Intimate Wedding</h3>
+            <p class="text-gray-600 mb-6">Sempurna untuk pernikahan kecil, dengan fokus pada detail yang bermakna</p>
+            <ul class="space-y-3 mb-8">
+              <li class="flex items-center">
+                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Perencanaan pernikahan mikro</span>
+              </li>
+              <li class="flex items-center">
+                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Rekomendasi tempat</span>
+              </li>
+              <li class="flex items-center">
+                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Dekorasi sederhana dan elegant</span>
+              </li>
+              <li class="flex items-center">
+                <svg class="w-5 h-5 text-primary mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                </svg>
+                <span>Layanan koordinasi</span>
+              </li>
+            </ul>
+            <div class="flex justify-between items-center">
+              <span class="text-2xl font-bold text-primary">Rp 20.000.000</span>
+              <a href="#" class="text-primary font-semibold hover:text-primaryDark transition">Details</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- custom -->
+  <section class="bg-white py-20 px-6 lg:px-20 relative overflow-hidden">
+    <!-- Background decorative elements -->
+    <div class="absolute -right-20 -top-20 w-64 h-64 bg-[#f8f5ec] rounded-full opacity-70"></div>
+    <div class="absolute -left-10 -bottom-10 w-48 h-48 bg-[#f8f5ec] rounded-full opacity-70"></div>
+
+    <div class="grid lg:grid-cols-2 gap-16 items-center relative z-10">
+      <!-- Text Content -->
+      <div class="space-y-8">
+        <p class="text-[#af9757] font-semibold tracking-widest text-sm animate-fadeIn">PERNIKAHAN IMPIAN ANDA</p>
+        <h2 class="text-5xl font-bold text-gray-900 leading-tight animate-fadeIn delay-100">
+          <span class="text-[#af9757]">Custom</span> Wedding Package
+        </h2>
+        <p class="text-gray-700 text-lg leading-relaxed animate-fadeIn delay-200">
+          Selain paket pernikahan pilihan kami, kami juga berspesialisasi dalam menciptakan
+          <span class="font-semibold text-[#af9757]">Pengalaman yang sepenuhnya disesuaikan</span>.
+          Rancang setiap detail dengan vendor pilihan Anda dan lihat hasilnya secara instan.
+          <span class="block mt-2">Visi Anda, terlaksana dengan sempurna.</span>
+        </p>
+
+        <div class="animate-fadeIn delay-300">
+          <div class="flex items-center mb-6">
+            <div class="w-16 h-px bg-[#af9757] mr-4"></div>
+            <p class="italic text-gray-500 text-lg">
+              "Kami mengubah mimpi menjadi kenyataan dengan semangat, kreativitas, dan eksekusi yang sempurna."
+            </p>
+          </div>
+
+          <!-- List with icons -->
+          <ul class="grid grid-cols-2 gap-4 text-gray-800">
+            <li class="flex items-center p-3 rounded-lg hover:bg-[#f8f5ec] transition-all">
+              <svg class="w-6 h-6 text-[#af9757] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                </path>
+              </svg>
+              Wedding Organizer
+            </li>
+            <li class="flex items-center p-3 rounded-lg hover:bg-[#f8f5ec] transition-all">
+              <svg class="w-6 h-6 text-[#af9757] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              Makeup & Attire
+            </li>
+            <li class="flex items-center p-3 rounded-lg hover:bg-[#f8f5ec] transition-all">
+              <svg class="w-6 h-6 text-[#af9757] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z">
+                </path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
+              Photography
+            </li>
+            <li class="flex items-center p-3 rounded-lg hover:bg-[#f8f5ec] transition-all">
+              <svg class="w-6 h-6 text-[#af9757] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
+                </path>
+              </svg>
+              Master Of Caremony
+            </li>
+            <li class="flex items-center p-3 rounded-lg hover:bg-[#f8f5ec] transition-all">
+              <svg class="w-6 h-6 text-[#af9757] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3">
+                </path>
+              </svg>
+              Entertainment
+            </li>
+            <li class="flex items-center p-3 rounded-lg hover:bg-[#f8f5ec] transition-all">
+              <svg class="w-6 h-6 text-[#af9757] mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                </path>
+              </svg>
+              Venue Design
+            </li>
+          </ul>
+
+          <!-- Buttons -->
+          <div class="flex gap-4 pt-8 animate-fadeIn delay-400">
+            <a href="#"
+              class="px-8 py-4 border-2 border-[#af9757] text-[#af9757] font-medium hover:bg-[#af9757] hover:text-white rounded-lg transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl">
+              Rancang Paket Anda
+            </a>
+            <a href="https://wa.me/6281234567890?text=Halo,%20saya%20tertarik%20dengan%20paket%20custom%20pernikahan."
+              target="_blank"
+              class="px-8 py-4 bg-[#25D366] text-white font-medium rounded-lg hover:bg-green-600 transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl flex items-center gap-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                  d="M12 .5C5.648.5.5 5.648.5 12c0 2.106.549 4.162 1.594 5.973L.5 23.5l5.672-1.562A11.456 11.456 0 0012 23.5c6.352 0 11.5-5.148 11.5-11.5S18.352.5 12 .5zm0 21c-1.876 0-3.691-.49-5.296-1.417l-.378-.218-3.364.926.924-3.28-.246-.384A9.495 9.495 0 012.5 12c0-5.238 4.262-9.5 9.5-9.5s9.5 4.262 9.5 9.5-4.262 9.5-9.5 9.5zm5.207-6.963c-.285-.143-1.685-.832-1.946-.926-.261-.095-.452-.143-.643.143-.19.285-.737.926-.903 1.117-.166.19-.333.214-.618.071-.285-.143-1.203-.444-2.292-1.415-.848-.756-1.42-1.69-1.586-1.975-.166-.285-.018-.439.125-.582.128-.127.285-.333.428-.5.143-.166.19-.285.285-.475.095-.19.048-.357-.024-.5-.071-.143-.643-1.547-.881-2.121-.232-.556-.467-.48-.643-.49l-.547-.01c-.19 0-.5.071-.761.357s-1 1-1 2.439 1.024 2.83 1.166 3.027c.143.19 2.016 3.072 4.884 4.308.683.294 1.214.47 1.629.603.684.217 1.306.186 1.797.113.548-.082 1.685-.688 1.922-1.354.237-.666.237-1.237.166-1.354-.071-.118-.261-.19-.547-.333z" />
+              </svg>
+              Hubungi Sekarang
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Image -->
+      <div class="relative group overflow-hidden rounded-2xl shadow-2xl animate-float">
+        <img
+          src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+          alt="Luxury Wedding Decoration"
+          class="w-full h-[600px] object-cover transform group-hover:scale-105 transition duration-1000 ease-in-out">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+        <div class="absolute bottom-0 left-0 p-8 text-white">
+          <h3 class="text-3xl font-bold mb-2">Your Perfect Day</h3>
+          <p class="text-lg opacity-90">Designed exactly as you imagine</p>
+          <div class="w-16 h-1 bg-[#af9757] mt-4"></div>
+        </div>
+        <div
+          class="absolute top-6 right-6 bg-[#af9757] text-white px-4 py-2 rounded-full text-sm font-medium shadow-lg">
+          Custom Packages Available
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Testimonial Section -->
+  <section class="testimonial-section py-20 relative">
+    <div class="container mx-auto px-2 relative z-10">
+      <div class="text-center mb-16">
+        <p class="text-[#af9757] font-semibold uppercase tracking-wider text-sm mb-3 animate-fadeInUp">Testimonial</p>
+        <h2 class="text-4xl font-bold text-gray-800 mb-4 section-title animate-fadeInUp delay-100">Apa Kata Mereka?</h2>
+        <p class="text-gray-600 max-w-2xl mx-auto animate-fadeInUp delay-200">Lihat apa yang dikatakan pasangan bahagia
+          tentang pengalaman mereka bersama kami</p>
+      </div>
+
+      <!-- Navigation Buttons -->
+      <div class="relative">
+        <button id="testimonial-prev" class="testimonial-nav-btn testimonial-nav-prev">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 stroke-[#af9757]" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button id="testimonial-next" class="testimonial-nav-btn testimonial-nav-next">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 stroke-[#af9757]" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- Carousel Wrapper -->
+      <div class="relative testimonial-carousel" id="testimonial-carousel">
+        <div class="testimonial-track flex" id="testimonial-track">
+
+          <!-- Card 1 -->
+          <div class="testimonial-slide active" data-index="0">
+            <div class="testimonial-card h-full">
+              <div class="testimonial-quote">❝</div>
+              <p class="text-gray-600 mb-6 relative z-10">
+                "A Orie makasih banyak ya udah bantuin acara pernikahan kami, lancar semuanya.
+                Semoga oriethewedding makin maju dan banyak kliennya. Aamiin :)"
+              </p>
+              <div class="flex flex-col items-center">
+                <img
+                  src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+                  class="w-20 h-20 rounded-full object-cover testimonial-image" alt="Prilly & Reza">
+                <h4 class="font-bold mt-4 text-gray-800">Prilly & Reza</h4>
+                <span class="text-sm text-gray-500 mt-1">Wedding Couple</span>
+                <div class="flex mt-3 text-[#af9757]">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="testimonial-slide" data-index="1">
+            <div class="testimonial-card h-full">
+              <div class="testimonial-quote">❝</div>
+              <p class="text-gray-600 mb-6 relative z-10">
+                "Terima kasih orie telah membantu dalam merencanakan pernikahan kami.
+                Kalian melakukan pekerjaan yang baik untuk mengubah impian ini menjadi kenyataan!!"
+              </p>
+              <div class="flex flex-col items-center">
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+                  class="w-20 h-20 rounded-full object-cover testimonial-image" alt="Wafa & Danin">
+                <h4 class="font-bold mt-4 text-gray-800">Wafa & Danin</h4>
+                <span class="text-sm text-gray-500 mt-1">Wedding Couple</span>
+                <div class="flex mt-3 text-[#af9757]">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star-half-alt"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="testimonial-slide" data-index="2">
+            <div class="testimonial-card h-full">
+              <div class="testimonial-quote">❝</div>
+              <p class="text-gray-600 mb-6 relative z-10">
+                "Tim Orie mengatur acara pernikahan kami secara ontime sesuai dengan keinginan keluarga.
+                Mereka bekerja keras sampai memprioritaskan kepuasan kami..!"
+              </p>
+              <div class="flex flex-col items-center">
+                <img
+                  src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+                  class="w-20 h-20 rounded-full object-cover testimonial-image" alt="Ratna & Rizky">
+                <h4 class="font-bold mt-4 text-gray-800">Ratna & Rizky</h4>
+                <span class="text-sm text-gray-500 mt-1">Wedding Couple</span>
+                <div class="flex mt-3 text-[#af9757]">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="testimonial-slide" data-index="3">
+            <div class="testimonial-card h-full">
+              <div class="testimonial-quote">❝</div>
+              <p class="text-gray-600 mb-6 relative z-10">
+                "Pernikahan kami berjalan sempurna berkat tim Orie. Detail yang diperhatikan sangat mengesankan
+                dan membuat hari spesial kami benar-benar istimewa."
+              </p>
+              <div class="flex flex-col items-center">
+                <img
+                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80"
+                  class="w-20 h-20 rounded-full object-cover testimonial-image" alt="Sasha & Kevin">
+                <h4 class="font-bold mt-4 text-gray-800">Sasha & Kevin</h4>
+                <span class="text-sm text-gray-500 mt-1">Wedding Couple</span>
+                <div class="flex mt-3 text-[#af9757]">
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                  <i class="fas fa-star"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+
+  <!-- Blog/Articles -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-4 md:px-6">
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 animate-slide-up">Tips & Inspirasi Pernikahan</h2>
+        <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+        <p class="text-gray-600 max-w-2xl mx-auto animate-slide-up delay-100">Artikel terbaru dan saran perencanaan pernikahan dari para ahli kami.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Article 1 -->
+        <article
+          class="bg-gray-50 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 hover-scale animate-slide-up delay-200">
+          <div class="relative h-64 overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80"
+              alt="Wedding Trends" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+            <div class="absolute bottom-0 left-0 bg-primary text-white px-4 py-1 text-sm font-medium">
+              Trends
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center text-sm text-gray-500 mb-3">
+              <span>July 15, 2023</span>
+              <span class="mx-2">•</span>
+              <span>5 telah diupload</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Paket Pernikahan All In Terbaik Dan Termurah Di Kota Bandung</h3>
+            <p class="text-gray-600 mb-4">Mencari paket pernikahan yang sempurna bisa menjadi tantangan tersendiri, terutama dengan banyaknya pilihan yang tersedia. Untuk membantu pasangan calon pengantin, Orie telah merangkum beberapa rekomendasi untuk menemukan paket pernikahan </p>
+            <a href="artikeldetail.html" class="text-primary font-medium hover:text-primaryDark transition flex items-center">
+              Baca Selengkapnya
+              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                </path>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Article 2 -->
+        <article
+          class="bg-gray-50 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 hover-scale animate-slide-up delay-300">
+          <div class="relative h-64 overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+              alt="Budget Tips" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+            <div class="absolute bottom-0 left-0 bg-primary text-white px-4 py-1 text-sm font-medium">
+              Planning
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center text-sm text-gray-500 mb-3">
+              <span>Juni 28, 2023</span>
+              <span class="mx-2">•</span>
+              <span>7 menit yang lalu</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Cara Merencanakan Pernikahan dengan Anggaran Terbatas</h3>
+            <p class="text-gray-600 mb-4">Kiat ahli untuk mewujudkan pernikahan impian Anda tanpa menguras kantong. Pelajari di mana Anda bisa berfoya-foya dan di mana Anda bisa berhemat.</p>
+            <a href="artikeldetail.html" class="text-primary font-medium hover:text-primaryDark transition flex items-center">
+              Baca Selengkapnya
+              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                </path>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Article 3 -->
+        <article
+          class="bg-gray-50 rounded-lg overflow-hidden hover:shadow-lg transition-all duration-300 hover-scale animate-slide-up delay-400">
+          <div class="relative h-64 overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80"
+              alt="Unique Venues" class="w-full h-full object-cover transition duration-500 hover:scale-110">
+            <div class="absolute bottom-0 left-0 bg-primary text-white px-4 py-1 text-sm font-medium">
+              Venues
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center text-sm text-gray-500 mb-3">
+              <span>April 10, 2023</span>
+              <span class="mx-2">•</span>
+              <span>4 baru upload</span>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">10 Tempat Pernikahan Unik yang Belum Anda Pertimbangkan
+            </h3>
+            <p class="text-gray-600 mb-4">Lepaskan diri dari tempat-tempat tradisional dengan ide-ide lokasi yang kreatif dan berkesan ini untuk upacara dan resepsi pernikahan Anda.</p>
+            <a href="artikeldetail.html" class="text-primary font-medium hover:text-primaryDark transition flex items-center">
+              Baca Selengkapnya
+              <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                </path>
+              </svg>
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <div class="text-center mt-12 animate-slide-up delay-500">
+        <a href="#"
+          class="inline-block border border-primary text-primary hover:bg-primary hover:text-white px-6 py-3 rounded-full font-medium transition-all duration-300">
+          Lihat Semua Artikel
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- Footer -->
+  <footer itemtype="https://schema.org/WPFooter" itemscope="itemscope" id="colophon" role="contentinfo"
+    class="relative overflow-hidden bg-gray-900 text-gray-200 font-sans">
+    <!-- Animated background elements -->
+    <div class="absolute inset-0 overflow-hidden opacity-10">
+      <div class="absolute top-20 left-10 w-8 h-8 rounded-full bg-pink-500 animate-float" style="animation-delay: 0s;">
+      </div>
+      <div class="absolute top-1/3 right-20 w-12 h-12 rounded-full bg-purple-500 animate-float"
+        style="animation-delay: 0.5s;"></div>
+      <div class="absolute bottom-20 left-1/4 w-10 h-10 rounded-full bg-blue-500 animate-float"
+        style="animation-delay: 1s;"></div>
+      <div class="absolute top-1/4 right-1/3 w-6 h-6 rounded-full bg-yellow-500 animate-float"
+        style="animation-delay: 1.5s;"></div>
+    </div>
+
+    <div class="container mx-auto px-6 py-12 relative z-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+        <!-- Serenity Logo/Title with Image -->
+        <div class="lg:col-span-2">
+          <div class="mb-6">
+            <img width="150" height="150" src="images/logo/logo.png" class="hover-scale" alt="Serenity Logo"
+              decoding="async">
+          </div>
+          <p class="text-lg mb-6">Mari Rencanakan Pernikahan Impian Anda dengan Elenio Wedding!</p>
+          <p class="text-gray-400">Tunggu apalagi wujudkan impian pernikahanmu bersama kami dan nantikan promo di setiap bulannya</p>
+        </div>
+
+        <!-- Navigation Section -->
+        <div>
+          <h2 class="text-xl font-semibold mb-6">Navigation</h2>
+          <ul class="space-y-3">
+            <li class="hover-scale"><a href="index.html" class="hover:text-white transition-colors">Beranda</a></li>
+            <li class="hover-scale"><a href="vendor.html" class="hover:text-white transition-colors">Vendor</a></li>
+            <li class="hover-scale"><a href="layanan.html" class="hover:text-white transition-colors">Pricelist</a></li>
+            <li class="hover-scale"><a href="portfolio.html" class="hover:text-white transition-colors">Portfolio</a></li>
+            <li class="hover-scale"><a href="artikel.html" class="hover:text-white transition-colors">Artikel</a></li>
+          </ul>
+        </div>
+
+        <!-- Social Media Section -->
+       <div>
+  <h2 class="text-xl font-semibold mb-6">Connect With Us</h2>
+  <div class="space-y-4">
+    <!-- Instagram -->
+    <div class="flex items-center hover-scale group">
+      <div class="w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+        <i class="fab fa-instagram text-white text-lg"></i>
+      </div>
+      <span class="group-hover:text-purple-400 transition-colors">Instagram</span>
+    </div>
+    
+    <!-- TikTok -->
+    <div class="flex items-center hover-scale group">
+      <div class="w-10 h-10 rounded-full bg-gradient-to-r from-cyan-400 to-fuchsia-600 flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+        <i class="fab fa-tiktok text-white text-lg"></i>
+      </div>
+      <span class="group-hover:text-fuchsia-400 transition-colors">TikTok</span>
+    </div>
+  </div>
+</div>
+
+        <!-- Contact Section -->
+        <div>
+          <h2 class="text-xl font-semibold mb-6">Contact</h2>
+          <div class="space-y-4">
+            <div class="hover-scale">
+              <a href="mailto:SerenityWedding@com" class="flex items-center hover:text-green-400 transition-colors">
+                <i class="fas fa-envelope mr-2 text-green-500"></i>elenioweddingp@gmail.com
+              </a>
+            </div>
+            <div class="hover-scale">
+              <a href="tel:+1234567890" class="flex items-center hover:text-blue-400 transition-colors">
+                <i class="fas fa-phone-alt mr-2 text-blue-500"></i> +62 813 9427 7035
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Locations Section -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+        <div class="hover-scale p-6 rounded-lg bg-gray-800 bg-opacity-50 transition-all hover:bg-opacity-70 group">
+            <div class="flex items-start gap-4">
+              <div class="text-amber-300 mt-1">
+                <i class="fas fa-map-marker-alt text-xl"></i>
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-amber-300 mb-2 flex items-center gap-2">
+                  <i class="fas fa-city"></i>
+                  Bandung - Kopo
+                </h3>
+                <p class="text-gray-400 flex items-start gap-2">
+                  <i class="fas fa-home mt-1"></i>
+                  <span>
+                    Kp Sakeloa RT 09 No 138<br>
+                    Desa Margahayu Selatan, Kabupaten Bandung
+                  </span>
+                </p>
+                <div class="mt-3 text-sm text-gray-300 flex items-center gap-2">
+                  <i class="fas fa-phone-alt"></i>
+                  <span>+62 813 9427 7035</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <!-- Image Carousel -->
+        <div class="overflow-hidden rounded-lg">
+          <div class="image-carousel">
+            <div class="carousel-inner">
+              <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/22.jpg" alt="Wedding 1"
+                class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+              <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/23.jpg" alt="Wedding 2"
+                class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+              <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/24.jpg" alt="Wedding 3"
+                class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+              <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/25.jpg" alt="Wedding 4"
+                class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+              <!-- Duplicate images for seamless looping -->
+              <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/22.jpg" alt="Wedding 1"
+                class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+              <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/23.jpg" alt="Wedding 2"
+                class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+              <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/24.jpg" alt="Wedding 3"
+                class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+              <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/25.jpg" alt="Wedding 4"
+                class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+      <!-- Copyright and Links -->
+      <div class="mt-16 pt-6 border-t border-gray-800">
+        <div class="flex flex-col md:flex-row justify-between items-center">
+          <p class="text-gray-500 mb-4 md:mb-0">Copyright © 2025 EleniowWP. All right reserved.</p>
+          <div class="flex space-x-6">
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">Support</a>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- slider -->
+  <script>
+    // Premium Slider Functionality with Parallax Effects
+    const slider = document.getElementById('slider');
+    const indicators = document.querySelectorAll('.slider-indicator');
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.querySelector('.slider-prev');
+    const nextBtn = document.querySelector('.slider-next');
+    const parallaxBg = document.querySelectorAll('.parallax-bg');
+
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+    let slideInterval;
+    let isPlaying = true;
+    let mouseX = 0;
+    let mouseY = 0;
+
+    // Parallax effect
+    document.addEventListener('mousemove', (e) => {
+      mouseX = (e.clientX / window.innerWidth - 0.5) * 20;
+      mouseY = (e.clientY / window.innerHeight - 0.5) * 20;
+
+      parallaxBg.forEach(bg => {
+        bg.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+      });
+    });
+
+    function goToSlide(index) {
+      // Wrap around if needed
+      if (index < 0) index = totalSlides - 1;
+      if (index >= totalSlides) index = 0;
+
+      // Deactivate current slide
+      slides[currentSlide].classList.remove('opacity-100');
+      slides[currentSlide].classList.add('opacity-0');
+      slides[currentSlide].querySelectorAll('.slide-content').forEach(content => {
+        content.style.opacity = '0';
+      });
+
+      // Activate new slide
+      slides[index].classList.remove('opacity-0');
+      slides[index].classList.add('opacity-100');
+      setTimeout(() => {
+        slides[index].querySelectorAll('.slide-content').forEach(content => {
+          content.style.opacity = '1';
+        });
+      }, 300);
+
+      currentSlide = index;
+      updateIndicators();
+    }
+
+    function updateIndicators() {
+      indicators.forEach((indicator, i) => {
+        if (i === currentSlide) {
+          indicator.classList.add('bg-[#af9757]');
+          indicator.classList.remove('bg-white/30');
+        } else {
+          indicator.classList.remove('bg-[#af9757]');
+          indicator.classList.add('bg-white/30');
+        }
+      });
+    }
+
+    function startSlider() {
+      isPlaying = true;
+      slideInterval = setInterval(() => {
+        goToSlide(currentSlide + 1);
+      }, 7000);
+    }
+
+    function pauseSlider() {
+      isPlaying = false;
+      clearInterval(slideInterval);
+    }
+
+    // Initialize slider
+    function initSlider() {
+      // Set first slide as active
+      slides[0].classList.add('opacity-100');
+      slides[0].querySelectorAll('.slide-content').forEach(content => {
+        content.style.opacity = '1';
+      });
+
+      updateIndicators();
+      startSlider();
+
+      // Pause on hover
+      slider.addEventListener('mouseenter', pauseSlider);
+      slider.addEventListener('mouseleave', () => {
+        if (isPlaying) startSlider();
+      });
+
+      // Indicator click events
+      indicators.forEach(indicator => {
+        indicator.addEventListener('click', () => {
+          const index = parseInt(indicator.getAttribute('data-index'));
+          if (index !== currentSlide) {
+            pauseSlider();
+            goToSlide(index);
+            isPlaying = true;
+            startSlider();
+          }
+        });
+      });
+
+      // Navigation arrows
+      prevBtn.addEventListener('click', () => {
+        pauseSlider();
+        goToSlide(currentSlide - 1);
+        isPlaying = true;
+        startSlider();
+      });
+
+      nextBtn.addEventListener('click', () => {
+        pauseSlider();
+        goToSlide(currentSlide + 1);
+        isPlaying = true;
+        startSlider();
+      });
+
+      // Keyboard navigation
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+          pauseSlider();
+          goToSlide(currentSlide - 1);
+          isPlaying = true;
+          startSlider();
+        } else if (e.key === 'ArrowRight') {
+          pauseSlider();
+          goToSlide(currentSlide + 1);
+          isPlaying = true;
+          startSlider();
+        }
+      });
+
+      // Touch events for mobile
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      slider.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, {
+        passive: true
+      });
+
+      slider.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      }, {
+        passive: true
+      });
+
+      function handleSwipe() {
+        if (touchEndX < touchStartX - 50) {
+          // Swipe left
+          pauseSlider();
+          goToSlide(currentSlide + 1);
+          isPlaying = true;
+          startSlider();
+        } else if (touchEndX > touchStartX + 50) {
+          // Swipe right
+          pauseSlider();
+          goToSlide(currentSlide - 1);
+          isPlaying = true;
+          startSlider();
+        }
+      }
+    }
+
+    // Initialize when DOM is loaded
+    document.addEventListener('DOMContentLoaded', initSlider);
+  </script>
+
+  <script>
+    // Mobile Menu Toggle with animation
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      mobileMenu.classList.toggle('menu-open');
+
+      // Toggle aria-expanded attribute
+      const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+      mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+
+      // Change icon when menu is open
+      const menuIcon = mobileMenuButton.querySelector('svg');
+      if (!isExpanded) {
+        menuIcon.innerHTML =
+          '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
+      } else {
+        menuIcon.innerHTML =
+          '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+      }
+    });
+
+    // Close mobile menu when clicking on a link
+    const mobileLinks = document.querySelectorAll('#mobile-menu a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        mobileMenu.classList.remove('menu-open');
+        mobileMenuButton.setAttribute('aria-expanded', 'false');
+        mobileMenuButton.querySelector('svg').innerHTML =
+          '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+      });
+    });
+
+    // Mobile dropdown toggle
+    document.querySelectorAll('.mobile-dropdown-btn').forEach((btn) => {
+      btn.addEventListener('click', function () {
+        const dropdown = this.nextElementSibling;
+        const icon = this.querySelector('svg:last-child');
+
+        dropdown.classList.toggle('open');
+        dropdown.classList.toggle('hidden');
+
+        // Rotasi ikon
+        icon.classList.toggle('rotate-180');
+      });
+    });
+
+
+    // Header Scroll Effect with throttle for performance
+    const header = document.getElementById('header');
+    let lastScroll = 0;
+
+    function throttle(func, limit) {
+      let lastFunc;
+      let lastRan;
+      return function () {
+        const context = this;
+        const args = arguments;
+        if (!lastRan) {
+          func.apply(context, args);
+          lastRan = Date.now();
+        } else {
+          clearTimeout(lastFunc);
+          lastFunc = setTimeout(function () {
+            if ((Date.now() - lastRan) >= limit) {
+              func.apply(context, args);
+              lastRan = Date.now();
+            }
+          }, limit - (Date.now() - lastRan));
+        }
+      }
+    }
+
+    const handleScroll = throttle(() => {
+      const currentScroll = window.scrollY;
+      if (currentScroll <= 0) {
+        header.classList.remove('scrolled');
+        return;
+      }
+
+      if (currentScroll > lastScroll && currentScroll > 100) {
+        // Scroll down
+        header.classList.add('scrolled');
+      } else if (currentScroll < lastScroll) {
+        // Scroll up
+        header.classList.add('scrolled');
+      }
+
+      lastScroll = currentScroll;
+    }, 100);
+
+    window.addEventListener('scroll', handleScroll);
+
+    // Initialize header state
+    if (window.scrollY > 50) {
+      header.classList.add('scrolled');
+    }
+  </script>
+
+  <!-- testimonial -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const carousel = document.getElementById('testimonial-carousel');
+      const track = document.getElementById('testimonial-track');
+      const slides = document.querySelectorAll('.testimonial-slide');
+      const prevBtn = document.getElementById('testimonial-prev');
+      const nextBtn = document.getElementById('testimonial-next');
+
+      let currentIndex = 0;
+      let slideWidth = slides[0].getBoundingClientRect().width;
+      let isTransitioning = false;
+      let autoSlideInterval;
+      let isDragging = false;
+      let startPos = 0;
+      let currentTranslate = 0;
+      let prevTranslate = 0;
+      let animationID;
+
+      // Initialize carousel
+      function initCarousel() {
+        slideWidth = slides[0].getBoundingClientRect().width;
+        updateSliderPosition(true);
+        startAutoSlide();
+        setupDragEvents();
+        setupClickEvents();
+      }
+
+      // Update slider position with smooth animation
+      function updateSliderPosition(instant = false) {
+        if (isTransitioning) return;
+        isTransitioning = true;
+
+        const offset = -currentIndex * slideWidth;
+
+        if (instant) {
+          track.style.transition = 'none';
+        } else {
+          track.style.transition = 'transform 0.7s cubic-bezier(0.16, 1, 0.3, 1)';
+        }
+
+        track.style.transform = `translateX(${offset}px)`;
+        currentTranslate = offset;
+        prevTranslate = offset;
+
+        // Update active slide classes
+        slides.forEach((slide, index) => {
+          if (index === currentIndex) {
+            slide.classList.add('active');
+          } else {
+            slide.classList.remove('active');
+          }
+        });
+
+        // Reset transitioning flag after animation
+        if (!instant) {
+          setTimeout(() => {
+            isTransitioning = false;
+          }, 700);
+        } else {
+          isTransitioning = false;
+        }
+      }
+
+      // Go to specific slide
+      function goToSlide(index) {
+        if (index < 0) index = slides.length - 1;
+        if (index >= slides.length) index = 0;
+
+        currentIndex = index;
+        updateSliderPosition();
+      }
+
+      // Next slide
+      function nextSlide() {
+        if (isTransitioning) return;
+        goToSlide(currentIndex + 1);
+
+        // Button click animation
+        nextBtn.classList.add('scale-90');
+        setTimeout(() => {
+          nextBtn.classList.remove('scale-90');
+        }, 300);
+      }
+
+      // Previous slide
+      function prevSlide() {
+        if (isTransitioning) return;
+        goToSlide(currentIndex - 1);
+
+        // Button click animation
+        prevBtn.classList.add('scale-90');
+        setTimeout(() => {
+          prevBtn.classList.remove('scale-90');
+        }, 300);
+      }
+
+      // Start auto-slide
+      function startAutoSlide() {
+        clearInterval(autoSlideInterval);
+        autoSlideInterval = setInterval(() => {
+          if (!isTransitioning && !isDragging) {
+            nextSlide();
+          }
+        }, 5000);
+      }
+
+      // Drag functionality
+      function setupDragEvents() {
+        // Mouse events
+        carousel.addEventListener('mousedown', dragStart);
+        carousel.addEventListener('mouseup', dragEnd);
+        carousel.addEventListener('mouseleave', dragEnd);
+        carousel.addEventListener('mousemove', drag);
+
+        // Touch events
+        carousel.addEventListener('touchstart', touchDragStart, {
+          passive: true
+        });
+        carousel.addEventListener('touchend', dragEnd, {
+          passive: true
+        });
+        carousel.addEventListener('touchmove', touchDrag, {
+          passive: true
+        });
+
+        // Prevent image drag
+        const images = document.querySelectorAll('.testimonial-image');
+        images.forEach(img => {
+          img.addEventListener('dragstart', (e) => e.preventDefault());
+        });
+      }
+
+      function dragStart(e) {
+        if (isTransitioning) return;
+        isDragging = true;
+        startPos = getPositionX(e);
+        carousel.style.cursor = 'grabbing';
+        track.style.transition = 'none';
+        cancelAnimationFrame(animationID);
+      }
+
+      function touchDragStart(e) {
+        if (isTransitioning) return;
+        isDragging = true;
+        startPos = getPositionX(e.touches[0]);
+        track.style.transition = 'none';
+        cancelAnimationFrame(animationID);
+      }
+
+      function drag(e) {
+        if (isDragging && !isTransitioning) {
+          const currentPosition = getPositionX(e);
+          const diff = currentPosition - startPos;
+          currentTranslate = prevTranslate + diff;
+          track.style.transform = `translateX(${currentTranslate}px)`;
+        }
+      }
+
+      function touchDrag(e) {
+        if (isDragging && !isTransitioning) {
+          const currentPosition = getPositionX(e.touches[0]);
+          const diff = currentPosition - startPos;
+          currentTranslate = prevTranslate + diff;
+          track.style.transform = `translateX(${currentTranslate}px)`;
+        }
+      }
+
+      function dragEnd() {
+        if (!isDragging) return;
+        isDragging = false;
+        carousel.style.cursor = 'grab';
+
+        const movedBy = currentTranslate - prevTranslate;
+
+        // If moved enough to change slide
+        if (movedBy < -50) {
+          nextSlide();
+        } else if (movedBy > 50) {
+          prevSlide();
+        } else {
+          // Return to original position
+          updateSliderPosition();
+        }
+      }
+
+      function getPositionX(event) {
+        return event.type.includes('mouse') ? event.pageX : event.clientX;
+      }
+
+      // Setup click events on slides
+      function setupClickEvents() {
+        slides.forEach(slide => {
+          slide.addEventListener('click', function (e) {
+            // Only process click if not dragging
+            if (!isDragging) {
+              const index = parseInt(this.getAttribute('data-index'));
+              if (index !== currentIndex) {
+                goToSlide(index);
+              }
+            }
+          });
+        });
+      }
+
+      // Button events
+      prevBtn.addEventListener('click', prevSlide);
+      nextBtn.addEventListener('click', nextSlide);
+
+      // Pause on hover
+      carousel.addEventListener('mouseenter', () => {
+        clearInterval(autoSlideInterval);
+      });
+
+      carousel.addEventListener('mouseleave', startAutoSlide);
+
+      // Handle window resize
+      window.addEventListener('resize', () => {
+        slideWidth = slides[0].getBoundingClientRect().width;
+        updateSliderPosition(true);
+      });
+
+      // Initialize
+      initCarousel();
+    });
+  </script>
+
+</body>
+
+</html>

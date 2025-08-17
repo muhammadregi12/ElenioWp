@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Weddings - Wedding Organizer Profesional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#af9757',
+                        'primary-light': '#f8f4e9',
+                        'primary-dark': '#947f49',
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-glow': 'pulse-glow 2s infinite',
+                        'slide-in': 'slideIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': {
+                                transform: 'translateY(0)'
+                            },
+                            '50%': {
+                                transform: 'translateY(-20px)'
+                            },
+                        },
+                        'pulse-glow': {
+                            '0%': {
+                                'box-shadow': '0 0 0 0 rgba(175, 151, 87, 0.4)'
+                            },
+                            '70%': {
+                                'box-shadow': '0 0 0 15px rgba(175, 151, 87, 0)'
+                            },
+                            '100%': {
+                                'box-shadow': '0 0 0 0 rgba(175, 151, 87, 0)'
+                            },
+                        },
+                        slideIn: {
+                            from: {
+                                opacity: '0',
+                                transform: 'translateY(50px) perspective(1000px) rotateX(-30deg)'
+                            },
+                            to: {
+                                opacity: '1',
+                                transform: 'translateY(0) perspective(1000px) rotateX(0)'
+                            },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- header -->
+    <style>
+        .header-bg {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .header-bg.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Animation for mobile menu */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        #mobile-menu.menu-open {
+            max-height: 500px;
+            transition: max-height 0.5s ease-in-out;
+        }
+
+        /* Hover effects */
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+
+        /* Ensure smooth transitions */
+        .transition-all {
+            transition-property: all;
+        }
+
+        .duration-300 {
+            transition-duration: 300ms;
+        }
+
+        .mobile-dropdown {
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+        }
+
+        .mobile-dropdown.open {
+            max-height: 500px;
+            /* cukup besar untuk isi dropdown */
+            opacity: 1;
+        }
+    </style>
+
+    <!-- footer -->
+    <style>
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #f3ec78, #af4261);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .image-carousel {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .carousel-inner {
+            display: flex;
+            animation: carousel-scroll 20s linear infinite;
+        }
+
+        @keyframes carousel-scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+
+
+
+</head>
+
+<body class="font-sans bg-white text-gray-800">
+
+    <!-- Header -->
+    <header class="header-bg fixed w-full z-50 h-[93px] transition-all duration-300" id="header">
+        <div class="container mx-auto px-6 flex justify-between items-center h-full">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <a href="#" class="text-2xl font-bold text-white py-2">
+                    <img width="127" height="40" src="images/logo/logo.png"
+                        class="hover-scale transition-transform duration-300" alt="ELENIO Logo" decoding="async">
+                </a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-6 lg:space-x-8">
+                <a href="index.html"
+                    class="text-white hover:text-primary transition-colors duration-300 font-medium relative group">
+                    Beranda
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                </a>
+
+                <!-- Halaman (Dropdown) -->
+                <div class="relative group">
+                    <a href="#"
+                        class="text-white hover:text-primary transition-colors duration-300 font-medium relative group">
+                        Halaman
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <!-- Dropdown Menu -->
+                    <div
+                        class="absolute left-0 mt-3 w-48 bg-black bg-opacity-95 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                        <a href="#" class="block px-4 py-2 text-white hover:bg-primary hover:text-white">Tentang
+                            Kami</a>
+                        <a href="vendor.html"
+                            class="block px-4 py-2 text-white hover:bg-primary hover:text-white">Vendor</a>
+                        <a href="#" class="block px-4 py-2 text-white hover:bg-primary hover:text-white">Team</a>
+                    </div>
+                </div>
+
+                <!-- Layanan (Dropdown) -->
+                <div class="relative group">
+                    <a href="#"
+                        class="text-white hover:text-primary transition-colors duration-300 font-medium relative group">
+                        Layanan
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <!-- Dropdown Menu -->
+                    <div
+                        class="absolute left-0 mt-3 w-48 bg-black bg-opacity-95 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                        <a href="layanan.html"
+                            class="block px-4 py-2 text-white hover:bg-primary hover:text-white">Pricelist</a>
+                        <a href="custom.html" class="block px-4 py-2 text-white hover:bg-primary hover:text-white">Paket
+                            Custom</a>
+                        <a href="wo.html" class="block px-4 py-2 text-white hover:bg-primary hover:text-white">Wedding
+                            Organizer</a>
+
+                    </div>
+                </div>
+
+
+                <a href="portfolio.html"
+                    class="text-white hover:text-primary transition-colors duration-300 font-medium relative group">
+                    Portfolio
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="artikel.html"
+                    class="text-white hover:text-primary transition-colors duration-300 font-medium relative group">
+                    Artikel
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="kontak.html"
+                    class="text-white hover:text-primary transition-colors duration-300 font-medium relative group">
+                    Kontak
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-white focus:outline-none transition-transform duration-300 hover:scale-110"
+                id="mobile-menu-button" aria-label="Toggle menu">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-black bg-opacity-95 w-full transition-all duration-300 transform origin-top"
+            id="mobile-menu">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+                <a href="index.html"
+                    class="text-white hover:text-primary transition-colors duration-300 py-3 px-2 border-b border-gray-700 flex items-center">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                        </path>
+                    </svg>
+                    Beranda
+                </a>
+
+                <!-- Halaman (Mobile Dropdown) -->
+                <div class="border-b border-gray-700">
+                    <button
+                        class="w-full flex items-center justify-between text-white py-3 px-2 hover:text-primary transition-colors duration-300 mobile-dropdown-btn">
+                        <span class="flex items-center">
+                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16">
+                                </path>
+                            </svg>
+                            Halaman
+                        </span>
+                        <svg class="w-4 h-4 transform transition-transform duration-300" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9l6 6 6-6">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="mobile-dropdown hidden pl-10">
+                        <a href="#" class="block py-2 text-white hover:text-primary">Tentang Kami</a>
+                        <a href="#" class="block py-2 text-white hover:text-primary">Tim Kami</a>
+                        <a href="#" class="block py-2 text-white hover:text-primary">FAQ</a>
+
+                    </div>
+                </div>
+
+                <!-- Layanan (Mobile Dropdown) -->
+                <div class="border-b border-gray-700">
+                    <button
+                        class="w-full flex items-center justify-between text-white py-3 px-2 hover:text-primary transition-colors duration-300 mobile-dropdown-btn">
+                        <span class="flex items-center">
+                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z">
+                                </path>
+                            </svg>
+                            Layanan
+                        </span>
+                        <svg class="w-4 h-4 transform transition-transform duration-300" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9l6 6 6-6">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="mobile-dropdown hidden pl-10">
+                        <a href="layanan.html" class="block py-2 text-white hover:text-primary">Pricelist</a>
+                        <a href="custom.html" class="block py-2 text-white hover:text-primary">Paket Custom</a>
+                        <a href="wo.html" class="block py-2 text-white hover:text-primary">Wedding Organizer</a>
+                    </div>
+                </div>
+
+
+                <a href="portfolio.html"
+                    class="text-white hover:text-primary transition-colors duration-300 py-3 px-2 border-b border-gray-700 flex items-center">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                        </path>
+                    </svg>
+                    Portfolio
+                </a>
+                <a href="artikel.html"
+                    class="text-white hover:text-primary transition-colors duration-300 py-3 px-2 border-b border-gray-700 flex items-center">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z">
+                        </path>
+                    </svg>
+                    Artikel
+                </a>
+                <a href="kontak.html"
+                    class="text-white hover:text-primary transition-colors duration-300 py-3 px-2 flex items-center">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                        </path>
+                    </svg>
+                    Kontak
+                </a>
+            </div>
+        </div>
+    </header>
+
+
+
+
+    <!-- Animated Background -->
+    <div class="fixed inset-0 overflow-hidden -z-10">
+        <div class="absolute top-20 left-10 w-16 h-16 rounded-full bg-primary/10 animate-float"></div>
+        <div class="absolute top-1/3 right-20 w-24 h-24 rounded-full bg-primary/10 animate-float animate-delay-200">
+        </div>
+        <div class="absolute bottom-20 left-1/4 w-20 h-20 rounded-full bg-primary/10 animate-float animate-delay-400">
+        </div>
+        <div class="absolute bottom-1/3 right-1/4 w-12 h-12 rounded-full bg-primary/10 animate-float animate-delay-600">
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-16 max-w-7xl">
+        <!-- Animated Header -->
+        <div class="text-center mb-16 animate-slide-in">
+            <span
+                class="inline-block px-4 py-1 bg-primary-light text-primary rounded-full text-sm font-medium mb-4">Hubungi
+                Kami</span>
+            <h1 class="text-4xl md:text-5xl font-bold mb-4">Elenio<span class="text-primary">Wedding Planner</span></h1>
+            <div class="w-24 h-1 bg-primary mx-auto mb-6"></div>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Tim kami siap mewujudkan ide Anda. Hubungi kami dan mari kita mulai menciptakan pernikahan impian anda
+                bersama.
+            </p>
+        </div>
+
+        <div class="flex flex-col lg:flex-row gap-8 lg:gap-16">
+            <!-- Contact Information - Enhanced Cards -->
+            <div class="lg:w-2/5 space-y-8">
+                <!-- Contact Card 1 - Location -->
+                <div
+                    class="relative group bg-gradient-to-br from-white/90 to-white/70 backdrop-blur-lg p-8 rounded-2xl shadow-xl border border-white/20 hover:border-primary/50 transition-all duration-500 overflow-hidden animate-fade-up">
+                    <div
+                        class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517502884422-41eaead166d4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')] bg-cover bg-center opacity-10 group-hover:opacity-20 transition duration-700">
+                    </div>
+                    <div class="relative z-10">
+                        <div
+                            class="w-20 h-20 rounded-full border-2 border-primary/80 flex items-center justify-center mb-6 mx-auto bg-white/90 shadow-lg group-hover:bg-white transition duration-500">
+                            <i class="fas fa-map-marker-alt text-3xl text-primary"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-center mb-4 text-gray-800">Kantor Pusat</h3>
+                        <p class="text-gray-600 text-center leading-relaxed font-medium">
+                            Bandung - Kopo, Kp Sakeloa<br>
+                            RT 09 No 138 Margahayu Selatan<br>
+                            Kabupaten Bandung, Indonesia
+
+                        </p>
+                        <div class="mt-6 text-center">
+                            <a href="#" class="inline-flex items-center text-primary font-semibold hover:underline">
+                                Lihat di maps
+                                <i class="fas fa-arrow-right ml-2 text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Card 2 - Phone -->
+                <div class="relative group bg-gradient-to-br from-white/90 to-white/70 backdrop-blur-lg p-8 rounded-2xl shadow-xl border border-white/20 hover:border-primary/50 transition-all duration-500 overflow-hidden animate-fade-up"
+                    style="animation-delay: 0.15s">
+                    <div
+                        class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1581093450021-4a7360e9a7d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')] bg-cover bg-center opacity-10 group-hover:opacity-20 transition duration-700">
+                    </div>
+                    <div class="relative z-10">
+                        <div
+                            class="w-20 h-20 rounded-full border-2 border-primary/80 flex items-center justify-center mb-6 mx-auto bg-white/90 shadow-lg group-hover:bg-white transition duration-500">
+                            <i class="fas fa-phone-alt text-3xl text-primary"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-center mb-4 text-gray-800">Direct Lines</h3>
+                        <p class="text-gray-600 text-center leading-relaxed font-medium">
+                            +62 813 9427 7035 (Admin 1)<br>
+                            +62 812 3456 7890 (Admin 2)
+                        </p>
+                        <div class="mt-4 text-center text-sm text-gray-500 font-medium">
+                            Mon-Fri, 8am-6pm WIB
+                        </div>
+                        <div class="mt-6 text-center">
+                            <a href="#" class="inline-flex items-center text-primary font-semibold hover:underline">
+                                Hubungi Sekarang
+                                <i class="fas fa-phone ml-2 text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Card 3 - Email -->
+                <div class="relative group bg-gradient-to-br from-white/90 to-white/70 backdrop-blur-lg p-8 rounded-2xl shadow-xl border border-white/20 hover:border-primary/50 transition-all duration-500 overflow-hidden animate-fade-up"
+                    style="animation-delay: 0.3s">
+                    <div
+                        class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80')] bg-cover bg-center opacity-10 group-hover:opacity-20 transition duration-700">
+                    </div>
+                    <div class="relative z-10">
+                        <div
+                            class="w-20 h-20 rounded-full border-2 border-primary/80 flex items-center justify-center mb-6 mx-auto bg-white/90 shadow-lg group-hover:bg-white transition duration-500">
+                            <i class="fas fa-envelope text-3xl text-primary"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-center mb-4 text-gray-800">Email Kami</h3>
+                        <div class="space-y-2 text-center">
+                            <div>
+                                <a href="mailto:hello@goldentouch.com"
+                                    class="text-primary font-medium hover:underline">elenioweding@gmail.com</a>
+                                <p class="text-sm text-gray-500">Pertanyaan Umum</p>
+                            </div>
+                            <div>
+                                <a href="mailto:support@goldentouch.com"
+                                    class="text-primary font-medium hover:underline">regiworkofficial@gmail.com</a>
+                                <p class="text-sm text-gray-500">Customer support</p>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Contact Form -->
+            <div class="lg:w-3/5 animate-slide-in">
+                <div
+                    class="relative bg-gradient-to-br from-white to-white/90 p-8 md:p-12 rounded-2xl shadow-2xl overflow-hidden border border-white/20">
+                    <!-- Decorative elements -->
+                    <div class="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-primary/10 z-0"></div>
+                    <div class="absolute -bottom-16 -left-16 w-40 h-40 rounded-full bg-primary/10 z-0"></div>
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-primary-dark"></div>
+
+                    <div class="relative z-10">
+                        <div class="mb-2">
+                            <span
+                                class="inline-block px-3 py-1 text-xs font-semibold text-primary bg-primary/10 rounded-full">Bantuan</span>
+                        </div>
+                        <h2 class="text-3xl font-bold mb-2 text-gray-800">Kirim Pesan Kepada Kami</h2>
+                        <p class="text-gray-600 mb-8">Kami akan menghubungi Anda kembali dalam waktu 24 jam</p>
+
+                        <form class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="space-y-2">
+                                    <label for="name" class="block text-sm font-medium text-gray-700">Nama*</label>
+                                    <div class="relative">
+                                        <div
+                                            class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <i class="fas fa-user text-gray-400"></i>
+                                        </div>
+                                        <input type="text" id="name"
+                                            class="block w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-primary/70 focus:border-primary/70 transition duration-300 bg-white/80"
+                                            placeholder="John Doe" required>
+                                    </div>
+                                </div>
+                                <div class="space-y-2">
+                                    <label for="email" class="block text-sm font-medium text-gray-700">Alamat
+                                        Email*</label>
+                                    <div class="relative">
+                                        <div
+                                            class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <i class="fas fa-envelope text-gray-400"></i>
+                                        </div>
+                                        <input type="email" id="email"
+                                            class="block w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-primary/70 focus:border-primary/70 transition duration-300 bg-white/80"
+                                            placeholder="example@email.com" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label for="subject" class="block text-sm font-medium text-gray-700">Subject*</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <i class="fas fa-tag text-gray-400"></i>
+                                    </div>
+                                    <select id="subject"
+                                        class="block w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-primary/70 focus:border-primary/70 transition duration-300 bg-white/80 appearance-none">
+                                        <option>Venue Wedding</option>
+                                        <option>Pricelist Wedding</option>
+                                        <option>Other</option>
+                                    </select>
+                                    <div class="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
+                                        <i class="fas fa-chevron-down text-gray-400"></i>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label for="message" class="block text-sm font-medium text-gray-700">Pesan*</label>
+                                <div class="relative">
+                                    <div class="absolute top-3 left-3">
+                                        <i class="fas fa-comment-dots text-gray-400"></i>
+                                    </div>
+                                    <textarea id="message" rows="5"
+                                        class="block w-full pl-10 pr-4 py-3 rounded-lg border border-gray-200 focus:ring-2 focus:ring-primary/70 focus:border-primary/70 transition duration-300 bg-white/80"
+                                        placeholder="Kirim pesan yang ditanyakan..."></textarea>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start">
+                                <div class="flex items-center h-5">
+                                    <input id="agree" type="checkbox"
+                                        class="h-4 w-4 text-primary focus:ring-primary/70 border-gray-300 rounded"
+                                        required>
+                                </div>
+                                <div class="ml-3 text-sm">
+                                    <label for="agree" class="text-gray-700">
+                                        Saya setuju <a href="#" class="text-primary font-medium hover:underline">dengan
+                                            kebijakan privasi</a> dan <a href="#"
+                                            class="text-primary font-medium hover:underline">ketentuan layanan</a>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <button type="submit"
+                                class="w-full bg-gradient-to-r from-primary to-primary-dark hover:from-primary-dark hover:to-primary text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 transform hover:scale-[1.02] shadow-lg hover:shadow-xl flex items-center justify-center space-x-3">
+                                <span>Kirim Pesan</span>
+                                <i class="fas fa-paper-plane text-white/90"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Social Media Section -->
+        <div class="mt-20 text-center animate-slide-in animate-delay-600">
+            <h2 class="text-2xl font-bold mb-6">Ikuti Sosial Media</h2>
+            <div class="flex justify-center space-x-4">
+                <a href="#"
+                    class="social-icon w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg text-gray-600 hover:bg-primary hover:text-white transition duration-300 transform hover:scale-110 hover:shadow-xl">
+                    <i class="fab fa-instagram text-xl"></i>
+                </a>
+                <a href="#"
+                    class="social-icon w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg text-gray-600 hover:bg-primary hover:text-white transition duration-300 transform hover:scale-110 hover:shadow-xl">
+                    <i class="fab fa-linkedin-in text-xl"></i>
+                </a>
+                <a href="#"
+                    class="social-icon w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg text-gray-600 hover:bg-primary hover:text-white transition duration-300 transform hover:scale-110 hover:shadow-xl">
+                    <i class="fab fa-twitter text-xl"></i>
+                </a>
+                <a href="#"
+                    class="social-icon w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg text-gray-600 hover:bg-primary hover:text-white transition duration-300 transform hover:scale-110 hover:shadow-xl">
+                    <i class="fab fa-facebook-f text-xl"></i>
+                </a>
+                <a href="#"
+                    class="social-icon w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-lg text-gray-600 hover:bg-primary hover:text-white transition duration-300 transform hover:scale-110 hover:shadow-xl">
+                    <i class="fab fa-youtube text-xl"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Contact Button -->
+    <div class="fixed bottom-8 right-8 animate-bounce">
+        <button
+            class="w-16 h-16 bg-primary rounded-full shadow-xl flex items-center justify-center text-white text-2xl hover:bg-primary-dark transition duration-300 transform hover:scale-110 animate-pulse-glow">
+            <i class="fas fa-comment-dots"></i>
+        </button>
+    </div>
+
+    <!-- Map Section -->
+    <div class="bg-gray-100 py-16">
+        <div class="container mx-auto px-4 max-w-7xl">
+            <div class="text-center mb-12 animate-slide-in animate-delay-700">
+                <h2 class="text-2xl font-bold mb-4">Kunjungi Kantor Kami</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Kami menerima tamu dengan perjanjian. Jadwalkan pertemuan
+                    dengan tim kami untuk membahas proyek Anda secara langsung.</p>
+            </div>
+
+            <div class="bg-white p-1 rounded-2xl shadow-lg overflow-hidden animate-slide-in animate-delay-800">
+                <div class="aspect-w-16 aspect-h-9 bg-gray-200 rounded-xl overflow-hidden">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.8195613506864!3d-6.194741395493371!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f5390917b759%3A0x6b45e839560ef85!2sMonumen%20Nasional!5e0!3m2!1sen!2sid!4v1623394257720!5m2!1sen!2sid"
+                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        class="rounded-xl"></iframe>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add intersection observer for scroll animations
+        document.addEventListener('DOMContentLoaded', function () {
+            const animateElements = document.querySelectorAll('.animate-slide-in');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform =
+                            'translateY(0) perspective(1000px) rotateX(0)';
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            animateElements.forEach(el => {
+                el.style.opacity = 0;
+                el.style.transform = 'translateY(50px) perspective(1000px) rotateX(-30deg)';
+                observer.observe(el);
+            });
+        });
+    </script>
+
+
+
+
+
+    <!-- Footer -->
+    <footer itemtype="https://schema.org/WPFooter" itemscope="itemscope" id="colophon" role="contentinfo"
+        class="relative overflow-hidden bg-gray-900 text-gray-200 font-sans">
+        <!-- Animated background elements -->
+        <div class="absolute inset-0 overflow-hidden opacity-10">
+            <div class="absolute top-20 left-10 w-8 h-8 rounded-full bg-pink-500 animate-float"
+                style="animation-delay: 0s;">
+            </div>
+            <div class="absolute top-1/3 right-20 w-12 h-12 rounded-full bg-purple-500 animate-float"
+                style="animation-delay: 0.5s;"></div>
+            <div class="absolute bottom-20 left-1/4 w-10 h-10 rounded-full bg-blue-500 animate-float"
+                style="animation-delay: 1s;"></div>
+            <div class="absolute top-1/4 right-1/3 w-6 h-6 rounded-full bg-yellow-500 animate-float"
+                style="animation-delay: 1.5s;"></div>
+        </div>
+
+        <div class="container mx-auto px-6 py-12 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+                <!-- Serenity Logo/Title with Image -->
+                <div class="lg:col-span-2">
+                    <div class="mb-6">
+                        <img width="150" height="150" src="images/logo/logo.png" class="hover-scale" alt="Serenity Logo"
+                            decoding="async">
+                    </div>
+                    <p class="text-lg mb-6">Mari Rencanakan Pernikahan Impian Anda dengan Elenio Wedding!</p>
+                    <p class="text-gray-400">Tunggu apalagi wujudkan impian pernikahanmu bersama kami dan nantikan promo
+                        di setiap bulannya</p>
+                </div>
+
+                <!-- Navigation Section -->
+                <div>
+                    <h2 class="text-xl font-semibold mb-6">Navigation</h2>
+                    <ul class="space-y-3">
+                        <li class="hover-scale"><a href="index.html"
+                                class="hover:text-white transition-colors">Beranda</a></li>
+                        <li class="hover-scale"><a href="vendor.html"
+                                class="hover:text-white transition-colors">Vendor</a></li>
+                        <li class="hover-scale"><a href="layanan.html"
+                                class="hover:text-white transition-colors">Pricelist</a></li>
+                        <li class="hover-scale"><a href="portfolio.html"
+                                class="hover:text-white transition-colors">Portfolio</a></li>
+                        <li class="hover-scale"><a href="artikel.html"
+                                class="hover:text-white transition-colors">Artikel</a></li>
+                    </ul>
+                </div>
+
+                <!-- Social Media Section -->
+                <div>
+                    <h2 class="text-xl font-semibold mb-6">Connect With Us</h2>
+                    <div class="space-y-4">
+                        <!-- Instagram -->
+                        <div class="flex items-center hover-scale group">
+                            <div
+                                class="w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                <i class="fab fa-instagram text-white text-lg"></i>
+                            </div>
+                            <span class="group-hover:text-purple-400 transition-colors">Instagram</span>
+                        </div>
+
+                        <!-- TikTok -->
+                        <div class="flex items-center hover-scale group">
+                            <div
+                                class="w-10 h-10 rounded-full bg-gradient-to-r from-cyan-400 to-fuchsia-600 flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                <i class="fab fa-tiktok text-white text-lg"></i>
+                            </div>
+                            <span class="group-hover:text-fuchsia-400 transition-colors">TikTok</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Section -->
+                <div>
+                    <h2 class="text-xl font-semibold mb-6">Contact</h2>
+                    <div class="space-y-4">
+                        <div class="hover-scale">
+                            <a href="mailto:SerenityWedding@com"
+                                class="flex items-center hover:text-green-400 transition-colors">
+                                <i class="fas fa-envelope mr-2 text-green-500"></i>elenioweddingp@gmail.com
+                            </a>
+                        </div>
+                        <div class="hover-scale">
+                            <a href="tel:+1234567890" class="flex items-center hover:text-blue-400 transition-colors">
+                                <i class="fas fa-phone-alt mr-2 text-blue-500"></i> +62 813 9427 7035
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Locations Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                <div
+                    class="hover-scale p-6 rounded-lg bg-gray-800 bg-opacity-50 transition-all hover:bg-opacity-70 group">
+                    <div class="flex items-start gap-4">
+                        <div class="text-amber-300 mt-1">
+                            <i class="fas fa-map-marker-alt text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-amber-300 mb-2 flex items-center gap-2">
+                                <i class="fas fa-city"></i>
+                                Bandung - Kopo
+                            </h3>
+                            <p class="text-gray-400 flex items-start gap-2">
+                                <i class="fas fa-home mt-1"></i>
+                                <span>
+                                    Kp Sakeloa RT 09 No 138<br>
+                                    Desa Margahayu Selatan, Kabupaten Bandung
+                                </span>
+                            </p>
+                            <div class="mt-3 text-sm text-gray-300 flex items-center gap-2">
+                                <i class="fas fa-phone-alt"></i>
+                                <span>+62 813 9427 7035</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image Carousel -->
+                <div class="overflow-hidden rounded-lg">
+                    <div class="image-carousel">
+                        <div class="carousel-inner">
+                            <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/22.jpg"
+                                alt="Wedding 1" class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+                            <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/23.jpg"
+                                alt="Wedding 2" class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+                            <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/24.jpg"
+                                alt="Wedding 3" class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+                            <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/25.jpg"
+                                alt="Wedding 4" class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+                            <!-- Duplicate images for seamless looping -->
+                            <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/22.jpg"
+                                alt="Wedding 1" class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+                            <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/23.jpg"
+                                alt="Wedding 2" class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+                            <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/24.jpg"
+                                alt="Wedding 3" class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+                            <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/25.jpg"
+                                alt="Wedding 4" class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <!-- Copyright and Links -->
+            <div class="mt-16 pt-6 border-t border-gray-800">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-500 mb-4 md:mb-0">Copyright © 2025 EleniowWP. All right reserved.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Support</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+    <script>
+        // Mobile Menu Toggle with animation
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('menu-open');
+
+            // Toggle aria-expanded attribute
+            const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+            mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+
+            // Change icon when menu is open
+            const menuIcon = mobileMenuButton.querySelector('svg');
+            if (!isExpanded) {
+                menuIcon.innerHTML =
+                    '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
+            } else {
+                menuIcon.innerHTML =
+                    '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileLinks = document.querySelectorAll('#mobile-menu a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('menu-open');
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+                mobileMenuButton.querySelector('svg').innerHTML =
+                    '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+            });
+        });
+
+        // Mobile dropdown toggle
+        document.querySelectorAll('.mobile-dropdown-btn').forEach((btn) => {
+            btn.addEventListener('click', function () {
+                const dropdown = this.nextElementSibling;
+                const icon = this.querySelector('svg:last-child');
+
+                dropdown.classList.toggle('open');
+                dropdown.classList.toggle('hidden');
+
+                // Rotasi ikon
+                icon.classList.toggle('rotate-180');
+            });
+        });
+
+
+        // Header Scroll Effect with throttle for performance
+        const header = document.getElementById('header');
+        let lastScroll = 0;
+
+        function throttle(func, limit) {
+            let lastFunc;
+            let lastRan;
+            return function () {
+                const context = this;
+                const args = arguments;
+                if (!lastRan) {
+                    func.apply(context, args);
+                    lastRan = Date.now();
+                } else {
+                    clearTimeout(lastFunc);
+                    lastFunc = setTimeout(function () {
+                        if ((Date.now() - lastRan) >= limit) {
+                            func.apply(context, args);
+                            lastRan = Date.now();
+                        }
+                    }, limit - (Date.now() - lastRan));
+                }
+            }
+        }
+
+        const handleScroll = throttle(() => {
+            const currentScroll = window.scrollY;
+            if (currentScroll <= 0) {
+                header.classList.remove('scrolled');
+                return;
+            }
+
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                // Scroll down
+                header.classList.add('scrolled');
+            } else if (currentScroll < lastScroll) {
+                // Scroll up
+                header.classList.add('scrolled');
+            }
+
+            lastScroll = currentScroll;
+        }, 100);
+
+        window.addEventListener('scroll', handleScroll);
+
+        // Initialize header state
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        }
+    </script>
+
+
+
+
+</body>
+
+</html>

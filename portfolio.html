@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Wedding Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        gold: '#af9757',
+                        goldlight: '#c7b78a',
+                        golddark: '#8a7a45',
+                        golddarker: '#6b5d35',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'zoom-in': 'zoomIn 0.3s ease-out',
+                        'fade-out': 'fadeOut 0.3s ease-out',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 6s ease-in-out infinite',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'slide-in-right': 'slideInRight 0.5s ease-out',
+                        'slide-in-left': 'slideInLeft 0.5s ease-out',
+                        'slide-out-right': 'slideOutRight 0.5s ease-in',
+                        'slide-out-left': 'slideOutLeft 0.5s ease-in',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': {
+                                opacity: '0'
+                            },
+                            '100%': {
+                                opacity: '1'
+                            },
+                        },
+                        zoomIn: {
+                            '0%': {
+                                transform: 'scale(0.8)',
+                                opacity: '0'
+                            },
+                            '100%': {
+                                transform: 'scale(1)',
+                                opacity: '1'
+                            },
+                        },
+                        fadeOut: {
+                            '0%': {
+                                opacity: '1'
+                            },
+                            '100%': {
+                                opacity: '0'
+                            },
+                        },
+                        float: {
+                            '0%, 100%': {
+                                transform: 'translateY(0)'
+                            },
+                            '50%': {
+                                transform: 'translateY(-10px)'
+                            },
+                        },
+                        slideInRight: {
+                            '0%': {
+                                transform: 'translateX(50px)',
+                                opacity: '0'
+                            },
+                            '100%': {
+                                transform: 'translateX(0)',
+                                opacity: '1'
+                            },
+                        },
+                        slideInLeft: {
+                            '0%': {
+                                transform: 'translateX(-50px)',
+                                opacity: '0'
+                            },
+                            '100%': {
+                                transform: 'translateX(0)',
+                                opacity: '1'
+                            },
+                        },
+                        slideOutRight: {
+                            '0%': {
+                                transform: 'translateX(0)',
+                                opacity: '1'
+                            },
+                            '100%': {
+                                transform: 'translateX(50px)',
+                                opacity: '0'
+                            },
+                        },
+                        slideOutLeft: {
+                            '0%': {
+                                transform: 'translateX(0)',
+                                opacity: '1'
+                            },
+                            '100%': {
+                                transform: 'translateX(-50px)',
+                                opacity: '0'
+                            },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .filter-btn.active {
+                @apply bg-gold text-white shadow-md transform scale-105;
+            }
+            .gallery-item {
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                perspective: 1000px;
+            }
+            .gallery-item:hover {
+                transform: translateY(-5px) scale(1.02);
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.05);
+            }
+            .gallery-item:hover img {
+                transform: scale(1.05);
+            }
+            .lightbox-image {
+                max-height: calc(100vh - 120px);
+                cursor: zoom-in;
+                transition: transform 0.3s ease;
+                object-fit: contain;
+            }
+            .lightbox-image.zoomed {
+                transform: scale(2);
+                cursor: grab;
+            }
+            .floating-hearts {
+                position: absolute;
+                opacity: 0.6;
+                animation: float 8s ease-in-out infinite;
+            }
+            @keyframes sparkle {
+                0% { opacity: 0; transform: scale(0); }
+                50% { opacity: 1; transform: scale(1.2); }
+                100% { opacity: 0; transform: scale(0); }
+            }
+            .sparkle {
+                position: absolute;
+                background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+                border-radius: 50%;
+                pointer-events: none;
+                animation: sparkle 1s ease-out forwards;
+            }
+            .lightbox-image-container {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                width: 100%;
+                height: 80vh;
+            }
+            .lightbox-image-slide {
+                position: absolute;
+                transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.7s ease;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    </style>
+
+    <!-- header -->
+    <style>
+        .header-bg {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .header-bg.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Animation for mobile menu */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        #mobile-menu.menu-open {
+            max-height: 500px;
+            transition: max-height 0.5s ease-in-out;
+        }
+
+        /* Hover effects */
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+
+        /* Ensure smooth transitions */
+        .transition-all {
+            transition-property: all;
+        }
+
+        .duration-300 {
+            transition-duration: 300ms;
+        }
+
+        .mobile-dropdown {
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+        }
+
+        .mobile-dropdown.open {
+            max-height: 500px;
+            /* cukup besar untuk isi dropdown */
+            opacity: 1;
+        }
+    </style>
+
+    <!-- footer -->
+    <style>
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #f3ec78, #af4261);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .image-carousel {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .carousel-inner {
+            display: flex;
+            animation: carousel-scroll 20s linear infinite;
+        }
+
+        @keyframes carousel-scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 font-sans antialiased">
+
+    <!-- Header -->
+    <header class="header-bg fixed w-full z-50 h-[93px] transition-all duration-300" id="header">
+        <div class="container mx-auto px-6 flex justify-between items-center h-full">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <a href="#" class="text-2xl font-bold text-white py-2">
+                    <img width="127" height="40" src="images/logo/logo.png"
+                        class="hover-scale transition-transform duration-300" alt="ELENIO Logo" decoding="async">
+                </a>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-6 lg:space-x-8">
+                <a href="index.html"
+                    class="text-white hover:text-primary transition-colors duration-300 font-medium relative group">
+                    Beranda
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                </a>
+
+                <!-- Halaman (Dropdown) -->
+                <div class="relative group">
+                    <a href="#"
+                        class="text-white hover:text-primary transition-colors duration-300 font-medium relative group">
+                        Halaman
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <!-- Dropdown Menu -->
+                    <div
+                        class="absolute left-0 mt-3 w-48 bg-black bg-opacity-95 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                        <a href="#" class="block px-4 py-2 text-white hover:bg-primary hover:text-white">Tentang
+                            Kami</a>
+                        <a href="vendor.html"
+                            class="block px-4 py-2 text-white hover:bg-primary hover:text-white">Vendor</a>
+                        <a href="#" class="block px-4 py-2 text-white hover:bg-primary hover:text-white">Team</a>
+                    </div>
+                </div>
+
+                <!-- Layanan (Dropdown) -->
+                <div class="relative group">
+                    <a href="#"
+                        class="text-white hover:text-primary transition-colors duration-300 font-medium relative group">
+                        Layanan
+                        <span
+                            class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                    <!-- Dropdown Menu -->
+                    <div
+                        class="absolute left-0 mt-3 w-48 bg-black bg-opacity-95 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                        <a href="layanan.html"
+                            class="block px-4 py-2 text-white hover:bg-primary hover:text-white">Pricelist</a>
+                        <a href="custom.html" class="block px-4 py-2 text-white hover:bg-primary hover:text-white">Paket
+                            Custom</a>
+                        <a href="wo.html" class="block px-4 py-2 text-white hover:bg-primary hover:text-white">Wedding
+                            Organizer</a>
+
+                    </div>
+                </div>
+
+
+                <a href="portfolio.html"
+                    class="text-white hover:text-primary transition-colors duration-300 font-medium relative group">
+                    Portfolio
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="artikel.html"
+                    class="text-white hover:text-primary transition-colors duration-300 font-medium relative group">
+                    Artikel
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                </a>
+                <a href="kontak.html"
+                    class="text-white hover:text-primary transition-colors duration-300 font-medium relative group">
+                    Kontak
+                    <span
+                        class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-white focus:outline-none transition-transform duration-300 hover:scale-110"
+                id="mobile-menu-button" aria-label="Toggle menu">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-black bg-opacity-95 w-full transition-all duration-300 transform origin-top"
+            id="mobile-menu">
+            <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+                <a href="index.html"
+                    class="text-white hover:text-primary transition-colors duration-300 py-3 px-2 border-b border-gray-700 flex items-center">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                        </path>
+                    </svg>
+                    Beranda
+                </a>
+
+                <!-- Halaman (Mobile Dropdown) -->
+                <div class="border-b border-gray-700">
+                    <button
+                        class="w-full flex items-center justify-between text-white py-3 px-2 hover:text-primary transition-colors duration-300 mobile-dropdown-btn">
+                        <span class="flex items-center">
+                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16">
+                                </path>
+                            </svg>
+                            Halaman
+                        </span>
+                        <svg class="w-4 h-4 transform transition-transform duration-300" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9l6 6 6-6">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="mobile-dropdown hidden pl-10">
+                        <a href="#" class="block py-2 text-white hover:text-primary">Tentang Kami</a>
+                        <a href="#" class="block py-2 text-white hover:text-primary">Tim Kami</a>
+                        <a href="#" class="block py-2 text-white hover:text-primary">FAQ</a>
+
+                    </div>
+                </div>
+
+                <!-- Layanan (Mobile Dropdown) -->
+                <div class="border-b border-gray-700">
+                    <button
+                        class="w-full flex items-center justify-between text-white py-3 px-2 hover:text-primary transition-colors duration-300 mobile-dropdown-btn">
+                        <span class="flex items-center">
+                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 10V3L4 14h7v7l9-11h-7z">
+                                </path>
+                            </svg>
+                            Layanan
+                        </span>
+                        <svg class="w-4 h-4 transform transition-transform duration-300" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9l6 6 6-6">
+                            </path>
+                        </svg>
+                    </button>
+                    <div class="mobile-dropdown hidden pl-10">
+                        <a href="layanan.html" class="block py-2 text-white hover:text-primary">Pricelist</a>
+                        <a href="custom.html" class="block py-2 text-white hover:text-primary">Paket Custom</a>
+                        <a href="wo.html" class="block py-2 text-white hover:text-primary">Wedding Organizer</a>
+                    </div>
+                </div>
+
+
+                <a href="portfolio.html"
+                    class="text-white hover:text-primary transition-colors duration-300 py-3 px-2 border-b border-gray-700 flex items-center">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                        </path>
+                    </svg>
+                    Portfolio
+                </a>
+                <a href="artikel.html"
+                    class="text-white hover:text-primary transition-colors duration-300 py-3 px-2 border-b border-gray-700 flex items-center">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z">
+                        </path>
+                    </svg>
+                    Artikel
+                </a>
+                <a href="kontak.html"
+                    class="text-white hover:text-primary transition-colors duration-300 py-3 px-2 flex items-center">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                        </path>
+                    </svg>
+                    Kontak
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-12 md:py-16 bg-gradient-to-br from-[#f6fbfc] to-[#f0f7f9]">
+        <div class="mt-10 container mx-auto px-4 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+
+            <!-- Left Images - Enhanced Overlap Style -->
+            <div class="relative w-full h-[320px] md:h-[380px]" data-aos="fade-right">
+                <!-- Main Image (Larger and centered) -->
+                <div class="absolute inset-0 flex items-center justify-center" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&auto=format&fit=crop&q=80"
+                        class="rounded-2xl shadow-2xl w-full max-w-[280px] md:max-w-[320px] h-[200px] md:h-[240px] object-cover transform transition-all duration-500 hover:scale-105 hover:rotate-1 hover:shadow-xl z-10"
+                        alt="Couple portrait" loading="lazy">
+                </div>
+
+                <!-- Top Right Overlap (More pronounced) -->
+                <div class="absolute top-0 right-0" data-aos="fade-down-left" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=400&auto=format&fit=crop&q=80"
+                        class="rounded-xl shadow-lg w-[180px] h-[120px] object-cover border-[3px] border-white transform transition-all duration-500 hover:scale-110 hover:rotate-3 hover:shadow-xl z-20"
+                        alt="Flowers" loading="lazy">
+                </div>
+
+                <!-- Bottom Left Small (More dynamic position) -->
+                <div class="absolute bottom-0 left-0" data-aos="fade-up-right" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=400&auto=format&fit=crop&q=80"
+                        class="rounded-xl shadow-lg w-[160px] h-[100px] object-cover border-[3px] border-white transform transition-all duration-500 hover:scale-110 hover:-rotate-3 hover:shadow-xl z-20"
+                        alt="Wedding rings" loading="lazy">
+                </div>
+
+                <!-- Decorative elements -->
+                <div class="absolute -bottom-4 -left-4 w-24 h-24 border-4 border-[#af9757] rounded-lg opacity-20 z-0"
+                    data-aos="fade" data-aos-delay="400"></div>
+                <div class="absolute -top-4 -right-4 w-16 h-16 border-4 border-[#af9757] rounded-full opacity-20 z-0"
+                    data-aos="fade" data-aos-delay="450"></div>
+            </div>
+
+            <!-- Right Content with enhanced styling -->
+            <div data-aos="fade-left" class="px-2 md:px-4">
+                <p class="text-sm md:text-base text-[#af9757] font-semibold mb-2 tracking-wider">ABOUT BRIDELY</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 leading-tight text-gray-800">
+                    Crafting Unforgettable<br>Wedding Experiences
+                </h2>
+                <p class="text-gray-600 mb-5 md:mb-6 leading-relaxed">
+                    We believe every love story deserves a perfect celebration. Our team of passionate wedding
+                    specialists works tirelessly to transform your dreams into reality, creating moments you'll cherish
+                    forever.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <button
+                        class="bg-[#af9757] text-white text-sm px-6 py-2 rounded-full hover:bg-[#9a8450] hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                        Learn More
+                    </button>
+                    <button
+                        class="border border-[#af9757] text-[#af9757] text-sm px-6 py-2 rounded-full hover:bg-[#f8f4ea] hover:shadow-md transition-all duration-300">
+                        Our Services
+                    </button>
+                </div>
+
+                <!-- Stats counter animation -->
+                <div class="mt-8 grid grid-cols-3 gap-4">
+                    <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                        <div class="text-3xl font-bold text-[#af9757] mb-1 counter" data-target="250">0</div>
+                        <div class="text-xs text-gray-500">Weddings</div>
+                    </div>
+                    <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                        <div class="text-3xl font-bold text-[#af9757] mb-1 counter" data-target="98">0</div>
+                        <div class="text-xs text-gray-500">Satisfaction</div>
+                    </div>
+                    <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+                        <div class="text-3xl font-bold text-[#af9757] mb-1 counter" data-target="15">0</div>
+                        <div class="text-xs text-gray-500">Years</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Floating decorative elements -->
+    <div class="floating-hearts text-goldlight text-4xl top-20 left-10 animate-float" style="animation-delay: 0.5s;">❤
+    </div>
+    <div class="floating-hearts text-goldlight text-3xl top-1/4 right-16 animate-float" style="animation-delay: 1s;">❥
+    </div>
+    <div class="floating-hearts text-goldlight text-2xl bottom-1/3 left-1/4 animate-float"
+        style="animation-delay: 1.5s;">✿</div>
+    <div class="floating-hearts text-goldlight text-5xl bottom-20 right-1/4 animate-float" style="animation-delay: 2s;">
+        ✧</div>
+
+    <!-- Gallery Filter -->
+    <div class="container mx-auto px-4 py-12 -mt-8 animate__animated animate__fadeIn animate__delay-1s">
+        <div class="flex flex-wrap justify-center gap-3 mb-12">
+            <button
+                class="filter-btn active px-6 py-3 rounded-full bg-white text-golddark border-2 border-goldlight font-medium transition-all hover:bg-gold hover:text-white hover:shadow-lg hover:-translate-y-1"
+                data-filter="all">
+                <i class="fas fa-images mr-2"></i> All Photos
+            </button>
+            <button
+                class="filter-btn px-6 py-3 rounded-full bg-white text-golddark border-2 border-goldlight font-medium transition-all hover:bg-gold hover:text-white hover:shadow-lg hover:-translate-y-1"
+                data-filter="prewed">
+                <i class="fas fa-camera-retro mr-2"></i> Prewedding
+            </button>
+            <button
+                class="filter-btn px-6 py-3 rounded-full bg-white text-golddark border-2 border-goldlight font-medium transition-all hover:bg-gold hover:text-white hover:shadow-lg hover:-translate-y-1"
+                data-filter="wedding">
+                <i class="fas fa-ring mr-2"></i> Wedding Day
+            </button>
+            <button
+                class="filter-btn px-6 py-3 rounded-full bg-white text-golddark border-2 border-goldlight font-medium transition-all hover:bg-gold hover:text-white hover:shadow-lg hover:-translate-y-1"
+                data-filter="decoration">
+                <i class="fas fa-spa mr-2"></i> Decorations
+            </button>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8" id="gallery-grid">
+            <!-- Prewedding Items -->
+            <div class="gallery-item relative overflow-hidden rounded-xl shadow-lg animate-fade-in"
+                data-category="prewed" data-caption="Golden Hour" data-description="Our first photos together">
+                <div class="relative overflow-hidden h-72">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80"
+                        alt="Prewedding Photo 1"
+                        class="w-full h-full object-cover cursor-pointer transition-transform duration-500"
+                        loading="lazy">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div
+                            class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h3 class="text-white font-bold text-xl mb-1">Golden Hour</h3>
+                            <p class="text-goldlight text-sm">Our first photos together</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item relative overflow-hidden rounded-xl shadow-lg animate-fade-in"
+                data-category="prewed" data-caption="Elegant Pose" data-description="Classic memories">
+                <div class="relative overflow-hidden h-72">
+                    <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+                        alt="Prewedding Photo 2"
+                        class="w-full h-full object-cover cursor-pointer transition-transform duration-500"
+                        loading="lazy">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div
+                            class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h3 class="text-white font-bold text-xl mb-1">Elegant Pose</h3>
+                            <p class="text-goldlight text-sm">Classic memories</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item relative overflow-hidden rounded-xl shadow-lg animate-fade-in"
+                data-category="prewed" data-caption="Romantic Walk" data-description="Strolling hand in hand">
+                <div class="relative overflow-hidden h-72">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        alt="Prewedding Photo 3"
+                        class="w-full h-full object-cover cursor-pointer transition-transform duration-500"
+                        loading="lazy">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div
+                            class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h3 class="text-white font-bold text-xl mb-1">Romantic Walk</h3>
+                            <p class="text-goldlight text-sm">Strolling hand in hand</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item relative overflow-hidden rounded-xl shadow-lg animate-fade-in"
+                data-category="prewed" data-caption="Sunset Embrace" data-description="Ending the perfect day">
+                <div class="relative overflow-hidden h-72">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+                        alt="Prewedding Photo 4"
+                        class="w-full h-full object-cover cursor-pointer transition-transform duration-500"
+                        loading="lazy">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div
+                            class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h3 class="text-white font-bold text-xl mb-1">Sunset Embrace</h3>
+                            <p class="text-goldlight text-sm">Ending the perfect day</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wedding Items -->
+            <div class="gallery-item relative overflow-hidden rounded-xl shadow-lg animate-fade-in"
+                data-category="wedding" data-caption="The Ceremony" data-description="Our special moment">
+                <div class="relative overflow-hidden h-72">
+                    <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        alt="Wedding Photo 1"
+                        class="w-full h-full object-cover cursor-pointer transition-transform duration-500"
+                        loading="lazy">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div
+                            class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h3 class="text-white font-bold text-xl mb-1">The Ceremony</h3>
+                            <p class="text-goldlight text-sm">Our special moment</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item relative overflow-hidden rounded-xl shadow-lg animate-fade-in"
+                data-category="wedding" data-caption="First Kiss" data-description="As husband and wife">
+                <div class="relative overflow-hidden h-72">
+                    <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        alt="Wedding Photo 2"
+                        class="w-full h-full object-cover cursor-pointer transition-transform duration-500"
+                        loading="lazy">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div
+                            class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h3 class="text-white font-bold text-xl mb-1">First Kiss</h3>
+                            <p class="text-goldlight text-sm">As husband and wife</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item relative overflow-hidden rounded-xl shadow-lg animate-fade-in"
+                data-category="wedding" data-caption="Family Portrait" data-description="With our loved ones">
+                <div class="relative overflow-hidden h-72">
+                    <img src="https://images.unsplash.com/photo-1523438885200-e635ba2c371e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+                        alt="Wedding Photo 3"
+                        class="w-full h-full object-cover cursor-pointer transition-transform duration-500"
+                        loading="lazy">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div
+                            class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h3 class="text-white font-bold text-xl mb-1">Family Portrait</h3>
+                            <p class="text-goldlight text-sm">With our loved ones</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item relative overflow-hidden rounded-xl shadow-lg animate-fade-in"
+                data-category="wedding" data-caption="Reception Joy" data-description="Celebrating with friends">
+                <div class="relative overflow-hidden h-72">
+                    <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        alt="Wedding Photo 4"
+                        class="w-full h-full object-cover cursor-pointer transition-transform duration-500"
+                        loading="lazy">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div
+                            class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h3 class="text-white font-bold text-xl mb-1">Reception Joy</h3>
+                            <p class="text-goldlight text-sm">Celebrating with friends</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Decoration Items -->
+            <div class="gallery-item relative overflow-hidden rounded-xl shadow-lg animate-fade-in"
+                data-category="decoration" data-caption="Floral Arch" data-description="Where we said 'I do'">
+                <div class="relative overflow-hidden h-72">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        alt="Decoration 1"
+                        class="w-full h-full object-cover cursor-pointer transition-transform duration-500"
+                        loading="lazy">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div
+                            class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h3 class="text-white font-bold text-xl mb-1">Floral Arch</h3>
+                            <p class="text-goldlight text-sm">Where we said "I do"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item relative overflow-hidden rounded-xl shadow-lg animate-fade-in"
+                data-category="decoration" data-caption="Table Setting" data-description="Elegant dining">
+                <div class="relative overflow-hidden h-72">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80"
+                        alt="Decoration 2"
+                        class="w-full h-full object-cover cursor-pointer transition-transform duration-500"
+                        loading="lazy">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div
+                            class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h3 class="text-white font-bold text-xl mb-1">Table Setting</h3>
+                            <p class="text-goldlight text-sm">Elegant dining</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item relative overflow-hidden rounded-xl shadow-lg animate-fade-in"
+                data-category="decoration" data-caption="Aisle Design" data-description="The walk to forever">
+                <div class="relative overflow-hidden h-72">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80"
+                        alt="Decoration 3"
+                        class="w-full h-full object-cover cursor-pointer transition-transform duration-500"
+                        loading="lazy">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div
+                            class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h3 class="text-white font-bold text-xl mb-1">Aisle Design</h3>
+                            <p class="text-goldlight text-sm">The walk to forever</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gallery-item relative overflow-hidden rounded-xl shadow-lg animate-fade-in"
+                data-category="decoration" data-caption="Candlelight" data-description="Romantic ambiance">
+                <div class="relative overflow-hidden h-72">
+                    <img src="https://images.unsplash.com/photo-1520854221256-17451cc331bf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                        alt="Decoration 4"
+                        class="w-full h-full object-cover cursor-pointer transition-transform duration-500"
+                        loading="lazy">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                        <div
+                            class="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                            <h3 class="text-white font-bold text-xl mb-1">Candlelight</h3>
+                            <p class="text-goldlight text-sm">Romantic ambiance</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer itemtype="https://schema.org/WPFooter" itemscope="itemscope" id="colophon" role="contentinfo"
+        class="relative overflow-hidden bg-gray-900 text-gray-200 font-sans">
+        <!-- Animated background elements -->
+        <div class="absolute inset-0 overflow-hidden opacity-10">
+            <div class="absolute top-20 left-10 w-8 h-8 rounded-full bg-pink-500 animate-float"
+                style="animation-delay: 0s;">
+            </div>
+            <div class="absolute top-1/3 right-20 w-12 h-12 rounded-full bg-purple-500 animate-float"
+                style="animation-delay: 0.5s;"></div>
+            <div class="absolute bottom-20 left-1/4 w-10 h-10 rounded-full bg-blue-500 animate-float"
+                style="animation-delay: 1s;"></div>
+            <div class="absolute top-1/4 right-1/3 w-6 h-6 rounded-full bg-yellow-500 animate-float"
+                style="animation-delay: 1.5s;"></div>
+        </div>
+
+        <div class="container mx-auto px-6 py-12 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+                <!-- Serenity Logo/Title with Image -->
+                <div class="lg:col-span-2">
+                    <div class="mb-6">
+                        <img width="150" height="150" src="images/logo/logo.png" class="hover-scale" alt="Serenity Logo"
+                            decoding="async">
+                    </div>
+                    <p class="text-lg mb-6">Mari Rencanakan Pernikahan Impian Anda dengan Elenio Wedding!</p>
+                    <p class="text-gray-400">Tunggu apalagi wujudkan impian pernikahanmu bersama kami dan nantikan promo
+                        di setiap bulannya</p>
+                </div>
+
+                <!-- Navigation Section -->
+                <div>
+                    <h2 class="text-xl font-semibold mb-6">Navigation</h2>
+                    <ul class="space-y-3">
+                        <li class="hover-scale"><a href="index.html"
+                                class="hover:text-white transition-colors">Beranda</a></li>
+                        <li class="hover-scale"><a href="vendor.html"
+                                class="hover:text-white transition-colors">Vendor</a></li>
+                        <li class="hover-scale"><a href="layanan.html"
+                                class="hover:text-white transition-colors">Pricelist</a></li>
+                        <li class="hover-scale"><a href="portfolio.html"
+                                class="hover:text-white transition-colors">Portfolio</a></li>
+                        <li class="hover-scale"><a href="artikel.html"
+                                class="hover:text-white transition-colors">Artikel</a></li>
+                    </ul>
+                </div>
+
+                <!-- Social Media Section -->
+                <div>
+                    <h2 class="text-xl font-semibold mb-6">Connect With Us</h2>
+                    <div class="space-y-4">
+                        <!-- Instagram -->
+                        <div class="flex items-center hover-scale group">
+                            <div
+                                class="w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                <i class="fab fa-instagram text-white text-lg"></i>
+                            </div>
+                            <span class="group-hover:text-purple-400 transition-colors">Instagram</span>
+                        </div>
+
+                        <!-- TikTok -->
+                        <div class="flex items-center hover-scale group">
+                            <div
+                                class="w-10 h-10 rounded-full bg-gradient-to-r from-cyan-400 to-fuchsia-600 flex items-center justify-center mr-3 group-hover:scale-110 transition-transform">
+                                <i class="fab fa-tiktok text-white text-lg"></i>
+                            </div>
+                            <span class="group-hover:text-fuchsia-400 transition-colors">TikTok</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Section -->
+                <div>
+                    <h2 class="text-xl font-semibold mb-6">Contact</h2>
+                    <div class="space-y-4">
+                        <div class="hover-scale">
+                            <a href="mailto:SerenityWedding@com"
+                                class="flex items-center hover:text-green-400 transition-colors">
+                                <i class="fas fa-envelope mr-2 text-green-500"></i>elenioweddingp@gmail.com
+                            </a>
+                        </div>
+                        <div class="hover-scale">
+                            <a href="tel:+1234567890" class="flex items-center hover:text-blue-400 transition-colors">
+                                <i class="fas fa-phone-alt mr-2 text-blue-500"></i> +62 813 9427 7035
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Locations Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                <div
+                    class="hover-scale p-6 rounded-lg bg-gray-800 bg-opacity-50 transition-all hover:bg-opacity-70 group">
+                    <div class="flex items-start gap-4">
+                        <div class="text-amber-300 mt-1">
+                            <i class="fas fa-map-marker-alt text-xl"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-amber-300 mb-2 flex items-center gap-2">
+                                <i class="fas fa-city"></i>
+                                Bandung - Kopo
+                            </h3>
+                            <p class="text-gray-400 flex items-start gap-2">
+                                <i class="fas fa-home mt-1"></i>
+                                <span>
+                                    Kp Sakeloa RT 09 No 138<br>
+                                    Desa Margahayu Selatan, Kabupaten Bandung
+                                </span>
+                            </p>
+                            <div class="mt-3 text-sm text-gray-300 flex items-center gap-2">
+                                <i class="fas fa-phone-alt"></i>
+                                <span>+62 813 9427 7035</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image Carousel -->
+                <div class="overflow-hidden rounded-lg">
+                    <div class="image-carousel">
+                        <div class="carousel-inner">
+                            <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/22.jpg"
+                                alt="Wedding 1" class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+                            <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/23.jpg"
+                                alt="Wedding 2" class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+                            <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/24.jpg"
+                                alt="Wedding 3" class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+                            <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/25.jpg"
+                                alt="Wedding 4" class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+                            <!-- Duplicate images for seamless looping -->
+                            <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/22.jpg"
+                                alt="Wedding 1" class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+                            <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/23.jpg"
+                                alt="Wedding 2" class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+                            <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/24.jpg"
+                                alt="Wedding 3" class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+                            <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/25.jpg"
+                                alt="Wedding 4" class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <!-- Copyright and Links -->
+            <div class="mt-16 pt-6 border-t border-gray-800">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-500 mb-4 md:mb-0">Copyright © 2025 EleniowWP. All right reserved.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Support</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/95 p-4 backdrop-blur-sm">
+        <div class="relative w-full max-w-6xl h-full flex flex-col">
+            <!-- Close Button - Dipindahkan ke dalam container dan diatur posisinya -->
+            <button id="lightbox-close"
+                class="absolute top-4 right-4 text-white text-4xl z-50 hover:text-goldlight transition-colors transform hover:scale-110">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <!-- Navigation Arrows -->
+            <button id="lightbox-prev"
+                class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-12 bg-white/20 text-white text-3xl p-3 rounded-full hover:bg-white/30 transition-all transform hover:scale-110 z-50">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button id="lightbox-next"
+                class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-12 bg-white/20 text-white text-3xl p-3 rounded-full hover:bg-white/30 transition-all transform hover:scale-110 z-50">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+
+            <!-- Image Container -->
+            <div class="flex-1 flex justify-center items-center overflow-hidden relative">
+                <div class="lightbox-image-container w-full h-full" id="lightbox-container">
+                    <!-- Images will be dynamically inserted here -->
+                </div>
+            </div>
+
+            <!-- Caption -->
+            <div class="text-center mt-6 pb-4">
+                <h2 id="lightbox-caption" class="text-white text-2xl font-bold mb-1"></h2>
+                <p id="lightbox-description" class="text-goldlight text-lg"></p>
+                <div class="mt-4 flex justify-center space-x-4">
+                    <button id="zoom-in"
+                        class="bg-white/20 text-white px-4 py-2 rounded-full hover:bg-white/30 transition-all">
+                        <i class="fas fa-search-plus mr-2"></i> Zoom In
+                    </button>
+                    <button id="zoom-out"
+                        class="bg-white/20 text-white px-4 py-2 rounded-full hover:bg-white/30 transition-all">
+                        <i class="fas fa-search-minus mr-2"></i> Zoom Out
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Create sparkle effects randomly
+            function createSparkles() {
+                const colors = ['#ffffff', '#ffd700', '#f5d393', '#ffffff'];
+                const container = document.body;
+
+                setInterval(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.className = 'sparkle';
+
+                    // Random position
+                    const x = Math.random() * 100;
+                    const y = Math.random() * 100;
+
+                    // Random size
+                    const size = Math.random() * 20 + 10;
+
+                    sparkle.style.left = `${x}%`;
+                    sparkle.style.top = `${y}%`;
+                    sparkle.style.width = `${size}px`;
+                    sparkle.style.height = `${size}px`;
+                    sparkle.style.background =
+                        `radial-gradient(circle, ${colors[Math.floor(Math.random() * colors.length)]} 0%, rgba(255,255,255,0) 70%)`;
+                    sparkle.style.animationDelay = `${Math.random() * 0.5}s`;
+
+                    container.appendChild(sparkle);
+
+                    // Remove after animation
+                    setTimeout(() => {
+                        sparkle.remove();
+                    }, 1000);
+                }, 300);
+            }
+
+            createSparkles();
+
+            // Filter functionality with smooth transitions
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const galleryGrid = document.getElementById('gallery-grid');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Animate button press
+                    button.classList.add('animate__animated', 'animate__pulse');
+                    setTimeout(() => {
+                        button.classList.remove('animate__animated', 'animate__pulse');
+                    }, 500);
+
+                    // Update active button
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active', 'animate__pulse');
+                        btn.classList.add('animate__animated', 'animate__fadeIn');
+                    });
+                    button.classList.add('active');
+                    button.classList.remove('animate__fadeIn');
+
+                    const filter = button.dataset.filter;
+
+                    // Filter items with smooth transition animation
+                    galleryItems.forEach((item, index) => {
+                        if (filter === 'all' || item.dataset.category === filter) {
+                            // Show matching items with staggered animation
+                            item.style.display = 'block';
+                            item.classList.add('animate__animated', 'animate__fadeIn');
+                            item.style.animationDelay = `${index * 0.05}s`;
+                            setTimeout(() => {
+                                item.classList.remove('animate__fadeIn');
+                            }, 500);
+                        } else {
+                            // Hide non-matching items with fade out
+                            item.classList.add('animate__animated', 'animate__fadeOut');
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                                item.classList.remove('animate__fadeOut');
+                            }, 300);
+                        }
+                    });
+
+                    // Reorder items for smooth flow
+                    if (filter !== 'all') {
+                        const filteredItems = Array.from(galleryItems).filter(item =>
+                            item.dataset.category === filter
+                        );
+
+                        filteredItems.forEach((item, index) => {
+                            setTimeout(() => {
+                                galleryGrid.appendChild(item);
+                            }, index * 50);
+                        });
+                    } else {
+                        // For 'all' filter, maintain original order
+                        const originalOrder = Array.from(galleryItems).sort((a, b) =>
+                            parseInt(a.dataset.index) - parseInt(b.dataset.index)
+                        );
+
+                        originalOrder.forEach(item => {
+                            galleryGrid.appendChild(item);
+                        });
+                    }
+                });
+            });
+
+            // Add index to each gallery item for original order
+            galleryItems.forEach((item, index) => {
+                item.dataset.index = index;
+            });
+
+            // Lightbox functionality with smooth transitions
+            const lightbox = document.getElementById('lightbox');
+            const lightboxContainer = document.getElementById('lightbox-container');
+            const lightboxCaption = document.getElementById('lightbox-caption');
+            const lightboxDescription = document.getElementById('lightbox-description');
+            const closeLightbox = document.getElementById('lightbox-close');
+            const prevButton = document.getElementById('lightbox-prev');
+            const nextButton = document.getElementById('lightbox-next');
+            const zoomInButton = document.getElementById('zoom-in');
+            const zoomOutButton = document.getElementById('zoom-out');
+
+            let currentImageIndex = 0;
+            let currentScale = 1;
+            let isAnimating = false;
+            const images = Array.from(document.querySelectorAll('.gallery-item'));
+
+            function createLightboxImage(index, direction = 'right') {
+                const img = images[index].querySelector('img');
+                const parentDiv = img.closest('.gallery-item');
+
+                const imageSlide = document.createElement('div');
+                imageSlide.className = 'lightbox-image-slide';
+                imageSlide.style.transform = direction === 'right' ? 'translateX(50px)' : 'translateX(-50px)';
+                imageSlide.style.opacity = '0';
+
+                const image = document.createElement('img');
+                image.src = img.src;
+                image.alt = img.alt;
+                image.className = 'rounded-lg shadow-2xl mx-auto';
+                image.style.maxHeight = 'calc(100vh - 120px)';
+                image.style.cursor = 'zoom-in';
+                image.style.transform = `scale(${currentScale})`;
+
+                imageSlide.appendChild(image);
+                lightboxContainer.appendChild(imageSlide);
+
+                // Animate the new image in
+                setTimeout(() => {
+                    imageSlide.style.transform = 'translateX(0)';
+                    imageSlide.style.opacity = '1';
+
+                    // Update caption
+                    lightboxCaption.textContent = parentDiv.querySelector('h3').textContent;
+                    lightboxDescription.textContent = parentDiv.querySelector('p').textContent;
+
+                    // Remove old image after animation
+                    setTimeout(() => {
+                        if (lightboxContainer.children.length > 1) {
+                            lightboxContainer.removeChild(lightboxContainer.children[0]);
+                        }
+                        isAnimating = false;
+                    }, 500);
+                }, 10);
+
+                return image;
+            }
+
+            function openLightbox(index) {
+                currentImageIndex = index;
+                currentScale = 1;
+
+                // Clear container
+                lightboxContainer.innerHTML = '';
+
+                // Create initial image
+                createLightboxImage(index);
+
+                lightbox.classList.remove('hidden');
+                lightbox.classList.add('flex', 'animate__animated', 'animate__fadeIn');
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Set up click events for gallery images
+            images.forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    openLightbox(index);
+                });
+            });
+
+            // Zoom functionality
+            function zoomImage(scale) {
+                currentScale = scale;
+                const image = document.querySelector('.lightbox-image-slide img');
+                if (image) {
+                    image.style.transform = `scale(${scale})`;
+                    image.classList.toggle('zoomed', scale !== 1);
+
+                    if (scale === 1) {
+                        image.style.cursor = 'zoom-in';
+                    } else {
+                        image.style.cursor = 'grab';
+                    }
+                }
+            }
+
+            zoomInButton.addEventListener('click', () => {
+                currentScale += 0.5;
+                zoomImage(currentScale);
+            });
+
+            zoomOutButton.addEventListener('click', () => {
+                currentScale = Math.max(1, currentScale - 0.5);
+                zoomImage(currentScale);
+            });
+
+            // Navigation with smooth transitions
+            function showNextImage() {
+                if (isAnimating) return;
+                isAnimating = true;
+
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                createLightboxImage(currentImageIndex, 'right');
+            }
+
+            function showPrevImage() {
+                if (isAnimating) return;
+                isAnimating = true;
+
+                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                createLightboxImage(currentImageIndex, 'left');
+            }
+
+            nextButton.addEventListener('click', showNextImage);
+            prevButton.addEventListener('click', showPrevImage);
+
+            // Close lightbox
+            function closeLightboxFunc() {
+                lightbox.classList.add('animate__animated', 'animate__fadeOut');
+                setTimeout(() => {
+                    lightbox.classList.add('hidden');
+                    lightbox.classList.remove('flex', 'animate__fadeOut', 'animate__fadeIn');
+                    document.body.style.overflow = 'auto';
+                    zoomImage(1); // Reset zoom
+                }, 300);
+            }
+
+            closeLightbox.addEventListener('click', closeLightboxFunc);
+
+            // Click outside to close
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    closeLightboxFunc();
+                }
+            });
+
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (lightbox.classList.contains('hidden')) return;
+
+                if (e.key === 'Escape') {
+                    closeLightboxFunc();
+                } else if (e.key === 'ArrowRight') {
+                    showNextImage();
+                } else if (e.key === 'ArrowLeft') {
+                    showPrevImage();
+                } else if (e.key === '+') {
+                    currentScale += 0.5;
+                    zoomImage(currentScale);
+                } else if (e.key === '-') {
+                    currentScale = Math.max(1, currentScale - 0.5);
+                    zoomImage(currentScale);
+                }
+            });
+
+            // Drag to pan zoomed image
+            let isDragging = false;
+            let startX, startY, scrollLeft, scrollTop;
+
+            lightboxContainer.addEventListener('mousedown', (e) => {
+                const image = document.querySelector('.lightbox-image-slide img');
+                if (image && image.classList.contains('zoomed')) {
+                    isDragging = true;
+                    startX = e.pageX - lightboxContainer.getBoundingClientRect().left;
+                    startY = e.pageY - lightboxContainer.getBoundingClientRect().top;
+                    scrollLeft = lightboxContainer.scrollLeft;
+                    scrollTop = lightboxContainer.scrollTop;
+                    image.style.cursor = 'grabbing';
+                    e.preventDefault();
+                }
+            });
+
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+                const image = document.querySelector('.lightbox-image-slide img');
+                if (image && image.classList.contains('zoomed')) {
+                    image.style.cursor = 'grab';
+                }
+            });
+
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                e.preventDefault();
+                const x = e.pageX - lightboxContainer.getBoundingClientRect().left;
+                const y = e.pageY - lightboxContainer.getBoundingClientRect().top;
+                const walkX = (x - startX) * 3;
+                const walkY = (y - startY) * 3;
+                lightboxContainer.scrollLeft = scrollLeft - walkX;
+                lightboxContainer.scrollTop = scrollTop - walkY;
+            });
+
+            // Mouse wheel zoom
+            lightboxContainer.addEventListener('wheel', (e) => {
+                const image = document.querySelector('.lightbox-image-slide img');
+                if (image && image.classList.contains('zoomed')) {
+                    e.preventDefault();
+                    const delta = -Math.sign(e.deltaY) * 0.1;
+                    currentScale = Math.max(1, Math.min(3, currentScale + delta));
+                    zoomImage(currentScale);
+                }
+            });
+
+            // Swipe gestures for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            lightboxContainer.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, {
+                passive: true
+            });
+
+            lightboxContainer.addEventListener('touchend', (e) => {
+                if (isAnimating) return;
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, {
+                passive: true
+            });
+
+            function handleSwipe() {
+                const threshold = 50;
+                if (touchEndX < touchStartX - threshold) {
+                    showNextImage();
+                } else if (touchEndX > touchStartX + threshold) {
+                    showPrevImage();
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

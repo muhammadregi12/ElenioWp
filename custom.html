@@ -1,0 +1,2346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Weddings - Wedding Organizer Profesional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#af9757',
+                        primaryDark: '#8a7a4a',
+                        primaryLight: '#d4c08a',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-in-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'slide-right': 'slideRight 0.8s ease-out',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': {
+                                opacity: '0'
+                            },
+                            '100%': {
+                                opacity: '1'
+                            },
+                        },
+                        slideUp: {
+                            '0%': {
+                                transform: 'translateY(20px)',
+                                opacity: '0'
+                            },
+                            '100%': {
+                                transform: 'translateY(0)',
+                                opacity: '1'
+                            },
+                        },
+                        slideRight: {
+                            '0%': {
+                                transform: 'translateX(-20px)',
+                                opacity: '0'
+                            },
+                            '100%': {
+                                transform: 'translateX(0)',
+                                opacity: '1'
+                            },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- header -->
+    <style>
+        .header-bg {
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4));
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .header-bg.scrolled {
+            background: rgba(0, 0, 0, 0.95);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+        }
+
+        /* Animation for mobile menu */
+        #mobile-menu {
+            max-height: 0;
+            overflow: hidden;
+        }
+
+        #mobile-menu.menu-open {
+            max-height: 500px;
+            transition: max-height 0.5s ease-in-out;
+        }
+
+        /* Hover effects */
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+
+        /* Ensure smooth transitions */
+        .transition-all {
+            transition-property: all;
+        }
+
+        .duration-300 {
+            transition-duration: 300ms;
+        }
+
+        .mobile-dropdown {
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+            overflow: hidden;
+            max-height: 0;
+            opacity: 0;
+        }
+
+        .mobile-dropdown.open {
+            max-height: 500px;
+            /* cukup besar untuk isi dropdown */
+            opacity: 1;
+        }
+    </style>
+
+
+
+    <!-- footer -->
+    <style>
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .animate-float {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        .hover-scale {
+            transition: transform 0.3s ease;
+        }
+
+        .hover-scale:hover {
+            transform: scale(1.05);
+        }
+
+        .gradient-text {
+            background: linear-gradient(45deg, #f3ec78, #af4261);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .image-carousel {
+            display: flex;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .carousel-inner {
+            display: flex;
+            animation: carousel-scroll 20s linear infinite;
+        }
+
+        @keyframes carousel-scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #faf7f2;
+        }
+        
+        .title-font {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .btn-primary {
+            background-color: #af9757;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: #9a8450;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(175, 151, 87, 0.3);
+        }
+        
+        .checkbox-primary:checked {
+            background-color: #af9757;
+            border-color: #af9757;
+        }
+        
+        .radio-primary:checked {
+            background-color: #af9757;
+            border-color: #af9757;
+        }
+        
+        .highlight-box {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+        
+        .highlight-box:hover {
+            border-left-color: #af9757;
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .input-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #af9757;
+        }
+        
+        .input-with-icon {
+            padding-left: 40px !important;
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .bounce {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .rotate {
+            animation: rotate 8s linear infinite;
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .price-display {
+            background: linear-gradient(135deg, #f5f7fa 0%, #faf7f2 100%);
+            border: 1px solid rgba(175, 151, 87, 0.2);
+        }
+        
+        .whatsapp-btn {
+            background-color: #25D366;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-btn:hover {
+            background-color: #128C7E;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+        }
+    </style>
+
+</head>
+
+<body class="font-sans bg-white text-gray-800">
+
+    <!-- Header -->
+    <header class="header-bg fixed w-full z-50 h-[93px] transition-all duration-300" id="header">
+        <div class="container mx-auto px-6 flex justify-between items-center h-full">
+        <!-- Logo -->
+        <div class="flex items-center">
+            <a href="#" class="text-2xl font-bold text-white py-2">
+            <img width="127" height="40" src="images/logo/logo.png" class="hover-scale transition-transform duration-300"
+                alt="ELENIO Logo" decoding="async">
+            </a>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex space-x-6 lg:space-x-8">
+            <a href="index.html"
+            class="text-white hover:text-primary transition-colors duration-300 font-medium relative group">
+            Beranda
+            <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </a>
+
+            <!-- Halaman (Dropdown) -->
+            <div class="relative group">
+            <a href="#" class="text-white hover:text-primary transition-colors duration-300 font-medium relative group">
+                Halaman
+                <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <!-- Dropdown Menu -->
+            <div
+                class="absolute left-0 mt-3 w-48 bg-black bg-opacity-95 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                <a href="#" class="block px-4 py-2 text-white hover:bg-primary hover:text-white">Tentang Kami</a>
+                <a href="vendor.html" class="block px-4 py-2 text-white hover:bg-primary hover:text-white">Vendor</a>
+                <a href="#" class="block px-4 py-2 text-white hover:bg-primary hover:text-white">Team</a>
+            </div>
+            </div>
+
+            <!-- Layanan (Dropdown) -->
+            <div class="relative group">
+            <a href="#" class="text-white hover:text-primary transition-colors duration-300 font-medium relative group">
+                Layanan
+                <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <!-- Dropdown Menu -->
+            <div
+                class="absolute left-0 mt-3 w-48 bg-black bg-opacity-95 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transform translate-y-2 group-hover:translate-y-0 transition-all duration-300">
+                <a href="layanan.html" class="block px-4 py-2 text-white hover:bg-primary hover:text-white">Pricelist</a>
+                <a href="custom.html" class="block px-4 py-2 text-white hover:bg-primary hover:text-white">Paket Custom</a>
+                <a href="wo.html" class="block px-4 py-2 text-white hover:bg-primary hover:text-white">Wedding Organizer</a>
+
+            </div>
+            </div>
+
+
+            <a href="portfolio.html"
+            class="text-white hover:text-primary transition-colors duration-300 font-medium relative group">
+            Portfolio
+            <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="artikel.html"
+            class="text-white hover:text-primary transition-colors duration-300 font-medium relative group">
+            Artikel
+            <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </a>
+            <a href="kontak.html"
+            class="text-white hover:text-primary transition-colors duration-300 font-medium relative group">
+            Kontak
+            <span
+                class="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </a>
+        </nav>
+
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden text-white focus:outline-none transition-transform duration-300 hover:scale-110"
+            id="mobile-menu-button" aria-label="Toggle menu">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+            </svg>
+        </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-black bg-opacity-95 w-full transition-all duration-300 transform origin-top"
+        id="mobile-menu">
+        <div class="container mx-auto px-4 py-3 flex flex-col space-y-3">
+            <a href="index.html"
+            class="text-white hover:text-primary transition-colors duration-300 py-3 px-2 border-b border-gray-700 flex items-center">
+            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6">
+                </path>
+            </svg>
+            Beranda
+            </a>
+
+            <!-- Halaman (Mobile Dropdown) -->
+            <div class="border-b border-gray-700">
+            <button
+                class="w-full flex items-center justify-between text-white py-3 px-2 hover:text-primary transition-colors duration-300 mobile-dropdown-btn">
+                <span class="flex items-center">
+                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+                    </path>
+                </svg>
+                Halaman
+                </span>
+                <svg class="w-4 h-4 transform transition-transform duration-300" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9l6 6 6-6"></path>
+                </svg>
+            </button>
+            <div class="mobile-dropdown hidden pl-10">
+                <a href="#" class="block py-2 text-white hover:text-primary">Tentang Kami</a>
+                <a href="#" class="block py-2 text-white hover:text-primary">Tim Kami</a>
+                <a href="#" class="block py-2 text-white hover:text-primary">FAQ</a>
+                
+            </div>
+            </div>
+
+            <!-- Layanan (Mobile Dropdown) -->
+            <div class="border-b border-gray-700">
+            <button
+                class="w-full flex items-center justify-between text-white py-3 px-2 hover:text-primary transition-colors duration-300 mobile-dropdown-btn">
+                <span class="flex items-center">
+                <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z">
+                    </path>
+                </svg>
+                Layanan
+                </span>
+                <svg class="w-4 h-4 transform transition-transform duration-300" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9l6 6 6-6"></path>
+                </svg>
+            </button>
+            <div class="mobile-dropdown hidden pl-10">
+                <a href="layanan.html" class="block py-2 text-white hover:text-primary">Pricelist</a>
+                <a href="custom.html" class="block py-2 text-white hover:text-primary">Paket Custom</a>
+                <a href="wo.html" class="block py-2 text-white hover:text-primary">Wedding Organizer</a>
+            </div>
+            </div>
+
+
+            <a href="portfolio.html"
+            class="text-white hover:text-primary transition-colors duration-300 py-3 px-2 border-b border-gray-700 flex items-center">
+            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10">
+                </path>
+            </svg>
+            Portfolio
+            </a>
+            <a href="artikel.html"
+            class="text-white hover:text-primary transition-colors duration-300 py-3 px-2 border-b border-gray-700 flex items-center">
+            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z">
+                </path>
+            </svg>
+            Artikel
+            </a>
+            <a href="kontak.html" class="text-white hover:text-primary transition-colors duration-300 py-3 px-2 flex items-center">
+            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z">
+                </path>
+            </svg>
+            Kontak
+            </a>
+        </div>
+        </div>
+    </header>
+
+
+    <section class="py-12 md:py-16 bg-gradient-to-br from-[#f6fbfc] to-[#f0f7f9]">
+        <div class="mt-10 container mx-auto px-4 grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+
+            
+
+            <!-- Right Content with enhanced styling -->
+            <div data-aos="fade-left" class="px-2 md:px-4">
+                <p class="text-sm md:text-base text-[#af9757] font-semibold mb-2 tracking-wider">Kalkulasi Biaya Pernikahan</p>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4 leading-tight text-gray-800">
+                    Harga Transparan <br> Wedding Impian
+                </h2>
+                <p class="text-gray-600 mb-5 md:mb-6 leading-relaxed">
+                    Wujudkan impian pernikahan anda bersama kami tunggu apa lagi tinggal kalkulasikan biaya pernikahan dan lakukan konsultasi pernikahan anda dengan lengkap
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-3">
+                    <button
+                        class="bg-[#af9757] text-white text-sm px-6 py-2 rounded-full hover:bg-[#9a8450] hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1">
+                        Pricelist
+                    </button>
+                    <button
+                        class="border border-[#af9757] text-[#af9757] text-sm px-6 py-2 rounded-full hover:bg-[#f8f4ea] hover:shadow-md transition-all duration-300">
+                        Service Kami
+                    </button>
+                </div>
+
+                <!-- Stats counter animation -->
+                <!-- <div class="mt-8 grid grid-cols-3 gap-4">
+                    <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                        <div class="text-3xl font-bold text-[#af9757] mb-1 counter" data-target="250">0</div>
+                        <div class="text-xs text-gray-500">Weddings</div>
+                    </div>
+                    <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                        <div class="text-3xl font-bold text-[#af9757] mb-1 counter" data-target="98">0</div>
+                        <div class="text-xs text-gray-500">Satisfaction</div>
+                    </div>
+                    <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+                        <div class="text-3xl font-bold text-[#af9757] mb-1 counter" data-target="15">0</div>
+                        <div class="text-xs text-gray-500">Years</div>
+                    </div>
+                </div> -->
+            </div>
+
+            <!-- Left Images - Enhanced Overlap Style -->
+            <div class="relative w-full h-[320px] md:h-[380px]" data-aos="fade-right">
+                <!-- Main Image (Larger and centered) -->
+                <div class="absolute inset-0 flex items-center justify-center" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&auto=format&fit=crop&q=80"
+                        class="rounded-2xl shadow-2xl w-full max-w-[280px] md:max-w-[320px] h-[200px] md:h-[240px] object-cover transform transition-all duration-500 hover:scale-105 hover:rotate-1 hover:shadow-xl z-10"
+                        alt="Couple portrait" loading="lazy">
+                </div>
+
+                <!-- Top Right Overlap (More pronounced) -->
+                <div class="absolute top-0 right-0" data-aos="fade-down-left" data-aos-delay="200">
+                    <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=400&auto=format&fit=crop&q=80"
+                        class="rounded-xl shadow-lg w-[180px] h-[120px] object-cover border-[3px] border-white transform transition-all duration-500 hover:scale-110 hover:rotate-3 hover:shadow-xl z-20"
+                        alt="Flowers" loading="lazy">
+                </div>
+
+                <!-- Bottom Left Small (More dynamic position) -->
+                <div class="absolute bottom-0 left-0" data-aos="fade-up-right" data-aos-delay="300">
+                    <img src="https://images.unsplash.com/photo-1518621736915-f3b1c41bfd00?w=400&auto=format&fit=crop&q=80"
+                        class="rounded-xl shadow-lg w-[160px] h-[100px] object-cover border-[3px] border-white transform transition-all duration-500 hover:scale-110 hover:-rotate-3 hover:shadow-xl z-20"
+                        alt="Wedding rings" loading="lazy">
+                </div>
+
+                <!-- Decorative elements -->
+                <div class="absolute -bottom-4 -left-4 w-24 h-24 border-4 border-[#af9757] rounded-lg opacity-20 z-0"
+                    data-aos="fade" data-aos-delay="400"></div>
+                <div class="absolute -top-4 -right-4 w-16 h-16 border-4 border-[#af9757] rounded-full opacity-20 z-0"
+                    data-aos="fade" data-aos-delay="450"></div>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Main Content -->
+    <div class="bg-grary-50 max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 gap-12 animate__animated animate__fadeIn">
+
+        <!-- Left Section -->
+        <div class="animate__animated animate__fadeInLeft">
+            <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 relative overflow-hidden">
+                <div class="absolute -top-8 -right-8 w-32 h-32 rounded-full bg-[#af9757] opacity-10"></div>
+                <div class="absolute -bottom-8 -left-8 w-40 h-40 rounded-full bg-[#af9757] opacity-10"></div>
+                
+                <h2 class="text-sm uppercase tracking-wider text-[#af9757] font-semibold"><i class="fas fa-ring mr-2"></i>Wujudkan Pernikahan Impian Anda</h2>
+                <h1 class="text-4xl font-bold mt-2 text-gray-800 title-font">Custom Wedding Package</h1>
+                <p class="text-gray-600 mt-4 leading-relaxed">
+                    Rancang paket pernikahan yang sempurna, pilih layanan yang Anda butuhkan, pilih vendor pilihan Anda, dan lihat hasilnya secara instan.
+                </p>
+
+                <div class="mt-10 space-y-6">
+                    <div class="flex items-start highlight-box p-4 rounded-lg bg-gray-50">
+                        <div class="text-[#af9757] text-3xl mr-4 floating"><i class="fas fa-pen-fancy"></i></div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Isi Data</h3>
+                            <p class="text-gray-600 text-sm mt-1">Lengkapi formulir dan pilih layanan yang Anda butuhkan untuk hari istimewa Anda</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start highlight-box p-4 rounded-lg bg-gray-50">
+                        <div class="text-[#af9757] text-3xl mr-4 floating"><i class="fas fa-star"></i></div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Pilih Vendors</h3>
+                            <p class="text-gray-600 text-sm mt-1">Pilih vendor pilihan Anda dan sesuaikan detailnya agar sesuai dengan visi Anda</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start highlight-box p-4 rounded-lg bg-gray-50">
+                        <div class="text-[#af9757] text-3xl mr-4 floating"><i class="fas fa-file-download"></i></div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-800">Dapatkan Paket Anda</h3>
+                            <p class="text-gray-600 text-sm mt-1">Segera lakukan konsultasi setelah mendapatkan harga </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 bg-white p-6 rounded-xl shadow-sm border border-gray-100 animate__animated animate__fadeInUp animate__delay-1s">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4"><i class="fas fa-heart mr-2 text-[#af9757]"></i>Kenapa Pilih Custom Package?</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-[#af9757] mt-0.5 mr-2"></i>
+                        <span class="text-gray-600">Kontrol penuh atas detail pernikahan Anda</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-[#af9757] mt-0.5 mr-2"></i>
+                        <span class="text-gray-600">Campur dan cocokkan layanan dari berbagai vendor</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-[#af9757] mt-0.5 mr-2"></i>
+                        <span class="text-gray-600">Harga transparan tanpa biaya tersembunyi</span>
+                    </li>
+                    <li class="flex items-start">
+                        <i class="fas fa-check-circle text-[#af9757] mt-0.5 mr-2"></i>
+                        <span class="text-gray-600">Koordinator pernikahan yang dipersonalisasi</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Right Section -->
+        <div class="animate__animated animate__fadeInRight" x-data="{
+            makeupChecked: false,
+            souvenirChecked: false,
+            additionalMakeupChecked: false,
+            additionalBusanaChecked: false,
+            showWeddingDetails: true,
+            showMakeupDetails: false,
+            showSouvenirDetails: false,
+            showAdditionalMakeupDetails: false,
+            showAdditionalBusanaDetails: false,
+            showPriceSummary: false,
+            totalPrice: 0,
+            calculateTotal() {
+                // In a real app, you would calculate based on selected services
+                let total = 15000000; // Base wedding service
+                if (this.makeupChecked) total += 5000000;
+                if (this.souvenirChecked) total += 3000000;
+                if (this.additionalMakeupChecked) total += 2000000;
+                if (this.additionalBusanaChecked) total += 2500000;
+                this.totalPrice = total;
+                this.showPriceSummary = true;
+                
+                // Update WhatsApp link
+                const waLink = document.getElementById('waLink');
+                const name = document.getElementById('name').value || 'Customer';
+                const phone = document.getElementById('Nomorhp').value || '';
+                const message = `Halo, saya ${name}%0ASaya tertarik dengan paket pernikahan dengan total perkiraan Rp ${this.totalPrice.toLocaleString('id-ID')}.%0ABisa konsultasi lebih lanjut?`;
+                
+                if (phone) {
+                    waLink.href = `https://wa.me/${phone}?text=${message}`;
+                } else {
+                    waLink.href = `https://wa.me/?text=${message}`;
+                }
+            }
+        }">
+            <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 relative overflow-hidden">
+                <div class="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-[#af9757] opacity-5"></div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2 title-font"><i class="fas fa-calendar-alt mr-2 text-[#af9757]"></i>Detail Pernikahan Anda</h2>
+                <p class="text-gray-600 mb-6">Silakan isi informasi pernikahan Anda di bawah ini</p>
+                
+                <form class="space-y-6" @submit.prevent="calculateTotal">
+                    <!-- Row 1 -->
+                    <div class="grid md:grid-cols-2 gap-5">
+                        <div class="fade-in relative">
+                            <label for="name" class="block text-sm font-medium text-gray-700">Nama <span class="text-red-500">*</span></label>
+                            <div class="relative">
+                                <div class="input-icon">
+                                    <i class="fas fa-user-circle"></i>
+                                </div>
+                                <input type="text" id="name" placeholder="Nama" 
+                                    class="input-with-icon mt-1 w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-[#af9757] focus:border-[#af9757] focus:outline-none transition duration-300">
+                            </div>
+                        </div>
+                        <div class="fade-in relative">
+                            <label for="Nomorhp" class="block text-sm font-medium text-gray-700">Telepon / WhatsApp <span class="text-red-500">*</span></label>
+                            <div class="relative">
+                                <div class="input-icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <input type="tel" id="Nomorhp" placeholder="Telepon atau Nomer WhatsApp" maxlength="13"
+                                    oninput="this.value=this.value.replace(/[^0-9]/g,'')"
+                                    class="input-with-icon mt-1 w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-[#af9757] focus:border-[#af9757] focus:outline-none transition duration-300">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Address -->
+                    <div class="fade-in relative">
+                        <label for="address" class="block text-sm font-medium text-gray-700">Alamat <span class="text-red-500">*</span></label>
+                        <div class="relative">
+                            <div class="input-icon" style="top: 35px;">
+                                <i class="fas fa-map-marked-alt"></i>
+                            </div>
+                            <textarea id="address" rows="3" placeholder="Alamat"
+                                class="input-with-icon mt-1 w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-[#af9757] focus:border-[#af9757] focus:outline-none transition duration-300"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Row 2 -->
+                    <div class="grid md:grid-cols-2 gap-5">
+                        <div class="fade-in relative">
+                            <label for="Tanggal" class="block text-sm font-medium text-gray-700">Tanggal Pernikahan <span class="text-red-500">*</span></label>
+                            <div class="relative">
+                                <div class="input-icon">
+                                    <i class="far fa-calendar-alt"></i>
+                                </div>
+                                <input type="date" id="Tanggal" min="{{ date('Y-m-d') }}"
+                                    class="input-with-icon mt-1 w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-[#af9757] focus:border-[#af9757] focus:outline-none transition duration-300">
+                            </div>
+                            <div class="flex items-center mt-3">
+                                <input type="checkbox" id="tanggalBelumFix"
+                                    class="rounded border-gray-300 text-[#af9757] focus:ring-[#af9757]">
+                                <label for="tanggalBelumFix" class="ml-2 text-sm text-gray-700">Belum Fix</label>
+                            </div>
+                        </div>
+                        <div class="fade-in relative">
+                            <label for="tamu" class="block text-sm font-medium text-gray-700">Jumlah Tamu Undangan <span class="text-red-500">*</span></label>
+                            <div class="relative">
+                                <div class="input-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <input type="number" id="tamu" placeholder="Number of wedding guests" min="1"
+                                    oninput="this.value=Math.max(1, this.value)"
+                                    class="input-with-icon mt-1 w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-[#af9757] focus:border-[#af9757] focus:outline-none transition duration-300">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Location -->
+                    <div class="fade-in relative">
+                        <label for="lokasi" class="block text-sm font-medium text-gray-700">Lokasi Pernikahan <span class="text-red-500">*</span></label>
+                        <div class="relative">
+                            <div class="input-icon" style="top: 35px;">
+                                <i class="fas fa-location-arrow"></i>
+                            </div>
+                            <textarea id="lokasi" rows="3" placeholder="Wedding venue address"
+                                class="input-with-icon mt-1 w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:ring-2 focus:ring-[#af9757] focus:border-[#af9757] focus:outline-none transition duration-300"></textarea>
+                        </div>
+                    </div>
+
+                    <h3 class="p-3 font-semibold text-lg text-gray-800 border-b border-gray-200"><i class="fas fa-list-check mr-2 text-[#af9757]"></i>Pilih Layanan</h3>
+
+                    <!-- Wedding Service -->
+                    <div class="mb-6 fade-in">
+                        <div class="mt-2 flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <label class="flex items-center space-x-3">
+                                <input type="checkbox" checked disabled class="rounded border-gray-300 text-[#af9757] focus:ring-[#af9757] h-5 w-5">
+                                <span class="font-medium text-gray-800"><i class="fas fa-church mr-2"></i>Wedding Service</span>
+                            </label>
+                            <button @click="showWeddingDetails = !showWeddingDetails" type="button" class="text-[#af9757] hover:text-[#9a8450]">
+                                <i x-show="!showWeddingDetails" class="fas fa-chevron-down"></i>
+                                <i x-show="showWeddingDetails" class="fas fa-chevron-up"></i>
+                            </button>
+                        </div>
+
+                        <div x-show="showWeddingDetails" x-transition class="mt-4 space-y-4">
+                            <div class="grid md:grid-cols-2 gap-4 p-2">
+                                <select class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-[#af9757] focus:border-[#af9757] focus:outline-none transition duration-300">
+                                    <option value="" selected>Gieg Wedding Planner</option>
+                                </select>
+                                <button type="button" class="btn-primary text-white px-4 py-2 rounded-lg font-medium transition duration-300 flex items-center justify-center pulse">
+                                    <i class="fas fa-info-circle mr-2"></i>
+                                    Vendor Info
+                                </button>
+                            </div>
+
+                            <div class="overflow-x-auto">
+                                <table class="w-full border border-gray-200 rounded-lg overflow-hidden">
+                                    <thead class="bg-gray-100">
+                                        <tr>
+                                            <th class="w-1/5 border px-4 py-3 text-left text-sm font-medium text-gray-700">Select</th>
+                                            <th class="w-1/3 border px-4 py-3 text-left text-sm font-medium text-gray-700">Service</th>
+                                            <th class="border px-4 py-3 text-left text-sm font-medium text-gray-700">Facility Details</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="hover:bg-gray-50 transition duration-150">
+                                            <td class="border px-4 py-3">
+                                                <label class="flex items-center space-x-2">
+                                                    <input type="radio" name="wo" checked class="h-4 w-4 text-[#af9757] focus:ring-[#af9757] border-gray-300 rounded">
+                                                    <span class="text-sm text-gray-700">Select</span>
+                                                </label>
+                                            </td>
+                                            <td class="border px-4 py-3 text-sm text-gray-700">Sample Package</td>
+                                            <td class="border px-4 py-3">
+                                                <div>
+                                                    <button type="button" class="text-[#af9757] hover:text-[#9a8450] text-sm font-medium flex items-center">
+                                                        <i class="fas fa-chevron-down mr-1"></i>
+                                                        Show Details
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Makeup & Busana -->
+<div class="mb-6 fade-in" x-data="{ 
+        makeupChecked: false, 
+        showMakeupDetails: false, 
+        selectedVendor: '' 
+    }">
+    
+    <!-- Checkbox -->
+    <div class="mt-2 flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+        <label class="flex items-center space-x-3">
+            <input type="checkbox" x-model="makeupChecked" class="rounded border-gray-300 text-[#af9757] focus:ring-[#af9757] h-5 w-5">
+            <span class="font-medium text-gray-800"><i class="fas fa-paint-brush mr-2"></i>Makeup & Attire</span>
+        </label>
+        <button x-show="makeupChecked" @click="showMakeupDetails = !showMakeupDetails" type="button" class="text-[#af9757] hover:text-[#9a8450]">
+            <i x-show="!showMakeupDetails" class="fas fa-chevron-down"></i>
+            <i x-show="showMakeupDetails" class="fas fa-chevron-up"></i>
+        </button>
+    </div>
+
+    <!-- Bagian detail muncul setelah checkbox dicentang -->
+    <div x-show="makeupChecked" x-transition class="mt-4 space-y-4">
+
+        <!-- Vendor Select -->
+        <div class="grid md:grid-cols-2 gap-4 p-2">
+            <select x-model="selectedVendor" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-[#af9757] focus:border-[#af9757] focus:outline-none transition duration-300">
+                <option value="" selected disabled>Select Vendor</option>
+                <option value="vendor1">Vendor 1</option>
+                <option value="vendor2">Vendor 2</option>
+            </select>
+
+            <!-- Vendor Info muncul kalau sudah pilih vendor -->
+            <button x-show="selectedVendor" type="button" class="bg-[#af9757] text-white px-4 py-2 rounded-lg font-medium transition duration-300 flex items-center justify-center">
+                <i class="fas fa-info-circle mr-2"></i>
+                Vendor Info
+            </button>
+        </div>
+
+        <!-- Tabel muncul kalau sudah pilih vendor -->
+        <div class="overflow-x-auto" x-show="selectedVendor" x-transition>
+            <table class="w-full border border-gray-200 rounded-lg overflow-hidden">
+                <thead class="bg-gray-100">
+                    <tr>
+                        <th class="w-1/5 border px-4 py-3 text-left text-sm font-medium text-gray-700">Select</th>
+                        <th class="w-1/3 border px-4 py-3 text-left text-sm font-medium text-gray-700">Service</th>
+                        <th class="border px-4 py-3 text-left text-sm font-medium text-gray-700">Facility Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="hover:bg-gray-50 transition duration-150">
+                        <td class="border px-4 py-3">
+                            <label class="flex items-center space-x-2">
+                                <input type="radio" name="makeup" checked class="h-4 w-4 text-[#af9757] focus:ring-[#af9757] border-gray-300 rounded">
+                                <span class="text-sm text-gray-700">Select</span>
+                            </label>
+                        </td>
+                        <td class="border px-4 py-3 text-sm text-gray-700">Makeup Package 1</td>
+                        <td class="border px-4 py-3">
+                            <div>
+                                <button type="button" class="text-[#af9757] hover:text-[#9a8450] text-sm font-medium flex items-center">
+                                    <i class="fas fa-chevron-down mr-1"></i>
+                                    Show Details
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+                    <!-- <div class="mt-6 fade-in">
+                        <h5 class="font-bold text-gray-800 text-lg border-b border-gray-200 pb-2"><i class="fas fa-plus-circle mr-2 text-[#af9757]"></i>Paket Tambahan</h5>
+                    </div> -->
+
+                    <!-- Additional Makeup -->
+                    <!-- <div class="mb-6 fade-in">
+                        <div class="mt-2 flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <label class="flex items-center space-x-3">
+                                <input type="checkbox" x-model="additionalMakeupChecked" class="rounded border-gray-300 text-[#af9757] focus:ring-[#af9757] h-5 w-5">
+                                <span class="font-medium text-gray-800"><i class="fas fa-user-plus mr-2"></i>Additional Makeup</span>
+                            </label>
+                            <button x-show="additionalMakeupChecked" @click="showAdditionalMakeupDetails = !showAdditionalMakeupDetails" type="button" class="text-[#af9757] hover:text-[#9a8450]">
+                                <i x-show="!showAdditionalMakeupDetails" class="fas fa-chevron-down"></i>
+                                <i x-show="showAdditionalMakeupDetails" class="fas fa-chevron-up"></i>
+                            </button>
+                        </div>
+
+                        <div x-show="additionalMakeupChecked && showAdditionalMakeupDetails" x-transition class="mt-4">
+                            <div class="overflow-x-auto">
+                                <table class="w-full border border-gray-200 rounded-lg overflow-hidden">
+                                    <thead class="bg-gray-100">
+                                        <tr>
+                                            <th class="w-1/12 border px-4 py-3 text-left text-sm font-medium text-gray-700">Select</th>
+                                            <th class="w-1/4 border px-4 py-3 text-left text-sm font-medium text-gray-700">Number of People</th>
+                                            <th class="border px-4 py-3 text-left text-sm font-medium text-gray-700">Facility Details</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="hover:bg-gray-50 transition duration-150">
+                                            <td class="border px-4 py-3">
+                                                <label class="flex items-center space-x-2">
+                                                    <input type="checkbox" class="rounded border-gray-300 text-[#af9757] focus:ring-[#af9757] h-4 w-4">
+                                                    <span class="text-sm text-gray-700">Package</span>
+                                                </label>
+                                            </td>
+                                            <td class="border px-4 py-3">
+                                                <input type="number" class="border border-gray-300 rounded-lg w-full px-3 py-1.5 text-right focus:ring-2 focus:ring-[#af9757] focus:border-[#af9757] focus:outline-none transition duration-300" min="1" value="1" disabled>
+                                            </td>
+                                            <td class="border px-4 py-3">
+                                                <div>
+                                                    <button type="button" class="text-[#af9757] hover:text-[#9a8450] text-sm font-medium flex items-center">
+                                                        <i class="fas fa-chevron-down mr-1"></i>
+                                                        Show Details
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <!-- Additional Busana -->
+                    <!-- <div class="mb-6 fade-in">
+                        <div class="mt-2 flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <label class="flex items-center space-x-3">
+                                <input type="checkbox" x-model="additionalBusanaChecked" class="rounded border-gray-300 text-[#af9757] focus:ring-[#af9757] h-5 w-5">
+                                <span class="font-medium text-gray-800"><i class="fas fa-tshirt mr-2"></i>Additional Attire</span>
+                            </label>
+                            <button x-show="additionalBusanaChecked" @click="showAdditionalBusanaDetails = !showAdditionalBusanaDetails" type="button" class="text-[#af9757] hover:text-[#9a8450]">
+                                <i x-show="!showAdditionalBusanaDetails" class="fas fa-chevron-down"></i>
+                                <i x-show="showAdditionalBusanaDetails" class="fas fa-chevron-up"></i>
+                            </button>
+                        </div>
+
+                        <div x-show="additionalBusanaChecked && showAdditionalBusanaDetails" x-transition class="mt-4">
+                            <div class="overflow-x-auto">
+                                <table class="w-full border border-gray-200 rounded-lg overflow-hidden">
+                                    <thead class="bg-gray-100">
+                                        <tr>
+                                            <th class="w-1/12 border px-4 py-3 text-left text-sm font-medium text-gray-700">Select</th>
+                                            <th class="w-1/4 border px-4 py-3 text-left text-sm font-medium text-gray-700">Number of People</th>
+                                            <th class="border px-4 py-3 text-left text-sm font-medium text-gray-700">Facility Details</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="hover:bg-gray-50 transition duration-150">
+                                            <td class="border px-4 py-3">
+                                                <label class="flex items-center space-x-2">
+                                                    <input type="checkbox" class="rounded border-gray-300 text-[#af9757] focus:ring-[#af9757] h-4 w-4">
+                                                    <span class="text-sm text-gray-700">Package</span>
+                                                </label>
+                                            </td>
+                                            <td class="border px-4 py-3">
+                                                <input type="number" class="border border-gray-300 rounded-lg w-full px-3 py-1.5 text-right focus:ring-2 focus:ring-[#af9757] focus:border-[#af9757] focus:outline-none transition duration-300" min="1" value="1" disabled>
+                                            </td>
+                                            <td class="border px-4 py-3">
+                                                <div>
+                                                    <button type="button" class="text-[#af9757] hover:text-[#9a8450] text-sm font-medium flex items-center">
+                                                        <i class="fas fa-chevron-down mr-1"></i>
+                                                        Show Details
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <!-- Souvenir -->
+                    <!-- <div class="mb-6 fade-in">
+                        <div class="mt-2 flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                            <label class="flex items-center space-x-3">
+                                <input type="checkbox" x-model="souvenirChecked" class="rounded border-gray-300 text-[#af9757] focus:ring-[#af9757] h-5 w-5">
+                                <span class="font-medium text-gray-800"><i class="fas fa-gift mr-2"></i>Souvenir</span>
+                            </label>
+                            <button x-show="souvenirChecked" @click="showSouvenirDetails = !showSouvenirDetails" type="button" class="text-[#af9757] hover:text-[#9a8450]">
+                                <i x-show="!showSouvenirDetails" class="fas fa-chevron-down"></i>
+                                <i x-show="showSouvenirDetails" class="fas fa-chevron-up"></i>
+                            </button>
+                        </div>
+
+                        <div x-show="souvenirChecked && showSouvenirDetails" x-transition class="mt-4">
+                            <div class="overflow-x-auto">
+                                <table class="w-full border border-gray-200 rounded-lg overflow-hidden">
+                                    <thead class="bg-gray-100">
+                                        <tr>
+                                            <th class="w-1/12 border px-4 py-3 text-left text-sm font-medium text-gray-700">Select</th>
+                                            <th class="w-1/4 border px-4 py-3 text-left text-sm font-medium text-gray-700">Quantity</th>
+                                            <th class="border px-4 py-3 text-left text-sm font-medium text-gray-700">Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="hover:bg-gray-50 transition duration-150">
+                                            <td class="border px-4 py-3">
+                                                <input type="checkbox" class="rounded border-gray-300 text-[#af9757] focus:ring-[#af9757] h-4 w-4">
+                                            </td>
+                                            <td class="border px-4 py-3">
+                                                <input type="number" class="border border-gray-300 rounded-lg w-full px-3 py-1.5 text-right focus:ring-2 focus:ring-[#af9757] focus:border-[#af9757] focus:outline-none transition duration-300" min="1" value="1" disabled>
+                                            </td>
+                                            <td class="border px-4 py-3 text-sm text-gray-700">
+                                                Souvenir description...
+                                                <button type="button" class="ml-3 btn-primary text-white px-3 py-1 rounded-lg text-xs font-medium inline-flex items-center bounce">
+                                                    <i class="fas fa-info-circle mr-1"></i> More Info
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div> -->
+
+                    <!-- Button -->
+                    <button type="submit" class="w-full btn-primary text-white py-3 rounded-lg font-semibold text-lg mt-8 transition duration-300 flex items-center justify-center pulse">
+                        <i class="fas fa-check-circle mr-2"></i>
+                        Hitung Biaya Pernikahan
+                    </button>
+
+                    <!-- Price Summary -->
+                    <div x-show="showPriceSummary" id="totalHarga" x-transition class="mt-6 p-6 rounded-xl price-display animate__animated animate__fadeInUp">
+                        <div class="text-center">
+                            <h2 class="text-xl font-bold text-gray-800 mb-2 title-font">
+                                <i class="fas fa-receipt mr-2 text-[#af9757]"></i>Perkiraan Biaya
+                            </h2>
+                            <div class="text-3xl font-bold text-[#af9757] mb-4" x-text="'Rp ' + totalPrice.toLocaleString('id-ID')"></div>
+                            <p class="text-gray-600 mb-4">Ini adalah perkiraan biaya berdasarkan pilihan Anda.</p>
+                            <a id="waLink" href="" class="whatsapp-btn text-white px-6 py-3 rounded-lg font-medium transition duration-300 inline-flex items-center">
+                                <i class="fab fa-whatsapp mr-2 text-lg"></i>konsultasi via WhatsApp
+                            </a>
+                            <p class="text-gray-500 text-sm mt-3">
+                                <i class="fas fa-info-circle mr-1"></i> Harga akhir dapat bervariasi berdasarkan penyesuaian
+                            </p>
+                        </div>
+                    </div>
+                </form>
+
+                
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Footer -->
+    <footer itemtype="https://schema.org/WPFooter" itemscope="itemscope" id="colophon" role="contentinfo"
+        class="relative overflow-hidden bg-gray-900 text-gray-200 font-sans">
+        <!-- Animated background elements -->
+        <div class="absolute inset-0 overflow-hidden opacity-10">
+            <div class="absolute top-20 left-10 w-8 h-8 rounded-full bg-pink-500 animate-float"
+                style="animation-delay: 0s;">
+            </div>
+            <div class="absolute top-1/3 right-20 w-12 h-12 rounded-full bg-purple-500 animate-float"
+                style="animation-delay: 0.5s;"></div>
+            <div class="absolute bottom-20 left-1/4 w-10 h-10 rounded-full bg-blue-500 animate-float"
+                style="animation-delay: 1s;"></div>
+            <div class="absolute top-1/4 right-1/3 w-6 h-6 rounded-full bg-yellow-500 animate-float"
+                style="animation-delay: 1.5s;"></div>
+        </div>
+
+        <div class="container mx-auto px-6 py-12 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+                <!-- Serenity Logo/Title with Image -->
+                <div class="lg:col-span-2">
+                    <div class="mb-6">
+                        <img width="150" height="150" src="images/logo/logo.png" class="hover-scale" alt="Serenity Logo"
+                            decoding="async">
+                    </div>
+                    <p class="text-lg mb-6">Let's Plan Your Dream Wedding With Serenity!</p>
+                    <p class="text-gray-400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus,
+                        luctus nec
+                        ullamcorper mattis, pulvinar</p>
+                </div>
+
+                <!-- Navigation Section -->
+                <div>
+                    <h2 class="text-xl font-semibold mb-6">Navigation</h2>
+                    <ul class="space-y-3">
+                        <li class="hover-scale"><a href="#" class="hover:text-white transition-colors">About Us</a></li>
+                        <li class="hover-scale"><a href="#" class="hover:text-white transition-colors">Project</a></li>
+                    </ul>
+                </div>
+
+                <!-- Social Media Section -->
+                <div>
+                    <h2 class="text-xl font-semibold mb-6">Connect With Us</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-center hover-scale">
+                            <div
+                                class="w-10 h-10 rounded-full bg-gradient-to-r from-pink-500 to-purple-600 flex items-center justify-center mr-3">
+                                <i class="fab fa-instagram text-white"></i>
+                            </div>
+                            <span>Instagram</span>
+                        </div>
+                        <div class="flex items-center hover-scale">
+                            <div
+                                class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-400 to-blue-600 flex items-center justify-center mr-3">
+                                <i class="fab fa-twitter text-white"></i>
+                            </div>
+                            <span>Twitter</span>
+                        </div>
+                        <div class="flex items-center hover-scale">
+                            <div
+                                class="w-10 h-10 rounded-full bg-gradient-to-r from-red-500 to-red-700 flex items-center justify-center mr-3">
+                                <i class="fab fa-youtube text-white"></i>
+                            </div>
+                            <span>YouTube</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Section -->
+                <div>
+                    <h2 class="text-xl font-semibold mb-6">Contact</h2>
+                    <div class="space-y-4">
+                        <div class="hover-scale">
+                            <a href="mailto:SerenityWedding@com"
+                                class="flex items-center hover:text-green-400 transition-colors">
+                                <i class="fas fa-envelope mr-2 text-green-500"></i> SerenityWedding@com
+                            </a>
+                        </div>
+                        <div class="hover-scale">
+                            <a href="tel:+1234567890" class="flex items-center hover:text-blue-400 transition-colors">
+                                <i class="fas fa-phone-alt mr-2 text-blue-500"></i> +123-456-7890
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Locations Section -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+                <div class="hover-scale p-6 rounded-lg bg-gray-800 bg-opacity-50 transition-all">
+                    <h3 class="text-lg font-semibold text-amber-300 mb-2">Bali</h3>
+                    <p class="text-gray-400">Jl. Sunset Garden No. 18<br>Seminyak, Bali 80361 Indonesia</p>
+                </div>
+
+                <!-- Image Carousel -->
+                <div class="overflow-hidden rounded-lg">
+                    <div class="image-carousel">
+                        <div class="carousel-inner">
+                            <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/22.jpg"
+                                alt="Wedding 1" class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+                            <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/23.jpg"
+                                alt="Wedding 2" class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+                            <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/24.jpg"
+                                alt="Wedding 3" class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+                            <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/25.jpg"
+                                alt="Wedding 4" class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+                            <!-- Duplicate images for seamless looping -->
+                            <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/22.jpg"
+                                alt="Wedding 1" class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+                            <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/23.jpg"
+                                alt="Wedding 2" class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+                            <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/24.jpg"
+                                alt="Wedding 3" class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+                            <img src="https://kitpro.site/serenity/wp-content/uploads/sites/364/2025/04/25.jpg"
+                                alt="Wedding 4" class="w-64 h-48 object-cover mx-2 rounded-lg hover-scale">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+            <!-- Copyright and Links -->
+            <div class="mt-16 pt-6 border-t border-gray-800">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-500 mb-4 md:mb-0">Copyright © 2025 Serenity. All right reserved.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Support</a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        // Mobile Menu Toggle with animation
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('menu-open');
+
+            // Toggle aria-expanded attribute
+            const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+            mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+
+            // Change icon when menu is open
+            const menuIcon = mobileMenuButton.querySelector('svg');
+            if (!isExpanded) {
+                menuIcon.innerHTML =
+                    '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>';
+            } else {
+                menuIcon.innerHTML =
+                    '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+            }
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileLinks = document.querySelectorAll('#mobile-menu a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('menu-open');
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+                mobileMenuButton.querySelector('svg').innerHTML =
+                    '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>';
+            });
+        });
+
+        // Mobile dropdown toggle
+        document.querySelectorAll('.mobile-dropdown-btn').forEach((btn) => {
+            btn.addEventListener('click', function () {
+                const dropdown = this.nextElementSibling;
+                const icon = this.querySelector('svg:last-child');
+
+                dropdown.classList.toggle('open');
+                dropdown.classList.toggle('hidden');
+
+                // Rotasi ikon
+                icon.classList.toggle('rotate-180');
+            });
+        });
+
+
+        // Header Scroll Effect with throttle for performance
+        const header = document.getElementById('header');
+        let lastScroll = 0;
+
+        function throttle(func, limit) {
+            let lastFunc;
+            let lastRan;
+            return function () {
+                const context = this;
+                const args = arguments;
+                if (!lastRan) {
+                    func.apply(context, args);
+                    lastRan = Date.now();
+                } else {
+                    clearTimeout(lastFunc);
+                    lastFunc = setTimeout(function () {
+                        if ((Date.now() - lastRan) >= limit) {
+                            func.apply(context, args);
+                            lastRan = Date.now();
+                        }
+                    }, limit - (Date.now() - lastRan));
+                }
+            }
+        }
+
+        const handleScroll = throttle(() => {
+            const currentScroll = window.scrollY;
+            if (currentScroll <= 0) {
+                header.classList.remove('scrolled');
+                return;
+            }
+
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                // Scroll down
+                header.classList.add('scrolled');
+            } else if (currentScroll < lastScroll) {
+                // Scroll up
+                header.classList.add('scrolled');
+            }
+
+            lastScroll = currentScroll;
+        }, 100);
+
+        window.addEventListener('scroll', handleScroll);
+
+        // Initialize header state
+        if (window.scrollY > 50) {
+            header.classList.add('scrolled');
+        }
+    </script>
+
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: false,
+            offset: 120,
+            easing: 'ease-out-quart'
+        });
+
+        // Counter animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const counters = document.querySelectorAll('.counter');
+            const speed = 200;
+
+            const animateCounters = () => {
+                counters.forEach(counter => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const increment = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + increment);
+                        setTimeout(animateCounters, 1);
+                    } else {
+                        counter.innerText = target;
+                    }
+                });
+            };
+
+            // Trigger when element is in view
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateCounters();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.5
+            });
+
+            counters.forEach(counter => {
+                observer.observe(counter);
+            });
+        });
+    </script>
+
+    <script>
+        // Simple fade-in animation for elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            fadeElements.forEach((el, index) => {
+                setTimeout(() => {
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+            
+            // Add floating animation to emojis
+            const floatingElements = document.querySelectorAll('.floating');
+            floatingElements.forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.5}s`;
+            });
+            
+            // Rotate animation for decorative elements
+            const rotateElements = document.querySelectorAll('.rotate');
+            rotateElements.forEach(el => {
+                el.style.animationDelay = '1s';
+            });
+        });
+    </script>
+
+    <!-- harga dan kirim wa -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const form = document.querySelector("form");
+            const totalHargaDisplay = document.getElementById("totalHarga");
+            const totalHargaText = document.getElementById("totalHargaText");
+            const weddingServiceRadios = document.querySelectorAll('input[name="wo"]');
+            const vendorSelect = document.getElementById("oksana"); // Vendor Wedding Organizer
+
+            // wedding service
+            const woCheckbox = document.getElementById("weddingservice"); 
+            const woVendorSelect = document.getElementById("oksana");
+
+            // makeup
+            const makeupCheckbox = document.getElementById("makeup");
+            const vendorSelectMakeup = document.getElementById("mackeup"); // Vendor Makeup
+
+            // dekor
+            const decorationCheckbox = document.getElementById("decorationCheckbox");
+            const decorationVendorSelect = document.getElementById("decorationVendor");
+
+            // catering
+            const cateringCheckbox = document.getElementById("cateringCheckbox");
+            const cateringVendorSelect = document.getElementById("cateringVendor");
+
+            // venue
+            const venueCheckbox = document.getElementById("venueCheckbox");
+            const venueVendorSelect = document.getElementById("venueVendor");
+
+            // dokumentasi
+            const fotoCheckbox = document.getElementById("fotoCheckbox");
+            const fotoVendorSelect = document.getElementById("fotoVendor");
+
+            // musik
+            const musikCheckbox = document.getElementById("musikCheckbox");
+            const musikVendorSelect = document.getElementById("musikVendor");
+
+            // mc
+            const mcCheckbox = document.getElementById("mcCheckbox");
+            const mcVendorSelect = document.getElementById("mcVendor");
+
+            // upacara adat
+            const upacaraCheckbox = document.getElementById("upacaraCheckbox");
+            const upacaraVendorSelect = document.getElementById("upacaraVendor");
+
+            // siraman
+            const siramanCheckbox = document.getElementById("siramanCheckbox");
+            const siramanVendorSelect = document.getElementById("siramanVendor");
+
+            // lamaran
+            const lamaranCheckbox = document.getElementById("lamaranCheckbox");
+            const lamaranVendorSelect = document.getElementById("lamaranVendor");
+
+            // tambahan
+            // makeup tambahan
+            const makeupaddCheckbox = document.getElementById("makeupaddCheckbox");
+            const makeupaddVendorSelect = document.getElementById("vendorDropdownMakeupadd");
+            const makeupaddAmount = document.getElementById("amount");
+
+            // busana tambahan
+            const busanaCheckbox = document.getElementById("busanaCheckbox");
+            const busanaVendorSelect = document.getElementById("vendorDropdownBusana");
+            const busanaAmount = document.getElementById("amountBusana");
+
+            // suvenir tambahan
+            const suvenirCheckbox = document.getElementById("suvenirCheckbox");
+            const suvenirVendorSelect = document.getElementById("vendorDropdownSuvenir");
+
+            // undangan tambahan
+            const undanganCheckbox = document.getElementById("undanganCheckbox");
+            const undanganVendorSelect = document.getElementById("vendorDropdownUndangan");
+
+            // undangan tambahan
+            const hantaranCheckbox = document.getElementById("hantaranCheckbox");
+            const hantaranVendorSelect = document.getElementById("vendorDropdownHantaran");
+            
+
+            const waLink = document.getElementById("waLink");
+
+            function getSelectedWo() {
+                const selectedRadio = document.querySelector("input[name='wo']:checked");
+                if (selectedRadio) {
+                    return selectedRadio.value; // Ambil value dari radio yang dipilih
+                }
+                return null; // Jika tidak ada radio yang dipilih
+            }
+
+            // Fungsi untuk mendapatkan layanan dekorasi yang dipilih
+            function getSelectedDecoration() {
+                const selectedRadio = document.querySelector("input[name='decor']:checked");
+                if (selectedRadio) {
+                    return selectedRadio.value; // Ambil value dari radio yang dipilih
+                }
+                return null; // Jika tidak ada radio yang dipilih
+            }
+
+            // Fungsi untuk mendapatkan layanan venue yang dipilih
+            function getSelectedVenue() {
+                const selectedRadio = document.querySelector("input[name='venue']:checked");
+                if (selectedRadio) {
+                    return selectedRadio.value; // Ambil value dari radio yang dipilih
+                }
+                return null; // Jika tidak ada radio yang dipilih
+            }
+
+            // Fungsi untuk mendapatkan layanan dokumentasi yang dipilih
+            function getSelectedFoto() {
+                const selectedRadio = document.querySelector("input[name='foto']:checked");
+                if (selectedRadio) {
+                    return selectedRadio.value; // Ambil value dari radio yang dipilih
+                }
+                return null; // Jika tidak ada radio yang dipilih
+            }
+
+            // Fungsi untuk mendapatkan layanan musik yang dipilih
+            function getSelectedMusik() {
+                const selectedRadio = document.querySelector("input[name='musik']:checked");
+                if (selectedRadio) {
+                    return selectedRadio.value; // Ambil value dari radio yang dipilih
+                }
+                return null; // Jika tidak ada radio yang dipilih
+            }
+
+            // Fungsi untuk mendapatkan layanan mc yang dipilih
+            function getSelectedMc() {
+                const selectedRadio = document.querySelector("input[name='mc']:checked");
+                if (selectedRadio) {
+                    return selectedRadio.value; // Ambil value dari radio yang dipilih
+                }
+                return null; // Jika tidak ada radio yang dipilih
+            }
+
+            // Fungsi untuk mendapatkan layanan upacara adat yang dipilih
+            function getSelectedUpacara() {
+                const selectedRadio = document.querySelector("input[name='upacaraadat']:checked");
+                if (selectedRadio) {
+                    return selectedRadio.value; // Ambil value dari radio yang dipilih
+                }
+                return null; // Jika tidak ada radio yang dipilih
+            }
+
+            // Fungsi untuk mendapatkan layanan siraman yang dipilih
+            function getSelectedSiraman() {
+                const selectedRadio = document.querySelector("input[name='siraman']:checked");
+                if (selectedRadio) {
+                    return selectedRadio.value; // Ambil value dari radio yang dipilih
+                }
+                return null; // Jika tidak ada radio yang dipilih
+            }
+
+            // Fungsi untuk mendapatkan layanan lamaran yang dipilih
+            function getSelectedLamaran() {
+                const selectedRadio = document.querySelector("input[name='lamaran']:checked");
+                if (selectedRadio) {
+                    return selectedRadio.value; // Ambil value dari radio yang dipilih
+                }
+                return null; // Jika tidak ada radio yang dipilih
+            }
+
+            // Fungsi untuk mendapatkan catering yang dipilih
+            function getSelectedCatering() {
+                const selectedRadio = document.querySelector("input[name='catering']:checked");
+                if (selectedRadio) {
+                    // Ambil nama paket dari data-nama-paket
+                    const cateringName = selectedRadio.getAttribute("data-nama-paket");
+
+                    // Ambil jumlah pax berdasarkan ID radio yang dipilih
+                    const selectedRadioId = selectedRadio.id;
+                    const amountCateringInput = document.querySelector(`#amount-${selectedRadioId}`);
+                    if (amountCateringInput) {
+                        const amountCatering = parseInt(amountCateringInput.value || "0", 10); // Ambil nilai input
+                        return {
+                            catering: cateringName, // Mengembalikan nama paket catering
+                            amount: amountCatering // Mengembalikan jumlah catering yang dipilih
+                        };
+                    } else {
+                        console.error(`Input jumlah catering untuk ID "${selectedRadioId}" tidak ditemukan.`);
+                    }
+                }
+                return null; // Jika tidak ada radio yang dipilih
+            }
+
+
+            // Fungsi untuk menghitung total harga
+            function calculateTotal() {
+
+                let total = 0;
+                // let isValid = true;
+
+                // Ambil harga Wedding Service
+                const selectedWeddingService = Array.from(weddingServiceRadios).find(radio => radio.checked);
+                if (selectedWeddingService) {
+                    const label = document.querySelector(`label[for="${selectedWeddingService.id}"]`);
+                    const hargaWeddingService = parseInt(label.getAttribute("harga-wo") || "0", 10);
+                    total += hargaWeddingService;
+                }
+
+                // Menghitung total jika Makeup & Busana dipilih
+                if (makeupCheckbox.checked && vendorSelectMakeup.value) {
+                    const selectedOption = vendorSelectMakeup.options[vendorSelectMakeup.selectedIndex];
+                    const hargaMakeup = parseInt(selectedOption.dataset.harga || "0", 10);
+                    total += hargaMakeup;
+                }
+
+                // Menghitung total jika Decoration dipilih
+                if (decorationCheckbox.checked) {
+                    // Mengetahui dekorasi yang dipilih
+                    const selectedDecoration = getSelectedDecoration();
+                    if (selectedDecoration) {
+                        // Ambil harga dekorasi berdasarkan radio button yang dipilih
+                        const selectedRadio = document.querySelector("input[name='decor']:checked");
+                        const hargaDecoration = parseInt(selectedRadio.dataset.harga || "0", 10);
+                        total += hargaDecoration;
+                    }
+                }
+
+                // Hitung Catering
+                if (cateringCheckbox.checked) {
+                    const SelectedCatering = getSelectedCatering();
+                    if (SelectedCatering) {
+                        // Ambil harga catering berdasarkan radio button yang dipilih
+                        const selectedRadio = document.querySelector("input[name='catering']:checked");
+                        const hargaCatering = parseInt(selectedRadio.dataset.hargaCatering || "0", 10);
+
+                        // Ambil jumlah catering dari input number
+                        const amountCatering = parseInt(SelectedCatering.amount || "0", 10);
+
+                        total += hargaCatering * amountCatering;
+                    }
+                } 
+
+                // Menghitung total jika venue dipilih
+                if (venueCheckbox.checked) {
+                    // Mengetahui venue yang dipilih
+                    const SelectedVenue = getSelectedVenue();
+                    if (SelectedVenue) {
+                        // Ambil harga venue berdasarkan radio button yang dipilih
+                        const selectedRadio = document.querySelector("input[name='venue']:checked");
+                        const hargaVenue = parseInt(selectedRadio.dataset.hargaVenue || "0", 10);
+                        total += hargaVenue;
+                    }
+                }
+
+                // Menghitung total jika foto dipilih
+                if (fotoCheckbox.checked) {
+                    // Mengetahui foto yang dipilih
+                    const SelectedFoto = getSelectedFoto();
+                    if (SelectedFoto) {
+                        // Ambil harga venue berdasarkan radio button yang dipilih
+                        const selectedRadio = document.querySelector("input[name='foto']:checked");
+                        const hargaFoto = parseInt(selectedRadio.dataset.hargaFoto || "0", 10);
+                        total += hargaFoto;
+                    }
+                }
+
+                // Menghitung total jika musik dipilih
+                if (musikCheckbox.checked) {
+                    // Mengetahui musik yang dipilih
+                    const SelectedMusik = getSelectedMusik();
+                    if (SelectedMusik) {
+                        // Ambil harga musik berdasarkan radio button yang dipilih
+                        const selectedRadio = document.querySelector("input[name='musik']:checked");
+                        const hargaMusik = parseInt(selectedRadio.dataset.hargaMusik || "0", 10);
+                        total += hargaMusik;
+                    }
+                }
+
+                // Menghitung total jika mc dipilih
+                if (mcCheckbox.checked) {
+                    // Mengetahui musik yang dipilih
+                    const SelectedMc = getSelectedMc();
+                    if (SelectedMc) {
+                        // Ambil harga musik berdasarkan radio button yang dipilih
+                        const selectedRadio = document.querySelector("input[name='mc']:checked");
+                        const hargaMc = parseInt(selectedRadio.dataset.hargaMc || "0", 10);
+                        total += hargaMc;
+                    }
+                }
+
+                // Menghitung total jika upacara adat dipilih
+                if (upacaraCheckbox.checked) {
+                    // Mengetahui musik yang dipilih
+                    const SelectedUpacara = getSelectedUpacara();
+                    if (SelectedUpacara) {
+                        // Ambil harga musik berdasarkan radio button yang dipilih
+                        const selectedRadio = document.querySelector("input[name='upacaraadat']:checked");
+                        const hargaUpacara = parseInt(selectedRadio.dataset.hargaUpacara || "0", 10);
+                        total += hargaUpacara;
+                    }
+                }
+
+                // Menghitung total jika siraman dipilih
+                if (siramanCheckbox.checked) {
+                    // Mengetahui musik yang dipilih
+                    const SelectedSiraman = getSelectedSiraman();
+                    if (SelectedSiraman) {
+                        // Ambil harga siraman berdasarkan radio button yang dipilih
+                        const selectedRadio = document.querySelector("input[name='siraman']:checked");
+                        const hargaSiraman = parseInt(selectedRadio.dataset.hargaSiraman || "0", 10);
+                        total += hargaSiraman;
+                    }
+                }
+
+                // Menghitung total jika lamaran dipilih
+                if (lamaranCheckbox.checked) {
+                    // Mengetahui musik yang dipilih
+                    const SelectedLamaran = getSelectedLamaran();
+                    if (SelectedLamaran) {
+                        // Ambil harga siraman berdasarkan radio button yang dipilih
+                        const selectedRadio = document.querySelector("input[name='lamaran']:checked");
+                        const hargaLamaran = parseInt(selectedRadio.dataset.hargaLamaran || "0", 10);
+                        total += hargaLamaran;
+                    }
+                }
+
+                // Menghitung total jika makeup tambahan dipilih
+                if (makeupaddCheckbox.checked) {
+                    // Ambil semua layanan makeup tambahan yang diceklis
+                    const makeupCheckboxes = document.querySelectorAll("input[name='makeuptambahan']:checked");
+
+                    // Iterasi setiap layanan makeup tambahan
+                    makeupCheckboxes.forEach((checkbox) => {
+                        const targetInputId = checkbox.dataset.target; // Ambil ID input jumlah orang
+                        const jumlahOrangInput = document.getElementById(targetInputId); // Ambil elemen input jumlah orang
+
+                        if (jumlahOrangInput) {
+                            const jumlahOrang = parseInt(jumlahOrangInput.value || "0", 10); // Ambil jumlah orang
+                            const hargaMakeup = parseInt(checkbox.dataset.price || "0", 10); // Ambil harga layanan
+
+                            // Hitung total untuk layanan ini
+                            const subtotalMakeup = jumlahOrang * hargaMakeup;
+
+                            // Tambahkan ke total keseluruhan
+                            total += subtotalMakeup;
+                        }
+                    });
+                }
+
+                // Menghitung total jika busana tambahan dipilih
+                if (busanaCheckbox.checked) {
+                    // Ambil semua layanan makeup tambahan yang diceklis
+                    const busanaCheckboxes = document.querySelectorAll("input[name='busana']:checked");
+
+                    // Iterasi setiap layanan makeup tambahan
+                    busanaCheckboxes.forEach((checkbox) => {
+                        const targetInputId = checkbox.dataset.target; // Ambil ID input jumlah orang
+                        const jumlahOrangInput = document.getElementById(targetInputId); // Ambil elemen input jumlah orang
+
+                        if (jumlahOrangInput) {
+                            const jumlahOrang = parseInt(jumlahOrangInput.value || "0", 10); // Ambil jumlah orang
+                            const hargaBusana = parseInt(checkbox.dataset.money || "0", 10); // Ambil harga layanan
+
+                            // Hitung total untuk layanan ini
+                            const subtotalBusana = jumlahOrang * hargaBusana;
+
+                            // Tambahkan ke total keseluruhan
+                            total += subtotalBusana;
+                        }
+                    });
+                }
+
+                // Menghitung total jika suvenir tambahan dipilih
+                if (suvenirCheckbox.checked) {
+                    // Ambil semua layanan makeup tambahan yang diceklis
+                    const suvenirCheckboxes = document.querySelectorAll("input[name='suvenir']:checked");
+
+                    // Iterasi setiap layanan makeup tambahan
+                    suvenirCheckboxes.forEach((checkbox) => {
+                        const targetInputId = checkbox.dataset.target; // Ambil ID input jumlah orang
+                        const jumlahOrangInput = document.getElementById(targetInputId); // Ambil elemen input jumlah orang
+
+                        if (jumlahOrangInput) {
+                            const jumlahOrang = parseInt(jumlahOrangInput.value || "0", 10); // Ambil jumlah orang
+                            const hargaSuvenir = parseInt(checkbox.dataset.uang || "0", 10); // Ambil harga layanan
+
+                            // Hitung total untuk layanan ini
+                            const subtotalSuvenir = jumlahOrang * hargaSuvenir;
+
+                            // Tambahkan ke total keseluruhan
+                            total += subtotalSuvenir;
+                        }
+                    });
+                }
+
+                // Menghitung total jika suvenir tambahan dipilih
+                if (undanganCheckbox.checked) {
+                    // Ambil semua layanan makeup tambahan yang diceklis
+                    const undanganCheckboxes = document.querySelectorAll("input[name='undangan']:checked");
+
+                    // Iterasi setiap layanan makeup tambahan
+                    undanganCheckboxes.forEach((checkbox) => {
+                        const targetInputId = checkbox.dataset.target; // Ambil ID input jumlah orang
+                        const jumlahOrangInput = document.getElementById(targetInputId); // Ambil elemen input jumlah orang
+
+                        if (jumlahOrangInput) {
+                            const jumlahOrang = parseInt(jumlahOrangInput.value || "0", 10); // Ambil jumlah orang
+                            const hargaUndangan = parseInt(checkbox.dataset.uang || "0", 10); // Ambil harga layanan
+
+                            // Hitung total untuk layanan ini
+                            const subtotalUndangan = jumlahOrang * hargaUndangan;
+
+                            // Tambahkan ke total keseluruhan
+                            total += subtotalUndangan;
+                        }
+                    });
+                }
+
+                // Menghitung total jika hantaran tambahan dipilih
+                if (hantaranCheckbox.checked) {
+                    // Ambil semua layanan makeup tambahan yang diceklis
+                    const hantaranCheckboxes = document.querySelectorAll("input[name='hantaran']:checked");
+
+                    // Iterasi setiap layanan makeup tambahan
+                    hantaranCheckboxes.forEach((checkbox) => {
+                        const targetInputId = checkbox.dataset.target; // Ambil ID input jumlah orang
+                        const jumlahOrangInput = document.getElementById(targetInputId); // Ambil elemen input jumlah orang
+
+                        if (jumlahOrangInput) {
+                            const jumlahOrang = parseInt(jumlahOrangInput.value || "0", 10); // Ambil jumlah orang
+                            const hargaHantaran = parseInt(checkbox.dataset.money || "0", 10); // Ambil harga layanan
+
+                            // Hitung total untuk layanan ini
+                            const subtotalHantaran = jumlahOrang * hargaHantaran;
+
+                            // Tambahkan ke total keseluruhan
+                            total += subtotalHantaran;
+                        }
+                    });
+                }
+
+               
+
+                return total;
+            }
+
+
+
+            form.addEventListener("submit", function(event) {
+                event.preventDefault(); // Mencegah pengiriman form selama testing
+
+                // Validasi setiap input secara individu
+                let valid = true;
+
+                // validasi nama
+                const name = document.getElementById("name").value;
+                if (!name.trim()) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Nama Harus Diisi",
+                        text: "Nama tidak boleh kosong",
+                    });
+                    valid = false;
+                }
+
+                // validasi notelepon
+                const phone = document.getElementById("Nomorhp").value;
+                if (!phone.trim()) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Nomor HP Harus Diisi",
+                        text: "Nomor HP tidak boleh kosong",
+                    });
+                    valid = false;
+                } else if (!/^08\d{10,}$/.test(phone)) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Nomor HP Tidak Valid",
+                    });
+                    valid = false;
+                }
+
+                // validasi alamat
+                const address = document.getElementById("address").value;
+                if (!address.trim()) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Alamat Harus Diisi",
+                        text: "Alamat tidak boleh kosong",
+                    });
+                    valid = false;
+                }
+
+                // validasi tamu
+                const guests = document.getElementById("tamu").value;
+                if (!guests.trim()) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Jumlah Tamu Harus Diisi",
+                        text: "Jumlah tamu tidak boleh kosong",
+                    });
+                    valid = false;
+                } else if (parseInt(guests, 10) < 100) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Jumlah Tamu Tidak Valid",
+                        text: "Jumlah tamu minimal adalah 100.",
+                    });
+                    valid = false;
+                }
+
+                // validasi lokasi
+                const location = document.getElementById("lokasi").value;
+                if (!location.trim()) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Lokasi Harus Diisi",
+                        text: "Lokasi tidak boleh kosong",
+                    });
+                    valid = false;
+                }
+
+                // Validasi tanggal pernikahan
+                const weddingDateInput = document.getElementById("Tanggal").value;
+                const isWeddingDateFixed = document.getElementById("tanggalBelumFix").checked;
+                if (!weddingDateInput && !isWeddingDateFixed) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Tanggal Pernikahan Harus Diisi",
+                        text: "Silakan pilih tanggal pernikahan atau tandai 'Tanggal Belum Fix'",
+                    });
+                    valid = false;
+                }
+
+                // Validasi layanan
+                const selectedServices = [];
+
+                // validasi jika makeup di ceklis
+                if (makeupCheckbox.checked) {
+                    selectedServices.push("Makeup dan Busana");
+                    const makeupService = vendorSelectMakeup.value;
+                    if (!makeupService) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Pilih Layanan Makeup",
+                            text: "Anda harus memilih layanan makeup jika memilih makeup.",
+                        });
+                        valid = false;
+                    }
+                }
+
+                // // validasi jika dekor di ceklis
+                if (decorationCheckbox.checked) {
+                    selectedServices.push("Decoration");
+                    // Validasi pilihan dekorasi
+                    const decorationService = decorationVendorSelect.value;
+                    if (!decorationService) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Pilih Layanan Dekorasi",
+                            text: "Anda harus memilih layanan dekorasi jika memilih dekorasi.",
+                        });
+                        valid = false;
+                    }
+                }
+
+                // // validasi jika catering di ceklis
+                if (cateringCheckbox.checked) {
+                    selectedServices.push("Catering");
+                    // Validasi pilihan dekorasi
+                    const cateringService = cateringVendorSelect.value;
+                    if (!cateringService) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Pilih Layanan Catering",
+                            text: "Anda harus memilih layanan catering jika menceklisnya.",
+                        });
+                        valid = false;
+                    }
+                }
+
+                // validasi jika venue di ceklis
+                if (venueCheckbox.checked) {
+                    selectedServices.push("Venue");
+                    // Validasi pilihan venue
+                    const venueService = venueVendorSelect.value;
+                    if (!venueService) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Pilih Layanan Venue",
+                            text: "Anda harus memilih layanan venue jika menceklis venue.",
+                        });
+                        valid = false;
+                    }
+                }
+
+                // validasi jika foto di ceklis
+                if (fotoCheckbox.checked) {
+                    selectedServices.push("Dokumentasi");
+                    // Validasi pilihan dekorasi
+                    const fotoService = fotoVendorSelect.value;
+                    if (!fotoService) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Pilih Layanan Dokumentasi",
+                            text: "Anda harus memilih layanan foto jika memilih foto.",
+                        });
+                        valid = false;
+                    }
+                }
+
+                // validasi jika musik di ceklis
+                if (musikCheckbox.checked) {
+                    selectedServices.push("Musik");
+                    // Validasi pilihan dekorasi
+                    const musikService = musikVendorSelect.value;
+                    if (!musikService) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Pilih Layanan Entertainment",
+                            text: "Anda harus memilih layanan Entertainment jika menceklisnya.",
+                        });
+                        valid = false;
+                    }
+                }
+
+                // validasi jika mc di ceklis
+                if (mcCheckbox.checked) {
+                    selectedServices.push("Mc");
+                    // Validasi pilihan dekorasi
+                    const mcService = mcVendorSelect.value;
+                    if (!mcService) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Pilih Layanan MC",
+                            text: "Anda harus memilih layanan MC jika menceklisnya.",
+                        });
+                        valid = false;
+                    }
+                }
+
+                // validasi jika upacara adat di ceklis
+                if (upacaraCheckbox.checked) {
+                    selectedServices.push("Upacara Adat");
+                    // Validasi pilihan dekorasi
+                    const upacaraService = upacaraVendorSelect.value;
+                    if (!upacaraService) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Pilih Layanan Upacara Adat",
+                            text: "Anda harus memilih layanan Upacara Adat jika menceklisnya.",
+                        });
+                        valid = false;
+                    }
+                }
+
+                // validasi jika makeup tambahan di ceklis
+                if (makeupaddCheckbox.checked) {
+                    selectedServices.push("Makeup Tambahan");
+                    // Validasi pilihan dekorasi
+                    const makeupaddOptions = document.querySelectorAll("input[name='makeuptambahan']");
+                    const isMakeupSelected = Array.from(makeupaddOptions).some(option => option.checked);
+                    if (!isMakeupSelected) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Pilih Layanan Makeup Tambahan",
+                            text: "Anda harus memilih layanan Makeup Tambahan jika menceklisnya.",
+                        });
+                        valid = false;
+                    }
+                }
+
+                // validasi jika busana tambahan di ceklis
+                if (busanaCheckbox.checked) {
+                    selectedServices.push("Busana Tambahan");
+                    // Validasi pilihan dekorasi
+                    const busanaOptions = document.querySelectorAll("input[name='busana']");
+                    const isBusanaSelected = Array.from(busanaOptions).some(option => option.checked);
+                    if (!isBusanaSelected) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Pilih Layanan Busana Tambahan",
+                            text: "Anda harus memilih layanan Busana jika menceklisnya.",
+                        });
+                        valid = false;
+                    }
+                }
+
+                // validasi jika suvenir tambahan diceklis
+                if (suvenirCheckbox.checked) {
+                    selectedServices.push("Suvenir Tambahan");
+                    // Validasi pilihan dekorasi
+                    const suvenirOptions = document.querySelectorAll("input[name='suvenir']");
+                    const isSuvenirSelected = Array.from(suvenirOptions).some(option => option.checked);
+                    if (!isSuvenirSelected) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Pilih Layanan Suvenir Tambahan",
+                            text: "Anda harus memilih layanan Suvenir jika menceklisnya.",
+                        });
+                        valid = false;
+                    }
+                }
+
+                // validasi jika undangan tambahan diceklis
+                if (undanganCheckbox.checked) {
+                    selectedServices.push("Undangan Tambahan");
+                    // Validasi pilihan undangan
+                    const undanganOptions = document.querySelectorAll("input[name='undangan']");
+                    const isUndanganSelected = Array.from(undanganOptions).some(option => option.checked);
+                    if (!isUndanganSelected) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Pilih Layanan Undangan Tambahan",
+                            text: "Anda harus memilih layanan Undangan jika menceklisnya.",
+                        });
+                        valid = false;
+                    }
+                }
+
+                // validasi jika hantaran tambahan diceklis
+                if (hantaranCheckbox.checked) {
+                    selectedServices.push("Hantaran Tambahan");
+                    // Validasi pilihan undangan
+                    const hantaranOptions = document.querySelectorAll("input[name='hantaran']");
+                    const isHantaranSelected = Array.from(hantaranOptions).some(option => option.checked);
+                    if (!isHantaranSelected) {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Pilih Layanan Hantaran Tambahan",
+                            text: "Anda harus memilih layanan Hantaran jika menceklisnya.",
+                        });
+                        valid = false;
+                    }
+                }
+                
+
+                // validasi agar user harus memilih 2 layanan
+                if (selectedServices.length < 1) {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Pilih Minimal 2 Layanan",
+                        text: "Anda harus memilih minimal dua layanan.",
+                    });
+                    valid = false;
+                }
+
+                if (!valid) return; // Jika ada input yang kosong, jangan lanjutkan
+
+                // Menghitung total jika semua data terisi
+                const total = calculateTotal();
+                totalHargaText.textContent = `Total Harga: Rp ${total.toLocaleString()}`;
+                totalHargaDisplay.style.display = "block";
+
+                // Menyiapkan data paket
+                let packages = [];
+
+                // Wedding Planner
+                // Wedding Planner
+                if (woCheckbox.checked) {
+                    const selectedWoVendor = woVendorSelect.options[woVendorSelect.selectedIndex];
+                    const vendorNameWo = selectedWoVendor ? selectedWoVendor.text : "Vendor tidak dipilih";
+                    const selectedServices = getSelectedWo();
+                    packages.push(`Wedding Service: ${vendorNameWo} => ${selectedServices}`);
+                }
+
+                // Makeup & Busana kirim wa
+                if (makeupCheckbox.checked) {
+                    const selectedVendor = vendorSelectMakeup.options[vendorSelectMakeup.selectedIndex];
+                    const vendorNameMakeup = selectedVendor ? selectedVendor.text : "Vendor tidak dipilih";
+                    packages.push(`Makeup dan Busana: ${vendorNameMakeup} => PAKET MAKE UP DAN BUSANA AKAD DAN RESEPSI`);
+                }
+                
+
+                // Decoration kirim pilihan ke wa
+                if (decorationCheckbox.checked) {
+                    const selectedDecorationVendor = decorationVendorSelect.options[decorationVendorSelect.selectedIndex];
+                    const vendorNameDecoration = selectedDecorationVendor ? selectedDecorationVendor.text : "Vendor tidak dipilih";
+                    const selectedServices = getSelectedDecoration();
+                    packages.push(`Decoration: ${vendorNameDecoration} => ${selectedServices}`);
+                }
+
+                // venue kirim pilihan ke wa
+                if (venueCheckbox.checked) {
+                    const selectedVenueVendor = venueVendorSelect.options[venueVendorSelect.selectedIndex];
+                    const vendorNameVenue = selectedVenueVendor ? selectedVenueVendor.text : "Vendor tidak dipilih";
+                    const selectedVenue = getSelectedVenue();
+                    packages.push(`Venue: ${vendorNameVenue} => ${selectedVenue}`);
+                }
+
+                // foto kirim pilihan ke wa
+                if (fotoCheckbox.checked) {
+                    const selectedFotoVendor = fotoVendorSelect.options[fotoVendorSelect.selectedIndex];
+                    const vendorNameFoto = selectedFotoVendor ? selectedFotoVendor.text : "Vendor tidak dipilih";
+                    const selectedFoto = getSelectedFoto();
+                    packages.push(`Dokumentasi: ${vendorNameFoto} => ${selectedFoto}`);
+                }
+
+                // musik kirim pilihan ke wa
+                if (musikCheckbox.checked) {
+                    const selectedMusikVendor = musikVendorSelect.options[musikVendorSelect.selectedIndex];
+                    const vendorNameMusik = selectedMusikVendor ? selectedMusikVendor.text : "Vendor tidak dipilih";
+                    const selectedMusik = getSelectedMusik();
+                    packages.push(`Entertainment: ${vendorNameMusik} => ${selectedMusik}`);
+                }
+
+                // mc kirim pilihan ke wa
+                if (mcCheckbox.checked) {
+                    const selectedMcVendor = mcVendorSelect.options[mcVendorSelect.selectedIndex];
+                    const vendorNameMc = selectedMcVendor ? selectedMcVendor.text : "Vendor tidak dipilih";
+                    const selectedMc = getSelectedMc();
+                    packages.push(`Master Of Caremony: ${vendorNameMc} => ${selectedMc}`);
+                }
+
+                // upacara adat kirim pilihan ke wa
+                if (upacaraCheckbox.checked) {
+                    const selectedUpacaraVendor = upacaraVendorSelect.options[upacaraVendorSelect.selectedIndex];
+                    const vendorNameUpacara = selectedUpacaraVendor ? selectedUpacaraVendor.text : "Vendor tidak dipilih";
+                    const selectedUpacara = getSelectedUpacara();
+                    packages.push(`Upacara Adat: ${vendorNameUpacara} => ${selectedUpacara}`);
+                }
+
+                // siraman kirim pilihan ke wa
+                if (siramanCheckbox.checked) {
+                    const selectedSiramanVendor = siramanVendorSelect.options[siramanVendorSelect.selectedIndex];
+                    const vendorNameSiraman = selectedSiramanVendor ? selectedSiramanVendor.text : "Vendor tidak dipilih";
+                    const selectedSiraman = getSelectedSiraman();
+                    packages.push(`Siraman: ${vendorNameSiraman} => ${selectedSiraman}`);
+                }
+
+                // lamaran kirim pilihan ke wa
+                if (lamaranCheckbox.checked) {
+                    const selectedLamaranVendor = lamaranVendorSelect.options[lamaranVendorSelect.selectedIndex];
+                    const vendorNameLamaran = selectedLamaranVendor ? selectedLamaranVendor.text : "Vendor tidak dipilih";
+                    const selectedLamaran = getSelectedLamaran();
+                    packages.push(`Lamaran: ${vendorNameLamaran} => ${selectedLamaran}`);
+                }
+
+                // tambahan
+                // makeup tambahan kirim pilihan ke wa
+                if (makeupaddCheckbox.checked) {
+                    const makeupaddOptions = document.querySelectorAll("input[name='makeuptambahan']:checked");
+                    let makeupDetails = []; // Untuk menyimpan rincian layanan makeup
+
+                    makeupaddOptions.forEach(option => {
+                        const layanan = option.value; // Nama layanan (e.g., "Makeup Keluarga")
+                        const jumlahOrangInputId = option.dataset.target; // ID input jumlah orang
+                        const jumlahOrangInput = document.getElementById(jumlahOrangInputId);
+
+                        // Pastikan input jumlah orang ditemukan dan memiliki nilai
+                        const jumlahOrang = jumlahOrangInput ? parseInt(jumlahOrangInput.value, 10) : 0;
+                        if (jumlahOrang > 0) {
+                            makeupDetails.push(`${layanan} (${jumlahOrang} orang)`);
+                        }
+                    });
+
+                    // Gabungkan semua rincian makeup tambahan menjadi satu string
+                    if (makeupDetails.length > 0) {
+                        packages.push(`Makeup Tambahan: ${makeupDetails.join(", ")}`);
+                    }
+                }
+
+                // busana tambahan kirim pilihan ke wa
+                if (busanaCheckbox.checked) {
+                    const busanaOptions = document.querySelectorAll("input[name='busana']:checked");
+                    let busanaDetails = []; // Untuk menyimpan rincian layanan makeup
+
+                    busanaOptions.forEach(option => {
+                        const layanan = option.value; // Nama layanan (e.g., "Makeup Keluarga")
+                        const jumlahOrangInputId = option.dataset.target; // ID input jumlah orang
+                        const jumlahOrangInput = document.getElementById(jumlahOrangInputId);
+
+                        // Pastikan input jumlah orang ditemukan dan memiliki nilai
+                        const jumlahOrang = jumlahOrangInput ? parseInt(jumlahOrangInput.value, 10) : 0;
+                        if (jumlahOrang > 0) {
+                            busanaDetails.push(`${layanan} (${jumlahOrang} orang)`);
+                        }
+                    });
+
+                    // Gabungkan semua rincian makeup tambahan menjadi satu string
+                    if (busanaDetails.length > 0) {
+                        packages.push(`Busana Tambahan: ${busanaDetails.join(", ")}`);
+                    }
+                }
+
+                // suvenir tambahan kirim pilihan ke wa
+                if (suvenirCheckbox.checked) {
+                    const suvenirOptions = document.querySelectorAll("input[name='suvenir']:checked");
+                    let suvenirDetails = []; // Untuk menyimpan rincian layanan makeup
+
+                    suvenirOptions.forEach(option => {
+                        const layanan = option.value; // Nama layanan (e.g., "Makeup Keluarga")
+                        const jumlahOrangInputId = option.dataset.target; // ID input jumlah orang
+                        const jumlahOrangInput = document.getElementById(jumlahOrangInputId);
+
+                        // Pastikan input jumlah orang ditemukan dan memiliki nilai
+                        const jumlahOrang = jumlahOrangInput ? parseInt(jumlahOrangInput.value, 10) : 0;
+                        if (jumlahOrang > 0) {
+                            suvenirDetails.push(`${layanan} (${jumlahOrang} pcs)`);
+                        }
+                    });
+
+                    // Gabungkan semua rincian makeup tambahan menjadi satu string
+                    if (suvenirDetails.length > 0) {
+                        packages.push(`Suvenir Tambahan: ${suvenirDetails.join(", ")}`);
+                    }
+                }
+
+                // undangan tambahan kirim pilihan ke wa
+                if (undanganCheckbox.checked) {
+                    const undanganOptions = document.querySelectorAll("input[name='undangan']:checked");
+                    let undanganDetails = []; // Untuk menyimpan rincian layanan makeup
+
+                    undanganOptions.forEach(option => {
+                        const layanan = option.value; // Nama layanan (e.g., "Makeup Keluarga")
+                        const jumlahOrangInputId = option.dataset.target; // ID input jumlah orang
+                        const jumlahOrangInput = document.getElementById(jumlahOrangInputId);
+
+                        // Pastikan input jumlah orang ditemukan dan memiliki nilai
+                        const jumlahOrang = jumlahOrangInput ? parseInt(jumlahOrangInput.value, 10) : 0;
+                        if (jumlahOrang > 0) {
+                            undanganDetails.push(`${layanan} (${jumlahOrang} pcs)`);
+                        }
+                    });
+
+                    // Gabungkan semua rincian makeup tambahan menjadi satu string
+                    if (undanganDetails.length > 0) {
+                        packages.push(`Undangan Tambahan: ${undanganDetails.join(", ")}`);
+                    }
+                }
+
+                // hantaran tambahan kirim pilihan ke wa
+                if (hantaranCheckbox.checked) {
+                    const hantaranOptions = document.querySelectorAll("input[name='hantaran']:checked");
+                    let hantaranDetails = []; // Untuk menyimpan rincian layanan makeup
+
+                    hantaranOptions.forEach(option => {
+                        const layanan = option.value; // Nama layanan (e.g., "Makeup Keluarga")
+                        const jumlahHantaranInputId = option.dataset.target; // ID input jumlah orang
+                        const jumlahHantaranInput = document.getElementById(jumlahHantaranInputId);
+
+                        // Pastikan input jumlah orang ditemukan dan memiliki nilai
+                        const jumlahHantaran = jumlahHantaranInput ? parseInt(jumlahHantaranInput.value, 10) : 0;
+                        if (jumlahHantaran > 0) {
+                            hantaranDetails.push(`${layanan} (${jumlahHantaran} hantaran)`);
+                        }
+                    });
+
+                    // Gabungkan semua rincian makeup tambahan menjadi satu string
+                    if (hantaranDetails.length > 0) {
+                        packages.push(`Pesanan Hantaran: ${hantaranDetails.join(", ")}`);
+                    }
+                }
+
+                // kirim catering wa
+                if (cateringCheckbox && cateringCheckbox.checked) {
+                    // Ambil nama vendor catering
+                    const selectedCateringVendor = cateringVendorSelect.options[cateringVendorSelect.selectedIndex];
+                    const vendorNameCatering = selectedCateringVendor ? selectedCateringVendor.text : "Vendor tidak dipilih";
+
+                    // Ambil detail catering yang dipilih
+                    const selectedCatering = getSelectedCatering();
+                    if (selectedCatering) {
+                        packages.push(`Catering: ${vendorNameCatering} => ${selectedCatering.catering} => Jumlah Pax: ${selectedCatering.amount}(pax)`);
+                    }
+                }
+
+
+                // Membuat pesan WhatsApp
+                const message = encodeURIComponent(
+                    `Halo, saya ingin melakukan pemesanan untuk pernikahan:\n\n` +
+                    `*Nama*: ${name}\n` +
+                    `Nomor HP: ${phone}\n` +
+                    `Tanggal Pernikahan: ${weddingDateInput || "Belum Fix"}\n` +
+                    `Jumlah Tamu: ${guests}\n` +
+                    `Alamat: ${address}\n` +
+                    `Lokasi: ${location}\n` +
+                    `Paket yang dipilih: \n ${packages.join("\n")}\n` +
+                    `Total Harga: Rp ${total.toLocaleString()}`
+                );
+
+                // Menyusun URL WhatsApp
+                const waNumber = "+6285721819759";
+                waLink.href = `https://wa.me/${waNumber}?text=${message}`;
+                waLink.style.display = "inline-block"; // Menampilkan tombol Hubungi WA
+            });
+        });
+    </script>
+
+
+</body>
+
+</html>
